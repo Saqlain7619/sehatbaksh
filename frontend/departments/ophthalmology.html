@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Department of Ophthalmology - MediPlus</title>
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/department-detail.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="../scripts/fix-translations.js"></script>
+    <style>
+        /* Common heading styles for all sections */
+        .services-section h2,
+        .team-section h2,
+        .programs-section h2,
+        .centers-section h2,
+        .info-section h2,
+        .horizontal-section h2,
+        .overview-section h2,
+        .dept-hero h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #2c3e50;
+            font-size: 2.5rem;
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .services-section h2::after,
+        .team-section h2::after,
+        .programs-section h2::after,
+        .centers-section h2::after,
+        .info-section h2::after,
+        .horizontal-section h2::after,
+        .overview-section h2::after,
+        .dept-hero h1::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: #2980b9;  /* Blue theme for ophthalmology */
+        }
+
+        /* Horizontal section styles */
+        .horizontal-section {
+            padding: 60px 0;
+            background: #f8f9fa;
+        }
+
+        .horizontal-grid {
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+            padding: 20px 0;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .horizontal-card {
+            flex: 1;
+            min-width: 300px;
+            max-width: 350px;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin: 0 10px;
+        }
+
+        .horizontal-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .horizontal-card i {
+            color: #2980b9;
+            margin-bottom: 20px;
+            display: block;
+            text-align: center;
+        }
+
+        .horizontal-card h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+
+        .horizontal-card p {
+            color: #666;
+            margin-bottom: 20px;
+            text-align: center;
+            line-height: 1.6;
+        }
+    </style>
+    <link rel="stylesheet" href="../styles/responsive.css">
+</head>
+<body>
+    <!-- Department Hero -->
+    <section class="dept-hero">
+        <div class="container">
+            <h1>Department of Ophthalmology</h1>
+            <p>State-of-the-art eye care facilities and specialist supervision</p>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="overview-section">
+        <div class="container">
+            <div class="overview-card">
+                <h2>Department Overview</h2>
+                <p>Our Department of Ophthalmology provides comprehensive eye care services using the latest technology and evidence-based methods. From routine eye examinations to complex surgeries, our team of specialists ensures that all patients receive the best eye care and vision possible.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section class="services-section">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-eye"></i>
+                    <h3>Comprehensive Eye Examination</h3>
+                    <p>Complete assessment of vision and eye health</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-glasses"></i>
+                    <h3>Vision Correction</h3>
+                    <p>Modern refractive surgery and lens options</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-microscope"></i>
+                    <h3>Diagnostic Tests</h3>
+                    <p>Advanced imaging and diagnostic facilities</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Treatment Centers -->
+    <section class="centers-section">
+        <div class="container">
+            <h2>Specialized Eye Care Centers</h2>
+            <div class="centers-grid">
+                <div class="center-card">
+                    <img src="../images/ophthalmology/Laser-Vision-Center.jpg" alt="Laser Vision Center">
+                    <h3>Laser Vision Center</h3>
+                    <p>State-of-the-art laser eye surgery</p>
+                    <ul>
+                        <li>LASIK Surgery</li>
+                        <li>PRK Treatment</li>
+                        <li>Custom Vision Correction</li>
+                    </ul>
+                </div>
+                <div class="center-card">
+                    <img src="../images/ophthalmology/Retina-Center.jpg" alt="Retina Center">
+                    <h3>Retina Center</h3>
+                    <p>Specialized retina care</p>
+                    <ul>
+                        <li>Retinal Detachment Repair</li>
+                        <li>Diabetic Eye Care</li>
+                        <li>Macular Degeneration Treatment</li>
+                    </ul>
+                </div>
+                <div class="center-card">
+                    <img src="../images/ophthalmology/Pediatric-Eye-Center.jpg" alt="Pediatric Eye Center">
+                    <h3>Pediatric Eye Center</h3>
+                    <p>Specialized care for young patients</p>
+                    <ul>
+                        <li>Pediatric Eye Examinations</li>
+                        <li>Amblyopia Treatment</li>
+                        <li>Pediatric Eye Surgery</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <h2>Our Eye Care Team</h2>
+            <div class="team-grid">
+                <div class="team-card">
+                    <img src="../images/ophthalmology/Dr-Emily-Wong.jpg" alt="Dr. Emily Wong">
+                    <div class="team-info">
+                        <h3>Dr. Emily Wong</h3>
+                        <p>Head of Ophthalmology</p>
+                        <p>Specializes in LASIK and refractive surgery</p>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <img src="../images/ophthalmology/Dr-David-Miller.jpg" alt="Dr. David Miller">
+                    <div class="team-info">
+                        <h3>Dr. David Miller</h3>
+                        <p>Retina Specialist</p>
+                        <p>Specializes in retinal diseases and surgery</p>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <img src="../images/ophthalmology/Dr-Sarah-Park.jpg" alt="Dr. Sarah Park">
+                    <div class="team-info">
+                        <h3>Dr. Sarah Park</h3>
+                        <p>Pediatric Ophthalmologist</p>
+                        <p>Specializes in children's eye care</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Patient Information -->
+    <section class="info-section">
+        <div class="container">
+            <h2>Patient Information</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>Hours</h3>
+                    <p>Monday - Friday: 8:00 AM - 5:00 PM</p>
+                    <p>Saturday: 9:00 AM - 1:00 PM</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-phone"></i>
+                    <h3>Contact</h3>
+                    <p>Appointments: (555) 123-4567</p>
+                    <p>Emergency: (555) 987-6543</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Location</h3>
+                    <p>Eye Care Center, Third Floor</p>
+                    <p>Medical Center Campus</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Patient Education -->
+    <section class="horizontal-section">
+        <div class="container">
+            <h2>Patient Education</h2>
+            <div class="horizontal-grid">
+                <div class="horizontal-card">
+                    <i class="fas fa-book-medical"></i>
+                    <h3>Eye Health Resources</h3>
+                    <p>Educational materials about common eye conditions and treatments</p>
+                </div>
+                <div class="horizontal-card">
+                    <i class="fas fa-calendar-check"></i>
+                    <h3>Pre-Op Surgery Instructions</h3>
+                    <p>Important information for preparing for eye surgery</p>
+                </div>
+                <div class="horizontal-card">
+                    <i class="fas fa-user-md"></i>
+                    <h3>Vision Care Tips</h3>
+                    <p>Practical advice for maintaining healthy vision</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Appointment Call to Action -->
+    <section class="dept-cta">
+        <div class="container">
+            <h2>Schedule Your Eye Examination Today</h2>
+            <p>Take the first step toward better vision.</p>
+            <a href="../doctors.html" class="cta-btn">Appointment</a>
+        </div>
+    </section>
+
+    <script src="../js/profile-dropdown.js"></script>
+    <script src="../scripts/fix-translations.js"></script>
+    <script src="../scripts/translate-manager.js"></script>
+</body>
+</html>

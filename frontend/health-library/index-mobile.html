@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Library A-Z - Mediplus</title>
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="styles/health-library.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+    <link rel="stylesheet" href="../styles/responsive-update.css">
+    <link rel="stylesheet" href="../styles/translate-style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>Mediplus - Health Library</h1>
+            </div>
+            <div id="google_translate_element"></div>
+            <div class="nav-links">
+                <a href="../index.html">Home</a>
+                <a href="#" class="active">Health Library</a>
+                <a href="../doctors.html">Doctors</a>
+                <a href="../departments.html">Departments</a>
+                <a href="../blog.html">Blog</a>
+                <a href="../contact.html">Contact</a>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="nav-buttons">
+                <a href="../doctors.html" class="glassy-btn">Appointment</a>
+                <div class="profile-icon">
+                    <img src="../images/profile-avatar.png" alt="Profile" id="profilePic">
+                    <div class="dropdown-content" id="dropdownContent">
+                        <a href="../profile.html">My Profile</a>
+                        <a href="../settings.html">Settings</a>
+                        <a href="../login.html">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" id="mobileMenuClose">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="mobile-menu-links">
+            <a href="../index.html">Home</a>
+            <a href="#" class="active">Health Library</a>
+            <a href="../doctors.html">Doctors</a>
+            <a href="../departments.html">Departments</a>
+            <a href="../blog.html">Blog</a>
+            <a href="../contact.html">Contact</a>
+            <a href="../doctors.html">Appointment</a>
+            <a href="../profile.html">My Profile</a>
+            <a href="../settings.html">Settings</a>
+            <a href="../login.html">Logout</a>
+        </div>
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+
+    <div class="hero health-library-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Health Library A-Z</h1>
+                <p>Explore our comprehensive database of health conditions, symptoms, treatments, and prevention methods.</p>
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Search for a health condition..." id="conditionSearch">
+                    <button class="search-button" id="searchBtn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="alphabet-nav">
+            <a href="#section-a">A</a>
+            <a href="#section-b">B</a>
+            <a href="#section-c">C</a>
+            <a href="#section-d">D</a>
+            <a href="#section-e">E</a>
+            <a href="#section-f">F</a>
+            <a href="#section-g">G</a>
+            <a href="#section-h">H</a>
+            <a href="#section-i">I</a>
+            <a href="#section-j">J</a>
+            <a href="#section-k">K</a>
+            <a href="#section-l">L</a>
+            <a href="#section-m">M</a>
+            <a href="#section-n">N</a>
+            <a href="#section-o">O</a>
+            <a href="#section-p">P</a>
+            <a href="#section-q">Q</a>
+            <a href="#section-r">R</a>
+            <a href="#section-s">S</a>
+            <a href="#section-t">T</a>
+            <a href="#section-u">U</a>
+            <a href="#section-v">V</a>
+            <a href="#section-w">W</a>
+            <a href="#section-x">X</a>
+            <a href="#section-y">Y</a>
+            <a href="#section-z">Z</a>
+        </div>
+
+        <div class="health-library-layout">
+            <aside class="sidebar">
+                <div class="sidebar-widget">
+                    <h1 class="notranslate" translate="no">Sehat Bakhsh</h1>
+                    <ul class="category-list">
+                        <li><a href="categories/chronic-diseases.html">Chronic Diseases</a></li>
+                        <li><a href="categories/infectious-diseases.html">Infectious Diseases</a></li>
+                        <li><a href="categories/mental-health.html">Mental Health</a></li>
+                        <li><a href="categories/womens-health.html">Women's Health</a></li>
+                        <li><a href="categories/mens-health.html">Men's Health</a></li>
+                        <li><a href="categories/childrens-health.html">Children's Health</a></li>
+                        <li><a href="categories/senior-health.html">Senior Health</a></li>
+                    </ul>
+                </div>
+                <div class="sidebar-widget">
+                    <h3>Popular Conditions</h3>
+                    <ul class="popular-list">
+                        <li><a href="conditions/diabetes.html">Diabetes</a></li>
+                        <li><a href="conditions/hypertension.html">Hypertension</a></li>
+                        <li><a href="conditions/asthma.html">Asthma</a></li>
+                        <li><a href="conditions/arthritis.html">Arthritis</a></li>
+                        <li><a href="conditions/depression.html">Depression</a></li>
+                    </ul>
+                </div>
+                <div class="sidebar-widget">
+                    <h3>Health Resources</h3>
+                    <ul class="resource-list">
+                        <li><a href="resources/medical-dictionary.html">Medical Dictionary</a></li>
+                        <li><a href="resources/drug-database.html">Drug Database</a></li>
+                        <li><a href="resources/symptom-checker.html">Symptom Checker</a></li>
+                        <li><a href="resources/first-aid.html">First Aid Guide</a></li>
+                    </ul>
+                </div>
+            </aside>
+
+            <div class="main-content">
+                <section id="section-a" class="alphabet-section">
+                    <h2>A</h2>
+                    <div class="health-library-grid">
+                        <a href="conditions/asthma.html" class="condition-card">
+                            <div class="condition-card-content">
+                                <h3>Asthma</h3>
+                                <p>A chronic condition affecting the airways in the lungs.</p>
+                            </div>
+                        </a>
+                        <a href="conditions/arthritis.html" class="condition-card">
+                            <div class="condition-card-content">
+                                <h3>Arthritis</h3>
+                                <p>Inflammation of one or more joints causing pain and stiffness.</p>
+                            </div>
+                        </a>
+                        <a href="conditions/alzheimers.html" class="condition-card">
+                            <div class="condition-card-content">
+                                <h3>Alzheimer's Disease</h3>
+                                <p>A progressive disorder that causes brain cells to degenerate and die.</p>
+                            </div>
+                        </a>
+                    </div>
+                </section>
+
+                <section id="section-b" class="alphabet-section">
+                    <h2>B</h2>
+                    <div class="health-library-grid">
+                        <a href="conditions/bronchitis.html" class="condition-card">
+                            <div class="condition-card-content">
+                                <h3>Bronchitis</h3>
+                                <p>Inflammation of the lining of the bronchial tubes.</p>
+                            </div>
+                        </a>
+                    </div>
+                </section>
+
+                <section id="section-c" class="alphabet-section">
+                    <h2>C</h2>
+                    <div class="health-library-grid">
+                        <a href="conditions/coronary-artery-disease.html" class="condition-card">
+                            <div class="condition-card-content">
+                                <h3>Coronary Artery Disease</h3>
+                                <p>Damage or disease in the heart's major blood vessels.</p>
+                            </div>
+                        </a>
+                    </div>
+                </section>
+
+                <section id="section-d" class="alphabet-section">
+                    <h2>D</h2>
+                    <div class="health-library-grid">
+                        <a href="conditions/diabetes.html" class="condition-card">
+                            <div class="condition-card-content">
+                                <h3>Diabetes Type 2</h3>
+                                <p>A chronic condition that affects the way the body processes blood sugar.</p>
+                            </div>
+                        </a>
+                    </div>
+                </section>
+
+                <section id="section-e" class="alphabet-section">
+                    <h2>E</h2>
+                    <div class="health-library-grid">
+                        <a href="conditions/eczema.html" class="condition-card">
+                            <div class="condition-card-content">
+                                <h3>Eczema</h3>
+                                <p>A condition that makes your skin red and itchy.</p>
+                            </div>
+                        </a>
+                    </div>
+                </section>
+
+                <!-- Continue with sections F-Z -->
+                <!-- For brevity, showing just a few sections -->
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <h3>Mediplus</h3>
+                <p>Healthcare at its finest.</p>
+            </div>
+            <div class="footer-links">
+                <a href="../privacy-policy.html">Privacy Policy</a>
+                <a href="../terms.html">Terms of Service</a>
+                <a href="../contact.html">Contact Us</a>
+            </div>
+            <div class="footer-social">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <p class="copyright"> 2025 Mediplus. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Search functionality
+        document.getElementById('searchBtn').addEventListener('click', function() {
+            const searchTerm = document.getElementById('conditionSearch').value.toLowerCase();
+            if (searchTerm) {
+                // Simple search implementation - in a real app, this would be more sophisticated
+                const conditionCards = document.querySelectorAll('.condition-card');
+                let found = false;
+                
+                conditionCards.forEach(card => {
+                    const title = card.querySelector('h3').textContent.toLowerCase();
+                    const description = card.querySelector('p').textContent.toLowerCase();
+                    
+                    if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        card.classList.add('highlight');
+                        setTimeout(() => {
+                            card.classList.remove('highlight');
+                        }, 2000);
+                        found = true;
+                        return;
+                    }
+                });
+                
+                if (!found) {
+                    alert('No conditions found matching "' + searchTerm + '". Please try another search term.');
+                }
+            }
+        });
+
+        // Mobile Menu Toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileMenuClose = document.getElementById('mobileMenuClose');
+            const overlay = document.getElementById('overlay');
+
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    mobileMenu.classList.add('active');
+                    overlay.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+            }
+
+            if (mobileMenuClose) {
+                mobileMenuClose.addEventListener('click', function() {
+                    mobileMenu.classList.remove('active');
+                    overlay.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                });
+            }
+
+            if (overlay) {
+                overlay.addEventListener('click', function() {
+                    mobileMenu.classList.remove('active');
+                    overlay.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                });
+            }
+
+            // Profile Dropdown
+            const profilePic = document.getElementById('profilePic');
+            const dropdownContent = document.getElementById('dropdownContent');
+
+            if (profilePic && dropdownContent) {
+                profilePic.addEventListener('click', function() {
+                    dropdownContent.classList.toggle('show');
+                });
+
+                window.addEventListener('click', function(event) {
+                    if (!event.target.matches('#profilePic')) {
+                        if (dropdownContent.classList.contains('show')) {
+                            dropdownContent.classList.remove('show');
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+    <script type="text/javascript">
+        function googleTranslateElementInit(){
+            new google.translate.TranslateElement(
+                {pageLanguage: 'en'},
+                'google_translate_element'
+            );
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script src="../scripts/translate-manager.js"></script>
+</body>
+</html>

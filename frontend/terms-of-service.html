@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - Mediplus</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/translate-style.css">
+    <style>
+        /* Position the Google Translate element properly */
+        #google_translate_element {
+            position: absolute;
+            top: 20px;
+            right: 150px;
+            z-index: 1000;
+        }
+        
+        /* Fix for translated content */
+        .goog-te-menu-value {
+            color: #fff !important;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 10px;
+            border-radius: 5px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+    </style>
+    <style>
+        .terms-content {
+            max-width: 1200px;
+            margin: 120px auto 50px;
+            padding: 0 20px;
+        }
+        
+        .terms-content h1 {
+            color: #1e90ff;
+            margin-bottom: 30px;
+            transition: transform 0.3s ease;
+        }
+        
+        .terms-content h1:hover {
+            transform: translateX(10px);
+        }
+        
+        .terms-section {
+            margin-bottom: 40px;
+            background: #fff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .terms-section::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 3px;
+            background: #1e90ff;
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .terms-section:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 20px rgba(30,144,255,0.15);
+        }
+        
+        .terms-section:hover::before {
+            transform: scaleY(1);
+        }
+        
+        .terms-section h2 {
+            color: #333;
+            margin-bottom: 20px;
+            transition: color 0.3s ease;
+        }
+        
+        .terms-section:hover h2 {
+            color: #1e90ff;
+        }
+        
+        .terms-section p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            transition: color 0.3s ease;
+        }
+        
+        .terms-section:hover p {
+            color: #444;
+        }
+        
+        .terms-section ul {
+            list-style-type: none;
+            margin-left: 0;
+            margin-bottom: 15px;
+        }
+        
+        .terms-section ul li {
+            color: #666;
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .terms-section ul li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #1e90ff;
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.3s ease;
+        }
+        
+        .terms-section:hover ul li::before {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .terms-section:hover ul li {
+            padding-left: 30px;
+            color: #444;
+        }
+        
+        .last-updated {
+            font-style: italic;
+            color: #888;
+            margin-top: 50px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .last-updated:hover {
+            color: #1e90ff;
+            transform: scale(1.05);
+        }
+
+        .back-to-home {
+            display: inline-block;
+            margin-bottom: 30px;
+            color: #1e90ff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 2px solid #1e90ff;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .back-to-home:hover {
+            background: #1e90ff;
+            color: white;
+            transform: translateX(5px);
+        }
+    </style>
+    <link rel="stylesheet" href="styles/responsive.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <h1 class="notranslate" translate="no">Sehat Bakhsh</h1>
+            </div>
+            <div id="google_translate_element"></div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+
+        </nav>
+    </header>
+<!-- Mobile Menu Button (Add this to your nav section) -->
+<button class="mobile-menu-btn" id="mobileMenuBtn">
+    <i class="fas fa-bars"></i>
+</button>
+
+<!-- Mobile Menu (Add this after the header) -->
+<div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu-close" id="mobileMenuClose">
+        <i class="fas fa-times"></i>
+    </button>
+    <div class="mobile-menu-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="departments.html">Department</a>
+        <a href="doctors.html">Doctors</a>
+        <a href="blog.html">Blog</a>
+        <a href="contact.html">Contact</a>
+        <a href="health-library/index.html">Health Library</a>
+        <a href="doctors.html">Appointment</a>
+        <a href="profile.html">My Profile</a>
+        <a href="settings.html">Settings</a>
+        <a href="login.html">Logout</a>
+    </div>
+</div>
+
+<div class="overlay" id="overlay"></div>
+
+<!-- Mobile Menu JavaScript (Add this before the closing body tag) -->
+<script>
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileMenuClose = document.getElementById('mobileMenuClose');
+    const overlay = document.getElementById('overlay');
+
+    mobileMenuBtn.addEventListener('click', function() {
+        mobileMenu.classList.add('active');
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    });
+
+    mobileMenuClose.addEventListener('click', function() {
+        mobileMenu.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    });
+
+    overlay.addEventListener('click', function() {
+        mobileMenu.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    });
+</script>
+
+
+    <main class="terms-content">
+        <a href="index.html" class="back-to-home">
+            <i class="fas fa-arrow-left"></i> Back to Home
+        </a>
+        
+        <h1>Terms of Service</h1>
+        
+        <div class="terms-section">
+            <h2>1. Acceptance of Terms</h2>
+            <p>By accessing and using Mediplus services, you agree to be bound by these Terms of Service and all applicable laws and regulations.</p>
+        </div>
+
+        <div class="terms-section">
+            <h2>2. Medical Services</h2>
+            <p>Our services include:</p>
+            <ul>
+                <li>Medical consultations and treatments</li>
+                <li>Emergency medical services</li>
+                <li>Diagnostic services</li>
+                <li>Preventive healthcare</li>
+                <li>Specialist referrals</li>
+            </ul>
+        </div>
+
+        <div class="terms-section">
+            <h2>3. Appointments and Cancellations</h2>
+            <p>Please note our appointment policies:</p>
+            <ul>
+                <li>24-hour notice required for cancellations</li>
+                <li>Late arrivals may need rescheduling</li>
+                <li>Emergency cases take priority</li>
+                <li>Confirmation required for appointments</li>
+            </ul>
+        </div>
+
+        <div class="terms-section">
+            <h2>4. Payment Terms</h2>
+            <p>Payment responsibilities include:</p>
+            <ul>
+                <li>Payment due at time of service</li>
+                <li>Insurance verification required</li>
+                <li>Co-payments and deductibles</li>
+                <li>Payment plans available</li>
+            </ul>
+        </div>
+
+        <div class="terms-section">
+            <h2>5. Patient Responsibilities</h2>
+            <p>Patients must:</p>
+            <ul>
+                <li>Provide accurate medical history</li>
+                <li>Follow treatment plans</li>
+                <li>Respect staff and other patients</li>
+                <li>Maintain regular appointments</li>
+            </ul>
+        </div>
+
+        <div class="terms-section">
+            <h2>6. Privacy and Confidentiality</h2>
+            <p>We maintain strict confidentiality of all patient information in accordance with HIPAA regulations and our Privacy Policy.</p>
+        </div>
+
+        <div class="terms-section">
+            <h2>7. Changes to Terms</h2>
+            <p>Mediplus reserves the right to modify these terms at any time. Continued use of our services constitutes acceptance of any changes.</p>
+        </div>
+
+        <p class="last-updated">Last Updated: February 7, 2025</p>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <h3>Mediplus</h3>
+                <p>Healthcare at its finest</p>
+            </div>
+            <div class="footer-links">
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms-of-service.html">Terms of Service</a>
+                <a href="contact.html">Contact Us</a>
+            </div>
+            <div class="footer-social">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Sehat Bakhsh. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="scripts/main.js"></script>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script src="scripts/fix-translations.js"></script>
+    <script src="scripts/translate-manager.js"></script>
+</body>
+</html>

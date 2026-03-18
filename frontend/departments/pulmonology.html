@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Department of Pulmonology - MediPlus</title>
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/department-detail.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="../scripts/fix-translations.js"></script>
+    <style>
+        .horizontal-sections {
+            display: flex;
+            justify-content: space-between;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .education-section,
+        .research-section {
+            flex: 1;
+        }
+
+        .education-card,
+        .research-card {
+            padding: 1.5rem;
+            border-radius: 8px;
+            background: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .education-card:hover,
+        .research-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        /* Enhanced hover animations */
+        .service-card,
+        .team-card,
+        .education-card,
+        .research-card,
+        .overview-card {
+            position: relative;
+            padding: 1.5rem;
+            border-radius: 12px;
+            background: #fff;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            overflow: hidden;
+        }
+
+        .service-card::after,
+        .team-card::after,
+        .education-card::after,
+        .research-card::after,
+        .overview-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 12px;
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            background: linear-gradient(
+                135deg,
+                rgba(255, 255, 255, 0.2) 0%,
+                rgba(255, 255, 255, 0.05) 100%
+            );
+            pointer-events: none;
+        }
+
+        .service-card:hover,
+        .team-card:hover,
+        .education-card:hover,
+        .research-card:hover,
+        .overview-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15),
+                        0 0 20px rgba(71, 120, 244, 0.2);
+            background: linear-gradient(
+                to bottom right,
+                #ffffff,
+                #f8f9ff
+            );
+        }
+
+        .service-card:hover::after,
+        .team-card:hover::after,
+        .education-card:hover::after,
+        .research-card:hover::after,
+        .overview-card:hover::after {
+            opacity: 1;
+        }
+
+        .service-card i,
+        .education-card i,
+        .team-card i {
+            font-size: 2rem;
+            color: #4778f4;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover i,
+        .education-card:hover i,
+        .team-card:hover i {
+            transform: scale(1.2) rotate(5deg);
+            color: #2857d0;
+        }
+
+        .service-card h3,
+        .education-card h3,
+        .research-card h3,
+        .team-card h3 {
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover h3,
+        .education-card:hover h3,
+        .research-card:hover h3,
+        .team-card:hover h3 {
+            color: #2857d0;
+            transform: translateX(5px);
+        }
+
+        /* Smooth list item animations */
+        .service-card ul li,
+        .education-card ul li,
+        .research-card ul li {
+            transition: all 0.3s ease;
+            position: relative;
+            padding-left: 1.2em;
+        }
+
+        .service-card ul li:before,
+        .education-card ul li:before,
+        .research-card ul li:before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover ul li,
+        .education-card:hover ul li,
+        .research-card:hover ul li {
+            padding-left: 1.5em;
+        }
+
+        .service-card:hover ul li:before,
+        .education-card:hover ul li:before,
+        .research-card:hover ul li:before {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Centered Headings Styles */
+        .container h2 {
+            text-align: center;
+            position: relative;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            color: #2857d0;
+        }
+
+        .container h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(to right, #4778f4, #2857d0);
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+
+        .container h2:hover::after {
+            width: 100px;
+        }
+
+        .hero-content {
+            text-align: center;
+        }
+
+        .hero-content h1 {
+            margin-bottom: 1rem;
+        }
+
+        /* Center card headings */
+        .service-card h3,
+        .education-card h3,
+        .research-card h3,
+        .team-card h3,
+        .overview-card h3 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Center icons */
+        .service-card i,
+        .education-card i,
+        .team-card i {
+            display: block;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+    </style>
+    <link rel="stylesheet" href="../styles/responsive.css">
+</head>
+<body>
+    <!-- Department Hero -->
+    <section class="dept-hero pulmonology">
+        <div class="container">
+            <div class="hero-content">
+                <i class="fas fa-lungs"></i>
+                <h1>Department of Pulmonology</h1>
+                <p>Expert care for respiratory health</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="overview-section">
+        <div class="container">
+            <div class="overview-card">
+                <h2>Department Overview</h2>
+                <p>Our Department of Pulmonology provides comprehensive care for respiratory diseases. Our expert team uses modern technology and evidence-based treatments to help patients breathe easier and lead healthier lives.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section class="services-section">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-lungs"></i>
+                    <h3>Respiratory Care</h3>
+                    <ul>
+                        <li>Asthma Management</li>
+                        <li>COPD Treatment</li>
+                        <li>Bronchitis Care</li>
+                        <li>Pneumonia Treatment</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <i class="fas fa-bed"></i>
+                    <h3>Sleep Medicine</h3>
+                    <ul>
+                        <li>Sleep Studies</li>
+                        <li>Sleep Apnea Treatment</li>
+                        <li>CPAP Management</li>
+                        <li>Sleep Disorders</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <i class="fas fa-microscope"></i>
+                    <h3>Diagnostic Services</h3>
+                    <ul>
+                        <li>Pulmonary Function Tests</li>
+                        <li>Bronchoscopy</li>
+                        <li>CT Imaging</li>
+                        <li>Blood Gas Analysis</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specialty Centers -->
+    <section class="centers-section">
+        <div class="container">
+            <h2>Specialty Centers</h2>
+            <div class="centers-grid">
+                <div class="center-card">
+                    <img src="../images/pulmonology/Asthma-Center.jpg" alt="Asthma Center">
+                    <h3>Asthma Center</h3>
+                    <p>Comprehensive asthma management</p>
+                    <ul>
+                        <li>Asthma Education</li>
+                        <li>Treatment Plans</li>
+                        <li>Inhaler Training</li>
+                    </ul>
+                </div>
+
+                <div class="center-card">
+                    <img src="../images/pulmonology/Sleep Medicine Center.jpg" alt="Sleep Medicine Center">
+                    <h3>Sleep Medicine Center</h3>
+                    <p>Advanced sleep diagnostics</p>
+                    <ul>
+                        <li>Sleep Studies</li>
+                        <li>CPAP Therapy</li>
+                        <li>Sleep Consultation</li>
+                    </ul>
+                </div>
+
+                <div class="center-card">
+                    <img src="../images/pulmonology/Pulmonary Rehabilitation.jpg" alt="Pulmonary Rehabilitation">
+                    <h3>Pulmonary Rehabilitation</h3>
+                    <p>Comprehensive rehabilitation programs</p>
+                    <ul>
+                        <li>Exercise Training</li>
+                        <li>Breathing Techniques</li>
+                        <li>Educational Programs</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <h2>Our Pulmonology Team</h2>
+            <div class="team-grid">
+                <div class="team-card">
+                    <img src="../images/pulmonology/Dr-James-Wilson.jpg" alt="Dr. James Wilson">
+                    <div class="team-info">
+                        <h3>Dr. James Wilson</h3>
+                        <p>Head of Pulmonology</p>
+                        <div class="expertise">
+                            <span>Respiratory Medicine</span>
+                            <span>Critical Care</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <img src="../images/pulmonology/Dr-Sarah-Miller.jpg" alt="Dr. Sarah Miller">
+                    <div class="team-info">
+                        <h3>Dr. Sarah Miller</h3>
+                        <p>Sleep Medicine Specialist</p>
+                        <div class="expertise">
+                            <span>Sleep Disorders</span>
+                            <span>CPAP Therapy</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <img src="../images/pulmonology/Dr-Robert-Chen.jpg" alt="Dr. Robert Chen">
+                    <div class="team-info">
+                        <h3>Dr. Robert Chen</h3>
+                        <p>Interventional Pulmonologist</p>
+                        <div class="expertise">
+                            <span>Bronchoscopy</span>
+                            <span>Lung Cancer</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Treatments Section -->
+    <section class="treatments-section">
+        <div class="container">
+            <h2>Advanced Treatments</h2>
+            <div class="treatments-grid">
+                <div class="treatment-card">
+                    <i class="fas fa-procedures"></i>
+                    <h3>Interventional Procedures</h3>
+                    <ul>
+                        <li>Bronchoscopy</li>
+                        <li>Thoracentesis</li>
+                        <li>Chest Tube Placement</li>
+                    </ul>
+                </div>
+
+                <div class="treatment-card">
+                    <i class="fas fa-wind"></i>
+                    <h3>Respiratory Therapy</h3>
+                    <ul>
+                        <li>Oxygen Therapy</li>
+                        <li>Nebulizer Treatments</li>
+                        <li>Airway Clearance</li>
+                    </ul>
+                </div>
+
+                <div class="treatment-card">
+                    <i class="fas fa-lungs-virus"></i>
+                    <h3>Disease Management</h3>
+                    <ul>
+                        <li>COPD Care</li>
+                        <li>Asthma Control</li>
+                        <li>Infection Treatment</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Patient Information -->
+    <section class="patient-info">
+        <div class="container">
+            <h2>Patient Information</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>Clinic Hours</h3>
+                    <ul>
+                        <li>Monday - Friday: 8:00 AM - 5:00 PM</li>
+                        <li>Saturday: 9:00 AM - 1:00 PM</li>
+                        <li>Sleep Lab: 24/7</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <i class="fas fa-clipboard-list"></i>
+                    <h3>First Appointment</h3>
+                    <ul>
+                        <li>Medical History</li>
+                        <li>Current Medications</li>
+                        <li>Previous Test Results</li>
+                        <li>Insurance Information</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <i class="fas fa-phone"></i>
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li>Appointments: (555) 678-9012</li>
+                        <li>Sleep Lab: (555) 678-9111</li>
+                        <li>Email: pulmonology@mediplus.com</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education and Research Section -->
+    <div class="horizontal-sections">
+        <section class="education-section">
+            <div class="container">
+                <h2>Patient Education</h2>
+                <div class="education-card">
+                    <i class="fas fa-book-medical"></i>
+                    <h3>Resource Library</h3>
+                    <p>Educational materials about respiratory health</p>
+                </div>
+                <div class="education-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Support Groups</h3>
+                    <p>Connect with others managing similar conditions</p>
+                </div>
+                <div class="education-card">
+                    <i class="fas fa-laptop-medical"></i>
+                    <h3>Online Resources</h3>
+                    <p>Access to digital health information</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="research-section">
+            <div class="container">
+                <h2>Clinical Research</h2>
+                <div class="research-card">
+                    <h3>Current Research Projects</h3>
+                    <ul>
+                        <li>Advanced COPD Treatment Studies</li>
+                        <li>Sleep Apnea Research</li>
+                        <li>Respiratory Disease Prevention</li>
+                        <li>Advanced Breathing Techniques</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Appointment CTA -->
+    <section class="dept-cta">
+        <div class="container">
+            <h2>Need Respiratory Care?</h2>
+            <p>Schedule a consultation with our pulmonology specialists.</p>
+            <a href="../doctors.html" class="cta-btn">Appointment</a>
+        </div>
+    </section>
+
+    <script src="../js/profile-dropdown.js"></script>
+    <script src="../scripts/fix-translations.js"></script>
+    <script src="../scripts/translate-manager.js"></script>
+</body>
+</html>

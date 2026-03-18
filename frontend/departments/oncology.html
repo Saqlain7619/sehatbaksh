@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Department of Oncology - MediPlus</title>
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/department-detail.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="../scripts/fix-translations.js"></script>
+    <style>
+    .horizontal-section {
+        padding: 60px 0;
+        background: #f8f9fa;
+    }
+
+    .horizontal-section h2 {
+        text-align: center;
+        margin-bottom: 40px;
+        color: #2c3e50;
+        font-size: 2.5rem;
+        font-weight: 600;
+        position: relative;
+        padding-bottom: 15px;
+    }
+
+    .horizontal-section h2::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 3px;
+        background-color: #e74c3c;
+    }
+
+    .horizontal-grid {
+        display: flex;
+        justify-content: space-between;
+        gap: 40px;
+        padding: 20px 0;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .horizontal-card {
+        flex: 1;
+        min-width: 300px;
+        max-width: 350px;
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        margin: 0 10px;
+    }
+
+    .horizontal-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .horizontal-card i {
+        color: #e74c3c;
+        margin-bottom: 20px;
+        display: block;
+        text-align: center;
+    }
+
+    .horizontal-card h3 {
+        color: #2c3e50;
+        margin-bottom: 15px;
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    .horizontal-card p {
+        color: #666;
+        margin-bottom: 20px;
+        text-align: center;
+        line-height: 1.6;
+    }
+
+    .horizontal-card ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .horizontal-card ul li {
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        color: #555;
+        line-height: 1.4;
+    }
+
+    .horizontal-card ul li i {
+        margin-right: 12px;
+        color: #27ae60;
+        font-size: 1rem;
+        display: inline;
+        text-align: left;
+        margin-bottom: 0;
+    }
+
+    /* Common heading styles for all sections */
+    .services-section h2,
+    .team-section h2,
+    .programs-section h2,
+    .centers-section h2,
+    .info-section h2,
+    .horizontal-section h2 {
+        text-align: center;
+        margin-bottom: 40px;
+        color: #2c3e50;
+        font-size: 2.5rem;
+        font-weight: 600;
+        position: relative;
+        padding-bottom: 15px;
+    }
+
+    .services-section h2::after,
+    .team-section h2::after,
+    .programs-section h2::after,
+    .centers-section h2::after,
+    .info-section h2::after,
+    .horizontal-section h2::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 3px;
+        background-color: #e74c3c;
+    }
+
+    @media (max-width: 1200px) {
+        .horizontal-grid {
+            padding: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .horizontal-card {
+            flex: 0 1 calc(33.333% - 40px);
+            margin: 0;
+        }
+    }
+
+    @media (max-width: 992px) {
+        .horizontal-card {
+            flex: 0 1 calc(50% - 40px);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .horizontal-grid {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .horizontal-card {
+            flex: none;
+            width: 100%;
+            max-width: 400px;
+            margin: 0 0 20px 0;
+        }
+
+        .horizontal-card:last-child {
+            margin-bottom: 0;
+        }
+    }
+    </style>
+    <link rel="stylesheet" href="../styles/responsive.css">
+</head>
+<body>
+    <!-- Department Hero -->
+    <section class="dept-hero oncology">
+        <div class="container">
+            <div class="hero-content">
+                <i class="fas fa-ribbon"></i>
+                <h1>Department of Oncology</h1>
+                <p>Comprehensive cancer care with compassion and innovation</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="overview-section">
+        <div class="container">
+            <div class="overview-card">
+                <h2>Department Overview</h2>
+                <p>Our Department of Oncology provides comprehensive cancer care using the latest treatments and technologies. Our multidisciplinary team of specialists works together to provide personalized treatment plans, combining medical expertise with compassionate support throughout your cancer journey.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section class="services-section">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-microscope"></i>
+                    <h3>Cancer Diagnosis</h3>
+                    <ul>
+                        <li>Advanced Imaging</li>
+                        <li>Biopsy Services</li>
+                        <li>Genetic Testing</li>
+                        <li>Early Detection</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <i class="fas fa-pills"></i>
+                    <h3>Treatment Options</h3>
+                    <ul>
+                        <li>Chemotherapy</li>
+                        <li>Radiation Therapy</li>
+                        <li>Immunotherapy</li>
+                        <li>Targeted Therapy</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <i class="fas fa-user-md"></i>
+                    <h3>Specialized Care</h3>
+                    <ul>
+                        <li>Surgical Oncology</li>
+                        <li>Pain Management</li>
+                        <li>Clinical Trials</li>
+                        <li>Palliative Care</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specialty Centers -->
+    <section class="centers-section">
+        <div class="container">
+            <h2>Cancer Treatment Centers</h2>
+            <div class="centers-grid">
+                <div class="center-card">
+                    <img src="../images/oncology/Radiation-therapy-center.jpg" alt="Radiation Center">
+                    <h3>Radiation Therapy Center</h3>
+                    <p>State-of-the-art radiation treatments</p>
+                    <ul>
+                        <li>External Beam Therapy</li>
+                        <li>Brachytherapy</li>
+                        <li>Precision Targeting</li>
+                    </ul>
+                </div>
+
+                <div class="center-card">
+                    <img src="../images/oncology/Chemotherapy-center.jpg" alt="Chemotherapy Center">
+                    <h3>Chemotherapy Center</h3>
+                    <p>Advanced medical oncology</p>
+                    <ul>
+                        <li>Infusion Services</li>
+                        <li>Targeted Therapies</li>
+                        <li>Patient Comfort</li>
+                    </ul>
+                </div>
+
+                <div class="center-card">
+                    <img src="../images/oncology/Clinical-research-center.jpg" alt="Research Center">
+                    <h3>Clinical Research Center</h3>
+                    <p>Cutting-edge cancer research</p>
+                    <ul>
+                        <li>Clinical Trials</li>
+                        <li>New Treatments</li>
+                        <li>Research Studies</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <h2>Our Oncology Team</h2>
+            <div class="team-grid">
+                <div class="team-card">
+                    <img src="../images/oncology/Dr-Michael-Chen.jpg" alt="Dr. Michael Chen">
+                    <div class="team-info">
+                        <h3>Dr. Michael Chen</h3>
+                        <p>Head of Oncology</p>
+                        <div class="expertise">
+                            <span>Medical Oncology</span>
+                            <span>Clinical Research</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <img src="../images/doctor11.jpg" alt="Dr. Laura Thompson">
+                    <div class="team-info">
+                        <h3>Dr. Laura Thompson</h3>
+                        <p>Radiation Oncologist</p>
+                        <div class="expertise">
+                            <span>Radiation Therapy</span>
+                            <span>Targeted Treatment</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <img src="../images/doctor12.jpg" alt="Dr. James Wilson">
+                    <div class="team-info">
+                        <h3>Dr. James Wilson</h3>
+                        <p>Surgical Oncologist</p>
+                        <div class="expertise">
+                            <span>Cancer Surgery</span>
+                            <span>Minimally Invasive</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Treatment Programs -->
+    <section class="programs-section">
+        <div class="container">
+            <h2>Treatment Programs</h2>
+            <div class="programs-grid">
+                <div class="program-card">
+                    <i class="fas fa-dna"></i>
+                    <h3>Precision Medicine</h3>
+                    <ul>
+                        <li>Genetic Testing</li>
+                        <li>Targeted Therapy</li>
+                        <li>Personalized Care</li>
+                    </ul>
+                </div>
+
+                <div class="program-card">
+                    <i class="fas fa-shield-virus"></i>
+                    <h3>Immunotherapy</h3>
+                    <ul>
+                        <li>Immune Support</li>
+                        <li>Biological Therapy</li>
+                        <li>Clinical Trials</li>
+                    </ul>
+                </div>
+
+                <div class="program-card">
+                    <i class="fas fa-hand-holding-heart"></i>
+                    <h3>Support Services</h3>
+                    <ul>
+                        <li>Counseling</li>
+                        <li>Nutritional Support</li>
+                        <li>Pain Management</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Patient Information -->
+    <section class="info-section">
+        <div class="container">
+            <h2>Patient Information</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>Treatment Hours</h3>
+                    <ul>
+                        <li>Monday - Friday: 8:00 AM - 6:00 PM</li>
+                        <li>Saturday: 9:00 AM - 2:00 PM</li>
+                        <li>Emergency: 24/7</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <i class="fas fa-clipboard-list"></i>
+                    <h3>First Appointment</h3>
+                    <ul>
+                        <li>Medical Records</li>
+                        <li>Imaging Results</li>
+                        <li>Insurance Information</li>
+                        <li>Current Medications</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <i class="fas fa-phone"></i>
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li>Appointments: (555) 456-7890</li>
+                        <li>Emergency: (555) 456-7891</li>
+                        <li>Email: oncology@mediplus.com</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support Services -->
+    <section class="horizontal-section">
+        <div class="container">
+            <h2>Support Services</h2>
+            <div class="horizontal-grid">
+                <div class="horizontal-card">
+                    <i class="fas fa-users fa-3x"></i>
+                    <h3>Support Groups</h3>
+                    <p>Connect with others on similar journeys</p>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Peer Support Meetings</li>
+                        <li><i class="fas fa-check"></i> Family Support Groups</li>
+                        <li><i class="fas fa-check"></i> Online Communities</li>
+                    </ul>
+                </div>
+
+                <div class="horizontal-card">
+                    <i class="fas fa-heart fa-3x"></i>
+                    <h3>Emotional Support</h3>
+                    <p>Counseling and mental health services</p>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Individual Counseling</li>
+                        <li><i class="fas fa-check"></i> Family Therapy</li>
+                        <li><i class="fas fa-check"></i> Stress Management</li>
+                    </ul>
+                </div>
+
+                <div class="horizontal-card">
+                    <i class="fas fa-hands-helping fa-3x"></i>
+                    <h3>Financial Guidance</h3>
+                    <p>Insurance and payment assistance</p>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Insurance Navigation</li>
+                        <li><i class="fas fa-check"></i> Payment Plans</li>
+                        <li><i class="fas fa-check"></i> Financial Resources</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Patient Education -->
+    <section class="horizontal-section">
+        <div class="container">
+            <h2>Patient Education</h2>
+            <div class="horizontal-grid">
+                <div class="horizontal-card">
+                    <i class="fas fa-book-medical fa-3x"></i>
+                    <h3>Cancer Resources</h3>
+                    <p>Educational materials about cancer care</p>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Treatment Guides</li>
+                        <li><i class="fas fa-check"></i> Research Updates</li>
+                        <li><i class="fas fa-check"></i> Patient Stories</li>
+                    </ul>
+                </div>
+
+                <div class="horizontal-card">
+                    <i class="fas fa-utensils fa-3x"></i>
+                    <h3>Nutritional Guidance</h3>
+                    <p>Dietary support during treatment</p>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Meal Planning</li>
+                        <li><i class="fas fa-check"></i> Dietary Advice</li>
+                        <li><i class="fas fa-check"></i> Nutritional Support</li>
+                    </ul>
+                </div>
+
+                <div class="horizontal-card">
+                    <i class="fas fa-heartbeat fa-3x"></i>
+                    <h3>Wellness Programs</h3>
+                    <p>Holistic health and recovery support</p>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Exercise Classes</li>
+                        <li><i class="fas fa-check"></i> Meditation Sessions</li>
+                        <li><i class="fas fa-check"></i> Lifestyle Tips</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Appointment CTA -->
+    <section class="dept-cta">
+        <div class="container">
+            <h2>Need Cancer Care?</h2>
+            <p>Schedule a consultation with our oncology specialists.</p>
+            <a href="../doctors.html" class="cta-btn">Appointment</a>
+        </div>
+    </section>
+
+    <script src="../js/profile-dropdown.js"></script>
+    <script src="../scripts/fix-translations.js"></script>
+    <script src="../scripts/translate-manager.js"></script>
+</body>
+</html>

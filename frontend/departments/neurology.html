@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Department of Neurology - MediPlus</title>
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/department-detail.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="../scripts/fix-translations.js"></script>
+    <style>
+    /* Common heading styles for all sections */
+    .services-section h2,
+    .team-section h2,
+    .programs-section h2,
+    .centers-section h2,
+    .info-section h2,
+    .horizontal-section h2,
+    .overview-section h2,
+    .dept-hero h1 {
+        text-align: center;
+        margin-bottom: 40px;
+        color: #2c3e50;
+        font-size: 2.5rem;
+        font-weight: 600;
+        position: relative;
+        padding-bottom: 15px;
+    }
+
+    .services-section h2::after,
+    .team-section h2::after,
+    .programs-section h2::after,
+    .centers-section h2::after,
+    .info-section h2::after,
+    .horizontal-section h2::after,
+    .overview-section h2::after,
+    .dept-hero h1::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 3px;
+        background-color: #9b59b6;  /* Purple theme for neurology */
+    }
+
+    /* Horizontal section styles */
+    .horizontal-section {
+        padding: 60px 0;
+        background: #f8f9fa;
+    }
+
+    .horizontal-grid {
+        display: flex;
+        justify-content: space-between;
+        gap: 40px;
+        padding: 20px 0;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .horizontal-card {
+        flex: 1;
+        min-width: 300px;
+        max-width: 350px;
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        margin: 0 10px;
+    }
+
+    .horizontal-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .horizontal-card i {
+        color: #9b59b6;
+        margin-bottom: 20px;
+        display: block;
+        text-align: center;
+    }
+
+    .horizontal-card h3 {
+        color: #2c3e50;
+        margin-bottom: 15px;
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    .horizontal-card p {
+        color: #666;
+        margin-bottom: 20px;
+        text-align: center;
+        line-height: 1.6;
+    }
+
+    .horizontal-card ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .horizontal-card ul li {
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        color: #555;
+        line-height: 1.4;
+    }
+
+    .horizontal-card ul li i {
+        margin-right: 12px;
+        color: #27ae60;
+        font-size: 1rem;
+        display: inline;
+        text-align: left;
+        margin-bottom: 0;
+    }
+
+    @media (max-width: 1200px) {
+        .horizontal-grid {
+            padding: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .horizontal-card {
+            flex: 0 1 calc(33.333% - 40px);
+            margin: 0;
+        }
+    }
+
+    @media (max-width: 992px) {
+        .horizontal-card {
+            flex: 0 1 calc(50% - 40px);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .horizontal-grid {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .horizontal-card {
+            flex: none;
+            width: 100%;
+            max-width: 400px;
+            margin: 0 0 20px 0;
+        }
+
+        .horizontal-card:last-child {
+            margin-bottom: 0;
+        }
+    }
+    </style>
+    <link rel="stylesheet" href="../styles/responsive.css">
+</head>
+<body>
+    <!-- Department Hero -->
+    <section class="dept-hero neurology">
+        <div class="container">
+            <div class="hero-content">
+                <i class="fas fa-brain"></i>
+                <h1>Department of Neurology</h1>
+                <p>Advanced care for neurological conditions</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="overview-section">
+        <div class="container">
+            <div class="overview-card">
+                <h2>Department Overview</h2>
+                <p>Our Department of Neurology provides comprehensive care for disorders of the brain, spinal cord, and nervous system. Our team of expert neurologists combines cutting-edge technology with compassionate care to diagnose and treat a wide range of neurological conditions.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section class="services-section">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-microscope"></i>
+                    <h3>Diagnostic Services</h3>
+                    <ul>
+                        <li>EEG and EMG Testing</li>
+                        <li>MRI and CT Scanning</li>
+                        <li>Nerve Conduction Studies</li>
+                        <li>Sleep Studies</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <i class="fas fa-stethoscope"></i>
+                    <h3>Treatment Services</h3>
+                    <ul>
+                        <li>Epilepsy Management</li>
+                        <li>Stroke Care</li>
+                        <li>Multiple Sclerosis Treatment</li>
+                        <li>Headache Management</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <i class="fas fa-hand-holding-medical"></i>
+                    <h3>Specialized Care</h3>
+                    <ul>
+                        <li>Movement Disorders</li>
+                        <li>Neuromuscular Diseases</li>
+                        <li>Memory Disorders</li>
+                        <li>Spinal Disorders</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <h2>Our Neurology Team</h2>
+            <div class="team-grid">
+                <div class="team-card">
+                    <img src="../images/neurology/Dr-David-Wilson.jpg" alt="Dr. David Wilson">
+                    <div class="team-info">
+                        <h3>Dr. David Wilson</h3>
+                        <p>Head of Neurology</p>
+                        <div class="expertise">
+                            <span>Stroke Specialist</span>
+                            <span>Epilepsy Management</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <img src="../images/neurology/Dr-Emma-Thompson.jpg" alt="Dr. Emma Thompson">
+                    <div class="team-info">
+                        <h3>Dr. Emma Thompson</h3>
+                        <p>Neurologist</p>
+                        <div class="expertise">
+                            <span>Multiple Sclerosis</span>
+                            <span>Headache Specialist</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <img src="../images/neurology/Dr-Robert-Lee.jpg" alt="Dr. Robert Lee">
+                    <div class="team-info">
+                        <h3>Dr. Robert Lee</h3>
+                        <p>Neurosurgeon</p>
+                        <div class="expertise">
+                            <span>Brain Surgery</span>
+                            <span>Spinal Surgery</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Facilities Section -->
+    <section class="facilities-section">
+        <div class="container">
+            <h2>Treatment Centers</h2>
+            <div class="centers-grid">
+                <div class="center-card">
+                    <img src="../images/medical-facalty.jpg" alt="Neurological Laboratory">
+                    <div class="card-content">
+                        <h3>Neurological Laboratory</h3>
+                        <p>Advanced diagnostic equipment for neurological testing</p>
+                        <ul>
+                            <li><i class="fas fa-check"></i> EEG Monitoring</li>
+                            <li><i class="fas fa-check"></i> EMG Testing</li>
+                            <li><i class="fas fa-check"></i> Sleep Studies</li>
+                        </ul>
+                        <a href="#" class="btn-primary">Learn More</a>
+                    </div>
+                </div>
+
+                <div class="center-card">
+                    <img src="../images/Echo-Lab.png" alt="Brain Scanning Unit">
+                    <div class="card-content">
+                        <h3>Brain Scanning Unit</h3>
+                        <p>State-of-the-art imaging technology</p>
+                        <ul>
+                            <li><i class="fas fa-check"></i> 3T MRI Scanner</li>
+                            <li><i class="fas fa-check"></i> CT Imaging</li>
+                            <li><i class="fas fa-check"></i> PET Scanning</li>
+                        </ul>
+                        <a href="#" class="btn-primary">Learn More</a>
+                    </div>
+                </div>
+
+                <div class="center-card">
+                    <img src="../images/Catheterization-Lab.png" alt="Neuro Rehabilitation">
+                    <div class="card-content">
+                        <h3>Neuro Rehabilitation</h3>
+                        <p>Comprehensive rehabilitation facilities</p>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Physical Therapy</li>
+                            <li><i class="fas fa-check"></i> Speech Therapy</li>
+                            <li><i class="fas fa-check"></i> Occupational Therapy</li>
+                        </ul>
+                        <a href="#" class="btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Patient Information -->
+    <section class="patient-info">
+        <div class="container">
+            <h2>Patient Information</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>Consultation Hours</h3>
+                    <ul>
+                        <li>Monday - Friday: 9:00 AM - 5:00 PM</li>
+                        <li>Saturday: 9:00 AM - 2:00 PM</li>
+                        <li>Emergency: 24/7</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <i class="fas fa-clipboard-list"></i>
+                    <h3>Pre-Appointment Requirements</h3>
+                    <ul>
+                        <li>Previous Medical Records</li>
+                        <li>Recent Brain Scans (if any)</li>
+                        <li>Current Medication List</li>
+                        <li>Insurance Documents</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <i class="fas fa-phone"></i>
+                    <h3>Contact Information</h3>
+                    <ul>
+                        <li>Emergency: (555) 911-1234</li>
+                        <li>Appointments: (555) 234-5678</li>
+                        <li>Email: neurology@mediplus.com</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Special Features -->
+    <section class="special-features">
+        <div class="container">
+            <h2>Special Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-robot"></i>
+                    <h3>Advanced Technology</h3>
+                    <p>State-of-the-art neurological diagnostic and treatment tools</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-hands-helping"></i>
+                    <h3>Support Groups</h3>
+                    <p>Regular support group meetings for patients and families</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-laptop-medical"></i>
+                    <h3>Teleneurology</h3>
+                    <p>Remote consultations for follow-up care</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Appointment CTA -->
+    <section class="dept-cta">
+        <div class="container">
+            <h2>Need Neurological Consultation?</h2>
+            <p>Schedule an appointment with our neurology specialists today.</p>
+            <a href="../doctors.html" class="cta-btn">Appointment</a>
+        </div>
+    </section>
+
+    <script src="../js/profile-dropdown.js"></script>
+    <script src="../scripts/fix-translations.js"></script>
+    <script src="../scripts/translate-manager.js"></script>
+</body>
+</html>

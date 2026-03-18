@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Department of Psychiatry - MediPlus</title>
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/department-detail.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="../scripts/fix-translations.js"></script>
+    <style>
+    /* Horizontal section styles */
+    .horizontal-section {
+        padding: 60px 0;
+        background: #f8f9fa;
+    }
+
+    .horizontal-grid {
+        display: flex;
+        justify-content: space-between;
+        gap: 40px;
+        padding: 20px 0;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .horizontal-card {
+        flex: 1;
+        min-width: 300px;
+        max-width: 350px;
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        margin: 0 10px;
+    }
+
+    .horizontal-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .horizontal-card i {
+        color: #8e44ad;  /* Purple theme for psychiatry */
+        margin-bottom: 20px;
+        display: block;
+        text-align: center;
+        font-size: 2rem;
+    }
+
+    .horizontal-card h3 {
+        color: #2c3e50;
+        margin-bottom: 15px;
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    .horizontal-card p {
+        color: #666;
+        margin-bottom: 20px;
+        text-align: center;
+        line-height: 1.6;
+    }
+
+    .horizontal-card ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .horizontal-card ul li {
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        color: #555;
+        line-height: 1.4;
+        text-align: center;
+        justify-content: center;
+    }
+
+    @media (max-width: 1200px) {
+        .horizontal-grid {
+            padding: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .horizontal-card {
+            flex: 0 1 calc(33.333% - 40px);
+            margin: 0;
+        }
+    }
+
+    @media (max-width: 992px) {
+        .horizontal-card {
+            flex: 0 1 calc(50% - 40px);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .horizontal-grid {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .horizontal-card {
+            flex: none;
+            width: 100%;
+            max-width: 400px;
+            margin: 0 0 20px 0;
+        }
+
+        .horizontal-card:last-child {
+            margin-bottom: 0;
+        }
+    }
+    </style>
+    <link rel="stylesheet" href="../styles/responsive.css">
+</head>
+<body>
+    <!-- Department Hero -->
+    <section class="dept-hero psychiatry">
+        <div class="container">
+            <div class="hero-content">
+                <i class="fas fa-brain"></i>
+                <h1>Department of Psychiatry</h1>
+                <p>Comprehensive mental health care with compassion and understanding</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="overview-section">
+        <div class="container">
+            <div class="overview-card">
+                <h2>Department Overview</h2>
+                <p>Our Department of Psychiatry provides comprehensive mental health care services in a supportive and confidential environment. Our expert team, including psychiatrists, psychologists, and mental health professionals, offers personalized treatment approaches for a variety of mental health conditions.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section class="services-section">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-comments"></i>
+                    <h3>Clinical Services</h3>
+                    <ul>
+                        <li>Individual Therapy</li>
+                        <li>Group Therapy</li>
+                        <li>Family Therapy</li>
+                        <li>Crisis Intervention</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <i class="fas fa-pills"></i>
+                    <h3>Treatment Options</h3>
+                    <ul>
+                        <li>Psychiatric Medication</li>
+                        <li>Behavioral Therapy</li>
+                        <li>Cognitive Therapy</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <i class="fas fa-user-md"></i>
+                    <h3>Specialized Care</h3>
+                    <ul>
+                        <li>Anxiety Treatment</li>
+                        <li>Depression Care</li>
+                        <li>Addiction Services</li>
+                        <li>Trauma Therapy</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specialty Centers -->
+    <section class="centers-section">
+        <div class="container">
+            <h2>Treatment Centers</h2>
+            <div class="centers-grid">
+                <div class="center-card">
+                    <img src="../images/psychiatry/Outpatient-Center.jpg" alt="Outpatient Center">
+                    <h3>Outpatient Center</h3>
+                    <p>Comprehensive outpatient care</p>
+                    <ul>
+                        <li>Individual Sessions</li>
+                        <li>Group Programs</li>
+                        <li>Medication Services</li>
+                    </ul>
+                </div>
+
+                <div class="center-card">
+                    <img src="../images/psychiatry/Crisis-Intervention-Center.jpg" alt="Crisis Intervention Center">
+                    <h3>Crisis Intervention Center</h3>
+                    <p>24/7 emergency mental health care</p>
+                    <ul>
+                        <li>Emergency Services</li>
+                        <li>Crisis Counseling</li>
+                        <li>Immediate Assistance</li>
+                    </ul>
+                </div>
+
+                <div class="center-card">
+                    <img src="../images/psychiatry/Therapy-Center.jpg" alt="Therapy Center">
+                    <h3>Therapy Center</h3>
+                    <p>Specialized therapy programs</p>
+                    <ul>
+                        <li>CBT Programs</li>
+                        <li>DBT Services</li>
+                        <li>Art Therapy</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <h2>Our Psychiatric Team</h2>
+            <div class="team-grid">
+                <div class="team-card">
+                    <img src="../images/doctor13.jpg" alt="Dr. Sarah Miller">
+                    <div class="team-info">
+                        <h3>Dr. Sarah Miller</h3>
+                        <p>Head of Psychiatry</p>
+                        <div class="expertise">
+                            <span>Adult Psychiatry</span>
+                            <span>Mood Disorders</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <img src="../images/psychiatry/Dr-David-Cohen.jpg" alt="Dr. David Cohen">
+                    <div class="team-info">
+                        <h3>Dr. David Cohen</h3>
+                        <p>Clinical Psychiatrist</p>
+                        <div class="expertise">
+                            <span>Anxiety Disorders</span>
+                            <span>Depression Treatment</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <img src="../images/psychiatry/Dr-Lisa-Wong.jpg" alt="Dr. Lisa Wong">
+                    <div class="team-info">
+                        <h3>Dr. Lisa Wong</h3>
+                        <p>Child Psychiatrist</p>
+                        <div class="expertise">
+                            <span>Child Psychiatry</span>
+                            <span>Family Therapy</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Treatment Programs -->
+    <section class="programs-section">
+        <div class="container">
+            <h2>Treatment Programs</h2>
+            <div class="programs-grid">
+                <div class="program-card">
+                    <i class="fas fa-brain"></i>
+                    <h3>Cognitive Programs</h3>
+                    <ul>
+                        <li>CBT Therapy</li>
+                        <li>Mindfulness Training</li>
+                        <li>Behavioral Therapy</li>
+                    </ul>
+                </div>
+
+                <div class="program-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Group Programs</h3>
+                    <ul>
+                        <li>Support Groups</li>
+                        <li>Skills Training</li>
+                        <li>Family Sessions</li>
+                    </ul>
+                </div>
+
+                <div class="program-card">
+                    <i class="fas fa-hand-holding-heart"></i>
+                    <h3>Support Services</h3>
+                    <ul>
+                        <li>Crisis Assistance</li>
+                        <li>Recovery Planning</li>
+                        <li>Aftercare Programs</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Patient Information -->
+    <section class="patient-info">
+        <div class="container">
+            <h2>Patient Information</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>Clinic Hours</h3>
+                    <ul>
+                        <li>Monday - Friday: 8:00 AM - 6:00 PM</li>
+                        <li>Saturday: 9:00 AM - 2:00 PM</li>
+                        <li>Crisis Care: 24/7</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <i class="fas fa-clipboard-list"></i>
+                    <h3>First Appointment</h3>
+                    <ul>
+                        <li>Medical History</li>
+                        <li>Current Medications</li>
+                        <li>Insurance Information</li>
+                        <li>Referral Documents</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <i class="fas fa-phone"></i>
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li>Appointments: (555) 567-8901</li>
+                        <li>Crisis Line: (555) 567-8900</li>
+                        <li>Email: psychiatry@mediplus.com</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support Services -->
+    <section class="horizontal-section">
+        <div class="container">
+            <h2>Support Services</h2>
+            <div class="horizontal-grid">
+                <div class="horizontal-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Group Therapy</h3>
+                    <p>Supportive group sessions for shared experiences</p>
+                    <ul>
+                        <li>Anxiety Management</li>
+                        <li>Depression Support</li>
+                        <li>PTSD Recovery</li>
+                    </ul>
+                </div>
+                <div class="horizontal-card">
+                    <i class="fas fa-hands-holding-heart"></i>
+                    <h3>Family Support</h3>
+                    <p>Resources for families and caregivers</p>
+                    <ul>
+                        <li>Family Counseling</li>
+                        <li>Educational Programs</li>
+                        <li>Support Groups</li>
+                    </ul>
+                </div>
+                <div class="horizontal-card">
+                    <i class="fas fa-brain"></i>
+                    <h3>Crisis Services</h3>
+                    <p>24/7 emergency mental health assistance</p>
+                    <ul>
+                        <li>Crisis Hotline</li>
+                        <li>Emergency Care</li>
+                        <li>Rapid Response</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Patient Education -->
+    <section class="horizontal-section">
+        <div class="container">
+            <h2>Patient Education</h2>
+            <div class="horizontal-grid">
+                <div class="horizontal-card">
+                    <i class="fas fa-book-medical"></i>
+                    <h3>Mental Health Resources</h3>
+                    <p>Educational materials and guides</p>
+                    <ul>
+                        <li>Self-help Books</li>
+                        <li>Online Resources</li>
+                        <li>Wellness Tips</li>
+                    </ul>
+                </div>
+                <div class="horizontal-card">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <h3>Wellness Workshops</h3>
+                    <p>Interactive learning sessions</p>
+                    <ul>
+                        <li>Stress Management</li>
+                        <li>Mindfulness Training</li>
+                        <li>Coping Skills</li>
+                    </ul>
+                </div>
+                <div class="horizontal-card">
+                    <i class="fas fa-laptop-medical"></i>
+                    <h3>Digital Resources</h3>
+                    <p>Online tools and applications</p>
+                    <ul>
+                        <li>Mental Health Apps</li>
+                        <li>Video Resources</li>
+                        <li>Teletherapy Guide</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Section -->
+    <section class="horizontal-section">
+        <div class="container">
+            <h2>Clinical Research</h2>
+            <div class="horizontal-grid">
+                <div class="horizontal-card">
+                    <i class="fas fa-microscope"></i>
+                    <h3>Current Studies</h3>
+                    <p>New research in mental health</p>
+                    <ul>
+                        <li>Depression Treatments</li>
+                        <li>Anxiety Disorders</li>
+                        <li>PTSD Studies</li>
+                    </ul>
+                </div>
+                <div class="horizontal-card">
+                    <i class="fas fa-clipboard-list"></i>
+                    <h3>Clinical Trials</h3>
+                    <p>Participate in advanced treatments</p>
+                    <ul>
+                        <li>New Medications</li>
+                        <li>Therapy Methods</li>
+                        <li>Treatment Outcomes</li>
+                    </ul>
+                </div>
+                <div class="horizontal-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Research Findings</h3>
+                    <p>Latest discoveries and publications</p>
+                    <ul>
+                        <li>Published Studies</li>
+                        <li>Success Stories</li>
+                        <li>Treatment Advances</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Appointment CTA -->
+    <section class="dept-cta">
+        <div class="container">
+            <h2>Need Mental Health Support?</h2>
+            <p>Schedule a consultation with our mental health specialists.</p>
+            <a href="../doctors.html" class="cta-btn">Appointment</a>
+        </div>
+    </section>
+
+    <script src="../js/profile-dropdown.js"></script>
+    <script src="../scripts/fix-translations.js"></script>
+    <script src="../scripts/translate-manager.js"></script>
+</body>
+</html>

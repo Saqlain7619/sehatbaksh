@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Department of Orthopedics - MediPlus</title>
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/department-detail.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="../scripts/fix-translations.js"></script>
+    <style>
+    /* Common heading styles for all sections */
+    .services-section h2,
+    .team-section h2,
+    .programs-section h2,
+    .centers-section h2,
+    .info-section h2,
+    .horizontal-section h2,
+    .overview-section h2,
+    .dept-hero h1 {
+        text-align: center;
+        margin-bottom: 40px;
+        color: #2c3e50;
+        font-size: 2.5rem;
+        font-weight: 600;
+        position: relative;
+        padding-bottom: 15px;
+    }
+
+    .services-section h2::after,
+    .team-section h2::after,
+    .programs-section h2::after,
+    .centers-section h2::after,
+    .info-section h2::after,
+    .horizontal-section h2::after,
+    .overview-section h2::after,
+    .dept-hero h1::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 3px;
+        background-color: #27ae60;  /* Green theme for orthopedics */
+    }
+
+    /* Horizontal section styles */
+    .horizontal-section {
+        padding: 60px 0;
+        background: #f8f9fa;
+    }
+
+    .horizontal-grid {
+        display: flex;
+        justify-content: space-between;
+        gap: 40px;
+        padding: 20px 0;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .horizontal-card {
+        flex: 1;
+        min-width: 300px;
+        max-width: 350px;
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        margin: 0 10px;
+    }
+
+    .horizontal-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .horizontal-card i {
+        color: #27ae60;
+        margin-bottom: 20px;
+        display: block;
+        text-align: center;
+    }
+
+    .horizontal-card h3 {
+        color: #2c3e50;
+        margin-bottom: 15px;
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    .horizontal-card p {
+        color: #666;
+        margin-bottom: 20px;
+        text-align: center;
+        line-height: 1.6;
+    }
+
+    .horizontal-card ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .horizontal-card ul li {
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        color: #555;
+        line-height: 1.4;
+    }
+
+    .horizontal-card ul li i {
+        margin-right: 12px;
+        color: #27ae60;
+        font-size: 1rem;
+        display: inline;
+        text-align: left;
+        margin-bottom: 0;
+    }
+
+    @media (max-width: 1200px) {
+        .horizontal-grid {
+            padding: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .horizontal-card {
+            flex: 0 1 calc(33.333% - 40px);
+            margin: 0;
+        }
+    }
+
+    @media (max-width: 992px) {
+        .horizontal-card {
+            flex: 0 1 calc(50% - 40px);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .horizontal-grid {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .horizontal-card {
+            flex: none;
+            width: 100%;
+            max-width: 400px;
+            margin: 0 0 20px 0;
+        }
+
+        .horizontal-card:last-child {
+            margin-bottom: 0;
+        }
+    }
+    </style>
+    <link rel="stylesheet" href="../styles/responsive.css">
+</head>
+<body>
+    <!-- Department Hero -->
+    <section class="dept-hero orthopedics">
+        <div class="container">
+            <div class="hero-content">
+                <i class="fas fa-bone"></i>
+                <h1>Department of Orthopedics</h1>
+                <p>Expert care for bones, joints, and musculoskeletal conditions</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="overview-section">
+        <div class="container">
+            <div class="overview-card">
+                <h2>Department Overview</h2>
+                <p>Our Department of Orthopedics provides comprehensive care for all musculoskeletal conditions. With cutting-edge technology and experienced specialists, we offer both surgical and non-surgical treatments for optimal bone and joint health.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section class="services-section">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-bone"></i>
+                    <h3>Joint Replacement</h3>
+                    <p>Modern joint replacement surgery</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-walking"></i>
+                    <h3>Sports Medicine</h3>
+                    <p>Treatment for sports-related injuries</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-spine"></i>
+                    <h3>Spine Care</h3>
+                    <p>Comprehensive spine treatment</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Treatment Centers -->
+    <section class="centers-section">
+        <div class="container">
+            <h2>Specialized Centers</h2>
+            <div class="centers-grid">
+                <div class="center-card">
+                    <img src="../images/orthopedics/Joint-Replacement-Center.jpg" alt="Joint Replacement Center">
+                    <h3>Joint Replacement Center</h3>
+                    <p>State-of-the-art joint replacement</p>
+                    <ul>
+                        <li>Hip Replacement</li>
+                        <li>Knee Replacement</li>
+                        <li>Shoulder Replacement</li>
+                    </ul>
+                </div>
+                <div class="center-card">
+                    <img src="../images/orthopedics/Sports-Medicine-Center.jpg" alt="Sports Medicine Center">
+                    <h3>Sports Medicine Center</h3>
+                    <p>Treatment for athletic injuries</p>
+                    <ul>
+                        <li>ACL Reconstruction</li>
+                        <li>Arthroscopic Surgery</li>
+                        <li>Physical Therapy</li>
+                    </ul>
+                </div>
+                <div class="center-card">
+                    <img src="../images/orthopedics/Spine-Center.jpg" alt="Spine Center">
+                    <h3>Spine Center</h3>
+                    <p>Advanced spine care</p>
+                    <ul>
+                        <li>Disc Surgery</li>
+                        <li>Spinal Fusion</li>
+                        <li>Pain Management</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <h2>Our Orthopedic Specialists Team</h2>
+            <div class="team-grid">
+                <div class="team-card">
+                    <img src="../images/orthopedics/Dr-Robert-Smith.jpg" alt="Dr. Robert Smith">
+                    <div class="team-info">
+                        <h3>Dr. Robert Smith</h3>
+                        <p>Head of Orthopedics</p>
+                        <p>Joint Replacement Specialist</p>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <img src="../images/orthopedics/Dr-LisaChen.jpg" alt="Dr. Lisa Chen">
+                    <div class="team-info">
+                        <h3>Dr. Lisa Chen</h3>
+                        <p>Sports Medicine Specialist</p>
+                        <p>Expert in Athletic Injuries</p>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <img src="../images/orthopedics/Dr-James-Wilson.jpg" alt="Dr. James Wilson">
+                    <div class="team-info">
+                        <h3>Dr. James Wilson</h3>
+                        <p>Spine Specialist</p>
+                        <p>Expert in Complex Spine Surgery</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Patient Information -->
+    <section class="info-section">
+        <div class="container">
+            <h2>Patient Information</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>Hours</h3>
+                    <p>Monday - Friday: 8:00 AM - 5:00 PM</p>
+                    <p>Saturday: 9:00 AM - 1:00 PM</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-phone"></i>
+                    <h3>Contact</h3>
+                    <p>Appointments: (555) 123-4567</p>
+                    <p>Emergency: (555) 987-6543</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Location</h3>
+                    <p>Orthopedic Center, Second Floor</p>
+                    <p>Medical Center Campus</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Patient Education -->
+    <section class="horizontal-section">
+        <div class="container">
+            <h2>Patient Education</h2>
+            <div class="horizontal-grid">
+                <div class="horizontal-card">
+                    <i class="fas fa-book-medical"></i>
+                    <h3>Joint Health Resources</h3>
+                    <p>Educational materials about joint health and treatments</p>
+                </div>
+                <div class="horizontal-card">
+                    <i class="fas fa-calendar-check"></i>
+                    <h3>Pre-Surgery Instructions</h3>
+                    <p>Important information for preparing for surgery</p>
+                </div>
+                <div class="horizontal-card">
+                    <i class="fas fa-dumbbell"></i>
+                    <h3>Exercise Programs</h3>
+                    <p>Rehabilitation and strengthening exercises</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Appointment CTA -->
+    <section class="dept-cta">
+        <div class="container">
+            <h2>Schedule Your Consultation</h2>
+            <p>Take the first step toward pain-free movement.</p>
+            <a href="../doctors.html" class="cta-btn">Appointment</a>
+        </div>
+    </section>
+
+    <script src="../js/profile-dropdown.js"></script>
+    <script src="../scripts/fix-translations.js"></script>
+    <script src="../scripts/translate-manager.js"></script>
+</body>
+</html>

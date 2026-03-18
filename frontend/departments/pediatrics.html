@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Department of Pediatrics - MediPlus</title>
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/department-detail.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="../scripts/fix-translations.js"></script>
+    <style>
+    /* Horizontal section styles */
+    .horizontal-section {
+        padding: 60px 0;
+        background: #f8f9fa;
+    }
+
+    .horizontal-grid {
+        display: flex;
+        justify-content: space-between;
+        gap: 40px;
+        padding: 20px 0;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .horizontal-card {
+        flex: 1;
+        min-width: 300px;
+        max-width: 350px;
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        margin: 0 10px;
+    }
+
+    .horizontal-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .horizontal-card i {
+        color: #3498db;  /* Blue theme for pediatrics */
+        margin-bottom: 20px;
+        display: block;
+        text-align: center;
+        font-size: 2rem;
+    }
+
+    .horizontal-card h3 {
+        color: #2c3e50;
+        margin-bottom: 15px;
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    .horizontal-card p {
+        color: #666;
+        margin-bottom: 20px;
+        text-align: center;
+        line-height: 1.6;
+    }
+
+    .horizontal-card ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .horizontal-card ul li {
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        color: #555;
+        line-height: 1.4;
+        text-align: center;
+        justify-content: center;
+    }
+
+    @media (max-width: 1200px) {
+        .horizontal-grid {
+            padding: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .horizontal-card {
+            flex: 0 1 calc(33.333% - 40px);
+            margin: 0;
+        }
+    }
+
+    @media (max-width: 992px) {
+        .horizontal-card {
+            flex: 0 1 calc(50% - 40px);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .horizontal-grid {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .horizontal-card {
+            flex: none;
+            width: 100%;
+            max-width: 400px;
+            margin: 0 0 20px 0;
+        }
+
+        .horizontal-card:last-child {
+            margin-bottom: 0;
+        }
+    }
+    </style>
+    <link rel="stylesheet" href="../styles/responsive.css">
+</head>
+<body>
+    <!-- Department Hero -->
+    <section class="dept-hero pediatrics">
+        <div class="container">
+            <div class="hero-content">
+                <i class="fas fa-baby"></i>
+                <h1>Department of Pediatrics</h1>
+                <p>Specialized care for children and adolescents</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="overview-section">
+        <div class="container">
+            <div class="overview-card">
+                <h2>Department Overview</h2>
+                <p>Our Department of Pediatrics provides comprehensive health services for newborns, children, and adolescents in a warm, friendly environment. Our team of specialists is dedicated to ensuring the health and well-being of your children at every stage of their development.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section class="services-section">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-stethoscope"></i>
+                    <h3>Primary Care</h3>
+                    <ul>
+                        <li>Well-child Visits</li>
+                        <li>Immunizations</li>
+                        <li>Monitoring</li>
+                        <li>Screenings</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <i class="fas fa-heartbeat"></i>
+                    <h3>Specialty Care</h3>
+                    <ul>
+                        <li>Pediatric Cardiology</li>
+                        <li>Pediatric Neurology</li>
+                        <li>Pediatric Gastroenterology</li>
+                        <li>Behavioral Health</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <i class="fas fa-hospital"></i>
+                    <h3>Emergency Care</h3>
+                    <ul>
+                        <li>24/7 Emergency Services</li>
+                        <li>Urgent Care</li>
+                        <li>Trauma Care</li>
+                        <li>Critical Care</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Child-Friendly Features -->
+    <section class="horizontal-section">
+        <div class="container">
+            <h2>Child-Friendly Environment</h2>
+            <div class="horizontal-grid">
+                <div class="horizontal-card">
+                    <i class="fas fa-puzzle-piece"></i>
+                    <h3>Play Areas</h3>
+                    <p>Fun and engaging spaces for children</p>
+                    <ul>
+                        <li>Interactive Toys</li>
+                        <li>Reading Corner</li>
+                        <li>Activity Tables</li>
+                    </ul>
+                </div>
+                <div class="horizontal-card">
+                    <i class="fas fa-palette"></i>
+                    <h3>Themed Rooms</h3>
+                    <p>Colorful and engaging spaces</p>
+                    <ul>
+                        <li>Themed Decor</li>
+                        <li>Wall Murals</li>
+                        <li>Child-sized Furniture</li>
+                    </ul>
+                </div>
+                <div class="horizontal-card">
+                    <i class="fas fa-tv"></i>
+                    <h3>Entertainment</h3>
+                    <p>Fun distractions during visits</p>
+                    <ul>
+                        <li>Children's TV Channels</li>
+                        <li>Educational Games</li>
+                        <li>Digital Activities</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <h2>Our Pediatric Specialist Team</h2>
+            <div class="team-grid">
+                <div class="team-card">
+                    <img src="../images/doctor13.jpg" alt="Dr. Sarah Johnson">
+                    <div class="team-info">
+                        <h3>Dr. Sarah Johnson</h3>
+                        <p>Head of Pediatrics</p>
+                        <div class="expertise">
+                            <span>General Pediatrics</span>
+                            <span>Child Development</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <img src="../images/pediatrics/Dr-MichaelChen.jpg" alt="Dr. Michael Chen">
+                    <div class="team-info">
+                        <h3>Dr. Michael Chen</h3>
+                        <p>Pediatric Specialist</p>
+                        <div class="expertise">
+                            <span>Pediatric Cardiology</span>
+                            <span>Neonatal Care</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <img src="../images/pediatrics/Dr-Emily-Brooks.jpg" alt="Dr. Emily Brooks">
+                    <div class="team-info">
+                        <h3>Dr. Emily Brooks</h3>
+                        <p>Pediatric Psychologist</p>
+                        <div class="expertise">
+                            <span>Behavioral Health</span>
+                            <span>Child Psychology</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specialized Programs -->
+    <section class="programs-section">
+        <div class="container">
+            <h2>Specialized Programs</h2>
+            <div class="programs-grid">
+                <div class="program-card">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Child Development</h3>
+                    <p>Monitoring and supporting healthy developmental milestones</p>
+                </div>
+
+                <div class="program-card">
+                    <i class="fas fa-apple-alt"></i>
+                    <h3>Nutritional Guidance</h3>
+                    <p>Dietary advice for healthy growth and development</p>
+                </div>
+
+                <div class="program-card">
+                    <i class="fas fa-brain"></i>
+                    <h3>Behavioral Support</h3>
+                    <p>Assistance with behavioral and developmental challenges</p>
+                </div>
+
+                <div class="program-card">
+                    <i class="fas fa-hands-holding-child"></i>
+                    <h3>Family Support</h3>
+                    <p>Resources and guidance for parents and families</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vaccination Services -->
+    <section class="horizontal-section">
+        <div class="container">
+            <h2>Vaccination Services</h2>
+            <div class="horizontal-grid">
+                <div class="horizontal-card">
+                    <i class="fas fa-syringe"></i>
+                    <h3>Routine Vaccinations</h3>
+                    <p>Comprehensive immunization programs following CDC guidelines</p>
+                    <ul>
+                        <li>DTaP, MMR, Polio</li>
+                        <li>Hepatitis A & B</li>
+                        <li>Rotavirus</li>
+                    </ul>
+                </div>
+                <div class="horizontal-card">
+                    <i class="fas fa-calendar-check"></i>
+                    <h3>Vaccination Schedule</h3>
+                    <p>Personalized immunization schedules for each child</p>
+                    <ul>
+                        <li>Birth to 6 years</li>
+                        <li>7-18 years</li>
+                        <li>Catch-up schedules</li>
+                    </ul>
+                </div>
+                <div class="horizontal-card">
+                    <i class="fas fa-shield-virus"></i>
+                    <h3>Special Vaccinations</h3>
+                    <p>Additional immunizations for special needs</p>
+                    <ul>
+                        <li>Travel Vaccines</li>
+                        <li>Flu Shots</li>
+                        <li>COVID-19 Vaccines</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Patient Information -->
+    <section class="patient-info">
+        <div class="container">
+            <h2>Parent Information</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>Clinic Hours</h3>
+                    <ul>
+                        <li>Monday - Friday: 8:00 AM - 7:00 PM</li>
+                        <li>Saturday: 9:00 AM - 3:00 PM</li>
+                        <li>Emergency: 24/7</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <i class="fas fa-list-check"></i>
+                    <h3>Visit Preparation</h3>
+                    <ul>
+                        <li>Medical History</li>
+                        <li>Immunization Records</li>
+                        <li>Growth Charts</li>
+                        <li>Insurance Information</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <i class="fas fa-phone"></i>
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li>Emergency: (555) 911-1234</li>
+                        <li>Appointments: (555) 567-8901</li>
+                        <li>Email: pediatrics@mediplus.com</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section class="resources-section">
+        <div class="container">
+            <h2>Resources for Parents</h2>
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <i class="fas fa-book-medical"></i>
+                    <h3>Health Library</h3>
+                    <p>Educational materials about children's health</p>
+                </div>
+
+                <div class="resource-card">
+                    <i class="fas fa-video"></i>
+                    <h3>Video Guides</h3>
+                    <p>Explanatory videos for common procedures</p>
+                </div>
+
+                <div class="resource-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Support Groups</h3>
+                    <p>Connect with other parents</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Appointment CTA -->
+    <section class="dept-cta">
+        <div class="container">
+            <h2>Schedule Your Child's Appointment</h2>
+            <p>Book an appointment with our pediatric specialists today.</p>
+            <a href="../doctors.html" class="cta-btn">Appointment</a>
+        </div>
+    </section>
+
+    <script src="../js/profile-dropdown.js"></script>
+    <script src="../scripts/fix-translations.js"></script>
+    <script src="../scripts/translate-manager.js"></script>
+</body>
+</html>

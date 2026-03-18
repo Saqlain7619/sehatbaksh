@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Department of Nephrology - MediPlus</title>
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/department-detail.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="../scripts/fix-translations.js"></script>
+    <style>
+        /* Common heading styles for all sections */
+        .services-section h2,
+        .team-section h2,
+        .programs-section h2,
+        .centers-section h2,
+        .info-section h2,
+        .horizontal-section h2,
+        .overview-section h2,
+        .dept-hero h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #2c3e50;
+            font-size: 2.5rem;
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .services-section h2::after,
+        .team-section h2::after,
+        .programs-section h2::after,
+        .centers-section h2::after,
+        .info-section h2::after,
+        .horizontal-section h2::after,
+        .overview-section h2::after,
+        .dept-hero h1::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: #3498db;  /* Blue theme for nephrology */
+        }
+
+        /* Horizontal section styles */
+        .horizontal-section {
+            padding: 60px 0;
+            background: #f8f9fa;
+        }
+
+        .horizontal-grid {
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+            padding: 20px 0;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .horizontal-card {
+            flex: 1;
+            min-width: 300px;
+            max-width: 350px;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin: 0 10px;
+        }
+
+        .horizontal-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .horizontal-card i {
+            color: #3498db;
+            margin-bottom: 20px;
+            display: block;
+            text-align: center;
+        }
+
+        .horizontal-card h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+
+        .horizontal-card p {
+            color: #666;
+            margin-bottom: 20px;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        .horizontal-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .horizontal-card ul li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            color: #555;
+            line-height: 1.4;
+        }
+
+        .horizontal-card ul li i {
+            margin-right: 12px;
+            color: #27ae60;
+            font-size: 1rem;
+            display: inline;
+            text-align: left;
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 1200px) {
+            .horizontal-grid {
+                padding: 20px;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .horizontal-card {
+                flex: 0 1 calc(33.333% - 40px);
+                margin: 0;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .horizontal-card {
+                flex: 0 1 calc(50% - 40px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .horizontal-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .horizontal-card {
+                flex: none;
+                width: 100%;
+                max-width: 400px;
+                margin: 0 0 20px 0;
+            }
+
+            .horizontal-card:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        /* Common styles for all three sections */
+        .support-grid,
+        .education-grid,
+        .research-grid {
+            display: flex;
+            justify-content: space-between;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .support-card,
+        .education-card,
+        .research-card {
+            flex: 1;
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .card-inner {
+            padding: 2rem;
+            text-align: center;
+            height: 100%;
+        }
+
+        .support-card i,
+        .education-card i,
+        .research-card i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        /* Section-specific colors */
+        .support-card i { color: #2ecc71; }
+        .education-card i { color: #3498db; }
+        .research-card i { color: #9b59b6; }
+
+        h3 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+            font-size: 1.25rem;
+        }
+
+        p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .hover-content {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+        }
+
+        .hover-content ul {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+        }
+
+        .hover-content li {
+            color: #666;
+            margin: 0.5rem 0;
+            font-size: 0.9rem;
+        }
+
+        .learn-more {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        /* Section-specific button colors */
+        .support-card .learn-more { 
+            background: #2ecc71;
+            color: white;
+        }
+        .education-card .learn-more {
+            background: #3498db;
+            color: white;
+        }
+        .research-card .learn-more {
+            background: #9b59b6;
+            color: white;
+        }
+
+        /* Hover effects */
+        .support-card:hover,
+        .education-card:hover,
+        .research-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .support-card:hover i,
+        .education-card:hover i,
+        .research-card:hover i {
+            transform: scale(1.2);
+        }
+
+        .support-card:hover .hover-content,
+        .education-card:hover .hover-content,
+        .research-card:hover .hover-content {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .learn-more:hover {
+            transform: scale(1.05);
+            filter: brightness(0.95);
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .support-grid,
+            .education-grid,
+            .research-grid {
+                flex-direction: column;
+            }
+            
+            .support-card,
+            .education-card,
+            .research-card {
+                margin-bottom: 1rem;
+            }
+
+            .hover-content {
+                opacity: 1;
+                transform: translateY(0);
+                height: auto;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="../styles/responsive.css">
+</head>
+<body>
+    <!-- Department Hero -->
+    <section class="dept-hero nephrology">
+        <div class="container">
+            <div class="hero-content">
+                <i class="fas fa-kidneys"></i>
+                <h1>Department of Nephrology</h1>
+                <p>Expert care for kidney health</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="overview-section">
+        <div class="container">
+            <div class="overview-card">
+                <h2>Department Overview</h2>
+                <p>Our Department of Nephrology provides comprehensive care for kidney diseases and disorders. Our expert team offers advanced treatments, including dialysis services and transplant care, to improve patients' quality of life.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section class="services-section">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-kidneys"></i>
+                    <h3>Kidney Care</h3>
+                    <ul>
+                        <li>Chronic Kidney Disease</li>
+                        <li>Acute Kidney Injury</li>
+                        <li>Glomerular Diseases</li>
+                        <li>Kidney Stones</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <i class="fas fa-procedures"></i>
+                    <h3>Dialysis Services</h3>
+                    <ul>
+                        <li>Hemodialysis</li>
+                        <li>Peritoneal Dialysis</li>
+                        <li>Home Dialysis</li>
+                        <li>Emergency Dialysis</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <i class="fas fa-exchange-alt"></i>
+                    <h3>Transplant Services</h3>
+                    <ul>
+                        <li>Transplant Evaluation</li>
+                        <li>Pre-Transplant Care</li>
+                        <li>Post-Transplant Care</li>
+                        <li>Living Donor Program</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specialty Centers -->
+    <section class="centers-section">
+        <div class="container">
+            <h2>Specialty Centers</h2>
+            <div class="centers-grid">
+                <div class="center-card">
+                    <img src="../images/nephrology/Dialysis-Center.jpg" alt="Dialysis Center">
+                    <h3>Dialysis Center</h3>
+                    <p>State-of-the-art dialysis facilities</p>
+                    <ul>
+                        <li>Modern Equipment</li>
+                        <li>Comfortable Environment</li>
+                        <li>24/7 Emergency Services</li>
+                    </ul>
+                </div>
+
+                <div class="center-card">
+                    <img src="../images/nephrology/Transplant-Center.jpg" alt="Transplant Center">
+                    <h3>Transplant Center</h3>
+                    <p>Comprehensive transplant services</p>
+                    <ul>
+                        <li>Diagnostic Services</li>
+                        <li>Surgical Facilities</li>
+                        <li>Rehabilitation Support</li>
+                    </ul>
+                </div>
+
+                <div class="center-card">
+                    <img src="../images/nephrology/Research-Center.jpg" alt="Research Center">
+                    <h3>Research Center</h3>
+                    <p>Cutting-edge kidney research</p>
+                    <ul>
+                        <li>Clinical Trials</li>
+                        <li>Treatment Research</li>
+                        <li>Research Programs</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <h2>Our Nephrology Team</h2>
+            <div class="team-grid">
+                <div class="team-card">
+                    <img src="../images/nephrology/Dr-Michael-Chang.jpg" alt="Dr. Michael Chang">
+                    <div class="team-info">
+                        <h3>Dr. Michael Chang</h3>
+                        <p>Head of Nephrology</p>
+                        <div class="expertise">
+                            <span>Kidney Disease</span>
+                            <span>Transplant Care</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <img src="../images/nephrology/Dr-Rachel-Green.jpg" alt="Dr. Rachel Green">
+                    <div class="team-info">
+                        <h3>Dr. Rachel Green</h3>
+                        <p>Dialysis Specialist</p>
+                        <div class="expertise">
+                            <span>Hemodialysis</span>
+                            <span>Peritoneal Dialysis</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <img src="../images/nephrology/Dr-David-Park.jpg" alt="Dr. David Park">
+                    <div class="team-info">
+                        <h3>Dr. David Park</h3>
+                        <p>Transplant Specialist</p>
+                        <div class="expertise">
+                            <span>Kidney Transplantation</span>
+                            <span>Post-Transplant Care</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Treatment Programs -->
+    <section class="programs-section">
+        <div class="container">
+            <h2>Treatment Programs</h2>
+            <div class="programs-grid">
+                <div class="program-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Chronic Kidney Disease Management</h3>
+                    <ul>
+                        <li>Disease Monitoring</li>
+                        <li>Medication Management</li>
+                        <li>Lifestyle Guidance</li>
+                    </ul>
+                </div>
+
+                <div class="program-card">
+                    <i class="fas fa-home"></i>
+                    <h3>Home Dialysis</h3>
+                    <ul>
+                        <li>Training Programs</li>
+                        <li>Equipment Support</li>
+                        <li>Remote Monitoring</li>
+                    </ul>
+                </div>
+
+                <div class="program-card">
+                    <i class="fas fa-heart"></i>
+                    <h3>Transplant Program</h3>
+                    <ul>
+                        <li>Donor Matching</li>
+                        <li>Surgery Planning</li>
+                        <li>Recovery Support</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Patient Information -->
+    <section class="info-section">
+        <div class="container">
+            <h2>Patient Information</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>Clinic Hours</h3>
+                    <ul>
+                        <li>Monday - Friday: 8:00 AM - 5:00 PM</li>
+                        <li>Saturday: 9:00 AM - 1:00 PM</li>
+                        <li>Dialysis Center: 24/7</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <i class="fas fa-clipboard-list"></i>
+                    <h3>First Appointment</h3>
+                    <ul>
+                        <li>Medical History</li>
+                        <li>Current Medications</li>
+                        <li>Lab Results</li>
+                        <li>Insurance Information</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <i class="fas fa-phone"></i>
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li>Appointments: (555) 789-0123</li>
+                        <li>Dialysis Center: (555) 789-9111</li>
+                        <li>Email: nephrology@mediplus.com</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support Services -->
+    <section class="support-section">
+        <div class="container">
+            <h2>Support Services</h2>
+            <div class="support-grid">
+                <div class="support-card">
+                    <div class="card-inner">
+                        <i class="fas fa-users"></i>
+                        <h3>Support Groups</h3>
+                        <p>Connect with others on similar journeys</p>
+                        <div class="hover-content">
+                            <ul>
+                                <li>Weekly Group Meetings</li>
+                                <li>Family Support Sessions</li>
+                                <li>Online Communities</li>
+                            </ul>
+                            <a href="#" class="learn-more">Join a Group</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="support-card">
+                    <div class="card-inner">
+                        <i class="fas fa-utensils"></i>
+                        <h3>Nutritional Counseling</h3>
+                        <p>Specialized dietary guidance</p>
+                        <div class="hover-content">
+                            <ul>
+                                <li>Meal Planning</li>
+                                <li>Dietary Modifications</li>
+                                <li>Nutritional Support</li>
+                            </ul>
+                            <a href="#" class="learn-more">Get Advice</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="support-card">
+                    <div class="card-inner">
+                        <i class="fas fa-hands-helping"></i>
+                        <h3>Social Services</h3>
+                        <p>Help with care management</p>
+                        <div class="hover-content">
+                            <ul>
+                                <li>Care Navigation</li>
+                                <li>Resource Connection</li>
+                                <li>Insurance Assistance</li>
+                            </ul>
+                            <a href="#" class="learn-more">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="horizontal-section">
+        <div class="container">
+            <h2>Patient Education</h2>
+            <div class="horizontal-grid">
+                <div class="horizontal-card">
+                    <i class="fas fa-book-medical"></i>
+                    <h3>Resource Library</h3>
+                    <p>Educational materials about kidney health</p>
+                    <ul>
+                        <li>Treatment Guides</li>
+                        <li>Health Articles</li>
+                        <li>Video Resources</li>
+                    </ul>
+                </div>
+
+                <div class="horizontal-card">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <h3>Classes and Workshops</h3>
+                    <p>Learning sessions for patients and families</p>
+                    <ul>
+                        <li>Kidney Care Basics</li>
+                        <li>Nutrition Workshops</li>
+                        <li>Family Training</li>
+                    </ul>
+                </div>
+
+                <div class="horizontal-card">
+                    <i class="fas fa-laptop-medical"></i>
+                    <h3>Online Resources</h3>
+                    <p>Digital education and support tools</p>
+                    <ul>
+                        <li>E-Learning Portal</li>
+                        <li>Mobile Apps</li>
+                        <li>Virtual Support</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Section -->
+    <section class="research-section">
+        <div class="container">
+            <h2>Clinical Research</h2>
+            <div class="research-grid">
+                <div class="research-card">
+                    <div class="card-inner">
+                        <i class="fas fa-microscope"></i>
+                        <h3>Current Studies</h3>
+                        <p>Ongoing clinical trials and research</p>
+                        <div class="hover-content">
+                            <ul>
+                                <li>Treatment Studies</li>
+                                <li>Medication Trials</li>
+                                <li>Research Programs</li>
+                            </ul>
+                            <a href="#" class="learn-more">View Studies</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="research-card">
+                    <div class="card-inner">
+                        <i class="fas fa-flask"></i>
+                        <h3>Research Participation</h3>
+                        <p>Join our research initiatives</p>
+                        <div class="hover-content">
+                            <ul>
+                                <li>Eligibility Criteria</li>
+                                <li>Study Benefits</li>
+                                <li>Application Process</li>
+                            </ul>
+                            <a href="#" class="learn-more">Participate</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="research-card">
+                    <div class="card-inner">
+                        <i class="fas fa-chart-bar"></i>
+                        <h3>Research Findings</h3>
+                        <p>Latest discoveries and publications</p>
+                        <div class="hover-content">
+                            <ul>
+                                <li>Study Results</li>
+                                <li>Publications</li>
+                                <li>Impact Reports</li>
+                            </ul>
+                            <a href="#" class="learn-more">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Appointment CTA -->
+    <section class="dept-cta">
+        <div class="container">
+            <h2>Need Kidney Care?</h2>
+            <p>Schedule a consultation with our nephrology specialists.</p>
+            <a href="../doctors.html" class="cta-btn">Appointment</a>
+        </div>
+    </section>
+
+    <script src="../js/profile-dropdown.js"></script>
+    <script src="../scripts/fix-translations.js"></script>
+    <script src="../scripts/translate-manager.js"></script>
+</body>
+</html>

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - MedPlus</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/contact.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/translate-style.css">
+    <link rel="stylesheet" href="styles/responsive-update.css">
+    <style>
+        /* Contact page styles */
+        .contact-hero {
+            background: linear-gradient(rgba(30, 144, 255, 0.8), rgba(0, 191, 255, 0.8)), url('images/contact-hero.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        /* Profile dropdown styles */
+        .profile-icon {
+            position: relative;
+            margin-left: 15px;
+            cursor: pointer;
+        }
+
+        .profile-icon img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-icon img:hover {
+            border-color: #1e90ff;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: white;
+            min-width: 160px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .dropdown-content a {
+            color: #333;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+            color: #1e90ff;
+        }
+
+        .dropdown-content.show {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .contact-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <h1 class="notranslate" translate="no">Sehat Bakhsh</h1>
+            </div> 
+            <div id="google_translate_element"></div>
+            <div class="nav-links">
+                <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                <a href="departments.html"><i class="fas fa-hospital"></i> Departments</a>
+                <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
+                <a href="contact.html" class="active"><i class="fas fa-envelope"></i> Contact Us</a>
+                <a href="health-library/index.html"><i class="fas fa-book-medical"></i> Health Library</a>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <div class="nav-buttons">
+                <a href="doctors.html" class="cta-btn">Appointment</a>
+                <div class="profile-icon">
+                    <img src="images/profile-avatar.png" alt="Profile" id="profilePic">
+                    <div class="dropdown-content" id="dropdownContent">
+                        <a href="profile.html">My Profile</a>
+                        <a href="settings.html">Settings</a>
+                        <a href="login.html">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close mobile menu">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="mobile-menu-links">
+            <a href="index.html"><i class="fas fa-home"></i> Home</a>
+            <a href="departments.html"><i class="fas fa-hospital"></i> Departments</a>
+            <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
+            <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+            <a href="health-library/index.html"><i class="fas fa-book-medical"></i> Health Library</a>
+            <a href="doctors.html"><i class="fas fa-user-md"></i> Appointment</a>
+            <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
+            <a href="login.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+    </div>
+
+    <!-- Overlay for Mobile Menu -->
+    <div class="overlay" id="overlay"></div>
+
+    <section class="contact-hero">
+        <div class="container">
+            <h1>Contact Us</h1>
+            <p>We're here to help and answer any questions you may have.</p>
+        </div>
+    </section>
+
+    <section class="contact-info-section">
+        <div class="container">
+            <h2 class="section-title">Contact Information</h2>
+            <div class="contact-info-container">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Our Location</h3>
+                    <p>123 Healthcare Avenue<br>Medical District<br>New York, NY 10001</p>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <h3>Phone Numbers</h3>
+                    <p>Main: (123) 456-7890<br>Emergency: (123) 456-7899<br>Toll Free: 1-800-MEDPLUS</p>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email Addresses</h3>
+                    <p>info@mediplus.com<br>appointments@mediplus.com<br>support@mediplus.com</p>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Working Hours</h3>
+                    <p>Monday - Friday: 8:00 AM - 8:00 PM<br>Saturday: 9:00 AM - 5:00 PM<br>Sunday: 10:00 AM - 2:00 PM</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-form-section">
+        <div class="container">
+            <h2 class="section-title">Send Us a Message</h2>
+            <div class="contact-form-container">
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="map-section">
+        <div class="container">
+            <h2 class="section-title">Find Us on the Map</h2>
+            <div class="map-container">
+                <div class="map-info">
+                    <p class="location-address">
+                        <i class="fas fa-map-marker-alt"></i> 123 Healthcare Avenue, Medical District, New York, NY 10001
+                    </p>
+                    <a href="https://www.google.com/maps?q=New+York+Medical+Center" target="_blank" rel="noopener noreferrer" class="map-link">
+                        View on Google Maps <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-cta">
+        <div class="container">
+            <h2>Need Urgent Help?</h2>
+            <p>Our team is ready to assist you with any medical concerns.</p>
+            <div class="social-links">
+                <a href="#" aria-label="Visit our Facebook page"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Visit our Twitter page"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="Visit our Instagram page"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="Visit our LinkedIn page"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </section>
+    <script type="text/javascript">
+        function googleTranslateElementInit(){
+            new google.translate.TranslateElement(
+                {pageLanguage: 'en'},
+                'google_translate_element'
+            );
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script src="scripts/translate-manager.js"></script>
+
+    <script>
+        // Profile dropdown functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const profilePic = document.getElementById('profilePic');
+            const dropdownContent = document.getElementById('dropdownContent');
+            
+            if (profilePic && dropdownContent) {
+                profilePic.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    dropdownContent.classList.toggle('show');
+                });
+                
+                document.addEventListener('click', function(e) {
+                    if (!profilePic.contains(e.target) && dropdownContent.classList.contains('show')) {
+                        dropdownContent.classList.remove('show');
+                    }
+                });
+            }
+            
+            // Load saved avatar on page load
+            const savedAvatar = localStorage.getItem('profileAvatar');
+            if (savedAvatar && profilePic) {
+                profilePic.src = savedAvatar;
+            }
+        });
+        
+        // Mobile menu functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileMenuClose = document.getElementById('mobileMenuClose');
+            
+            if (mobileMenuBtn && mobileMenu && mobileMenuClose) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    mobileMenu.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+                
+                mobileMenuClose.addEventListener('click', function() {
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                });
+            }
+        });
+    </script>
+</body>
+</html>

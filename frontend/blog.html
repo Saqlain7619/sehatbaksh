@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Blog - MedPlus</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="styles/responsive-update.css">
+    <link rel="stylesheet" href="styles/blog.css">
+    <link rel="stylesheet" href="styles/translate-style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <h1 class="notranslate" translate="no">Sehat Bakhsh</h1>
+            </div> 
+            <div id="google_translate_element"></div>
+            <div class="nav-links">
+                <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                <a href="departments.html"><i class="fas fa-hospital"></i> Departments</a>
+                <a href="blog.html" class="active"><i class="fas fa-blog"></i> Blog</a>
+                <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+                <a href="health-library/index.html"><i class="fas fa-book-medical"></i> Health Library</a>
+            </div>
+            <div class="notification-container">
+                <button id="notificationBell" class="notification-bell" aria-label="Notifications">
+                    <i class="fa-solid fa-bell"></i>
+                    <span class="notification-dot" id="notificationDot"></span>
+                </button>
+                <div class="notification-dropdown" id="notificationDropdown">
+                    <div class="notification-header">Notifications</div>
+                    <ul class="notification-list">
+                        <li>
+                            <a href="https://www.who.int/news/item/19-04-2025-who-updates-covid-guidelines" target="_blank">
+                                <strong>WHO:</strong> COVID-19 guidelines updated
+                                <span class="notif-date">Apr 19</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.nih.gov/news-events/news-releases/new-diabetes-treatment-approved" target="_blank">
+                                <strong>NIH:</strong> New diabetes treatment approved
+                                <span class="notif-date">Apr 15</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.bbc.com/news/health-65300000" target="_blank">
+                                <strong>BBC:</strong> Cancer research breakthrough
+                                <span class="notif-date">Apr 10</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="notification-footer"><a href="#">View all news</a></div>
+                </div>
+            </div>
+            <div class="profile-container">
+                <img src="images/default-profile.jpg" alt="Profile" id="profilePic">
+                <div class="dropdown-content" id="dropdownContent">
+                    <a href="profile.html"><i class="fas fa-user"></i> My Profile</a>
+                    <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
+                    <a href="doctors.html"><i class="far fa-calendar-check"></i> My Appointments</a>
+                    <a href="login.html" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                </div>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close mobile menu">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="mobile-menu-links">
+            <a href="index.html"><i class="fas fa-home"></i> Home</a>
+            <a href="about.html"><i class="fas fa-info-circle"></i> About Us</a>
+            <a href="departments.html"><i class="fas fa-hospital"></i> Departments</a>
+            <a href="doctors.html"><i class="fas fa-user-md"></i> Doctors</a>
+            <a href="blog.html" class="active"><i class="fas fa-blog"></i> Blog</a>
+            <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+            <a href="health-library/index.html"><i class="fas fa-book-medical"></i> Health Library</a>
+        </div>
+    </div>
+
+    <div class="page-banner">
+        <div class="banner-content">
+            <h1>Medical Blog</h1>
+            <p>Stay informed with the latest health news and medical breakthroughs</p>
+        </div>
+    </div>
+
+    <div class="blog-container">
+        <aside class="blog-sidebar">
+            <div class="sidebar-section">
+                <h3>Categories</h3>
+                <ul class="categories-list">
+                    <li><a href="#">Health & Wellness <span class="count">24</span></a></li>
+                    <li><a href="#">Medical Research <span class="count">18</span></a></li>
+                    <li><a href="#">Nutrition <span class="count">15</span></a></li>
+                    <li><a href="#">Mental Health <span class="count">12</span></a></li>
+                    <li><a href="#">Fitness <span class="count">9</span></a></li>
+                    <li><a href="#">Disease Prevention <span class="count">8</span></a></li>
+                </ul>
+            </div>
+            
+            <div class="sidebar-section">
+                <h3>Popular Posts</h3>
+                <div class="popular-posts">
+                    <div class="popular-post">
+                        <div class="popular-post-image img-1"></div>
+                        <div class="popular-post-content">
+                            <div class="popular-post-title">10 Tips for a Healthy Heart</div>
+                            <div class="popular-post-date">March 25, 2025</div>
+                        </div>
+                    </div>
+                    <div class="popular-post">
+                        <div class="popular-post-image img-1"></div>
+                        <div class="popular-post-content">
+                            <div class="popular-post-title">Understanding Diabetes</div>
+                            <div class="popular-post-date">March 18, 2025</div>
+                        </div>
+                    </div>
+                    <div class="popular-post">
+                        <div class="popular-post-image img-1"></div>
+                        <div class="popular-post-content">
+                            <div class="popular-post-title">Mental Health Awareness</div>
+                            <div class="popular-post-date">March 10, 2025</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Latest Medical News Section -->
+            <div class="sidebar-section latest-news-section">
+                <h3><i class="fa-solid fa-newspaper" style="color:#2b7a78;font-size:1.2em;margin-right:7px;"></i> Latest Medical News</h3>
+                <ul class="latest-news-list">
+    <li class="news-item">
+        <a href="https://www.who.int/news/item/19-04-2025-who-updates-covid-guidelines" target="_blank">
+            <img src="https://www.who.int/Images/default-source/health-topics/coronavirus/coronavirus-getty.jpg" alt="WHO COVID-19" class="news-thumb">
+            <div class="news-info">
+                <span class="news-title">WHO Updates COVID-19 Guidelines</span>
+                <span class="news-meta">Apr 19, 2025 · WHO</span>
+            </div>
+        </a>
+    </li>
+    <li class="news-item">
+        <a href="https://www.nih.gov/news-events/news-releases/new-diabetes-treatment-approved" target="_blank">
+            <img src="https://images.unsplash.com/photo-1511174511562-5f97f4f4c1c3?auto=format&fit=thumb&w=80&q=80" alt="Diabetes Treatment" class="news-thumb">
+            <div class="news-info">
+                <span class="news-title">New Diabetes Treatment Approved</span>
+                <span class="news-meta">Apr 15, 2025 · NIH</span>
+            </div>
+        </a>
+    </li>
+    <li class="news-item">
+        <a href="https://www.bbc.com/news/health-65300000" target="_blank">
+            <img src="https://ichef.bbci.co.uk/news/1024/branded_news/17B8/production/_129293842_cancerresearch.jpg" alt="Cancer Research" class="news-thumb">
+            <div class="news-info">
+                <span class="news-title">Breakthrough in Cancer Research Announced</span>
+                <span class="news-meta">Apr 10, 2025 · BBC Health</span>
+            </div>
+        </a>
+    </li>
+    <li class="news-item">
+        <a href="https://www.cdc.gov/flu/weekly/index.htm" target="_blank">
+            <img src="https://www.cdc.gov/flu/resource-center/images/flu-virus.jpg" alt="Flu Virus" class="news-thumb">
+            <div class="news-info">
+                <span class="news-title">Flu Cases Rise in Asia-Pacific</span>
+                <span class="news-meta">Apr 7, 2025 · CDC</span>
+            </div>
+        </a>
+    </li>
+</ul>
+<style>
+.latest-news-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.news-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 14px;
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 10px;
+}
+.news-item:last-child { border-bottom: none; }
+.news-thumb {
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: 7px;
+    margin-right: 10px;
+    box-shadow: 0 2px 8px #0001;
+    flex-shrink: 0;
+}
+.news-info {
+    display: flex;
+    flex-direction: column;
+}
+.news-title {
+    font-weight: 500;
+    color: #222;
+    margin-bottom: 2px;
+}
+.news-meta {
+    color: #888;
+    font-size: 0.93em;
+}
+@media (max-width: 700px) {
+    .news-thumb { width: 36px; height: 36px; }
+}
+</style>
+            </div>
+            
+            <div class="sidebar-section">
+                <h3>Tags</h3>
+                <div class="tags-cloud">
+                    <a href="#" class="tag">Health</a>
+                    <a href="#" class="tag">Nutrition</a>
+                    <a href="#" class="tag">Fitness</a>
+                    <a href="#" class="tag">Wellness</a>
+                    <a href="#" class="tag">Mental Health</a>
+                    <a href="#" class="tag">Research</a>
+                    <a href="#" class="tag">Prevention</a>
+                    <a href="#" class="tag">Lifestyle</a>
+                    <a href="#" class="tag">Medicine</a>
+                    <a href="#" class="tag">Healthcare</a>
+                </div>
+            </div>
+            
+            <div class="sidebar-section">
+                <h3>Newsletter</h3>
+                <p>Subscribe to our newsletter for the latest health updates.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your email address" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </aside>
+        
+        <main class="blog-main">
+            <article class="featured-post">
+                <div class="featured-image img-1"></div>
+                <div class="featured-content">
+                    <span class="category-badge">Featured</span>
+                    <h2>Breakthrough in Cancer Treatment: New Immunotherapy Approach</h2>
+                    <div class="post-meta">
+                        <span><i class="far fa-calendar"></i> March 30, 2025</span>
+                        <span><i class="far fa-user"></i> Dr. Sarah Johnson</span>
+                        <span><i class="far fa-comment"></i> 24 Comments</span>
+                    </div>
+                    <p>Researchers have developed a groundbreaking immunotherapy approach that shows promising results in treating various types of cancer. The new method enhances the body's natural immune response...</p>
+                    <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </article>
+            
+            <section>
+                <h2>Latest Articles</h2>
+                 <div class="post-grid" id="articlesContainer">
+                        <article class="post-card">
+                        <div class="post-image img-1"></div>
+                        <div class="post-content">
+                            <span class="category-badge">Nutrition</span>
+                            <h3>The Mediterranean Diet: Benefits Beyond Heart Health</h3>
+                            <div class="post-meta">
+                                <span><i class="far fa-calendar"></i> March 28, 2025</span>
+                                <span><i class="far fa-user"></i> Dr. Michael Chen</span>
+                            </div>
+                            <p>New research suggests that the Mediterranean diet offers benefits beyond heart health, including improved cognitive function and reduced inflammation...</p>
+                            <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+                    
+                    <article class="post-card">
+                        <div class="post-image img-1"></div>
+                        <div class="post-content">
+                            <span class="category-badge">Mental Health</span>
+                            <h3>Mindfulness Meditation: A Powerful Tool for Stress Reduction</h3>
+                            <div class="post-meta">
+                                <span><i class="far fa-calendar"></i> March 26, 2025</span>
+                                <span><i class="far fa-user"></i> Dr. Emily Rodriguez</span>
+                            </div>
+                            <p>Mindfulness meditation has been shown to significantly reduce stress levels and improve overall mental well-being. Learn how to incorporate this practice into your daily routine...</p>
+                            <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+                    
+                    <article class="post-card">
+                        <div class="post-image img-1"></div>
+                        <div class="post-content">
+                            <span class="category-badge">Fitness</span>
+                            <h3>High-Intensity Interval Training: Maximize Your Workout Efficiency</h3>
+                            <div class="post-meta">
+                                <span><i class="far fa-calendar"></i> March 24, 2025</span>
+                                <span><i class="far fa-user"></i> Alex Thompson</span>
+                            </div>
+                            <p>High-Intensity Interval Training (HIIT) offers a time-efficient approach to exercise with numerous health benefits. Discover how to create an effective HIIT routine...</p>
+                            <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+                    
+                    <article class="post-card">
+                        <div class="post-image img-1"></div>
+                        <div class="post-content">
+                            <span class="category-badge">Research</span>
+                            <h3>Gut Microbiome: The Key to Overall Health?</h3>
+                            <div class="post-meta">
+                                <span><i class="far fa-calendar"></i> March 22, 2025</span>
+                                <span><i class="far fa-user"></i> Dr. James Wilson</span>
+                            </div>
+                            <p>Emerging research highlights the crucial role of gut microbiome in overall health, from immune function to mental health. Learn how to support a healthy gut microbiome...</p>
+                            <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+                    
+                    <article class="post-card">
+                        <div class="post-image img-1"></div>
+                        <div class="post-content">
+                            <span class="category-badge">Prevention</span>
+                            <h3>Preventive Health Screenings: What You Need at Every Age</h3>
+                            <div class="post-meta">
+                                <span><i class="far fa-calendar"></i> March 20, 2025</span>
+                                <span><i class="far fa-user"></i> Dr. Lisa Patel</span>
+                            </div>
+                            <p>Regular health screenings are essential for early detection and prevention of diseases. Find out which screenings are recommended at different life stages...</p>
+                            <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+                    
+                    <article class="post-card">
+                        <div class="post-image img-1"></div>
+                        <div class="post-content">
+                            <span class="category-badge">Wellness</span>
+                            <h3>Sleep Hygiene: The Foundation of Good Health</h3>
+                            <div class="post-meta">
+                                <span><i class="far fa-calendar"></i> March 18, 2025</span>
+                                <span><i class="far fa-user"></i> Dr. Robert Kim</span>
+                            </div>
+                            <p>Quality sleep is fundamental to physical and mental health. Discover evidence-based strategies to improve your sleep hygiene and wake up refreshed...</p>
+                            <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+            
+            <div class="pagination">
+                <a href="#" aria-label="Previous page"><i class="fas fa-chevron-left"></i></a>
+                <a href="#" class="active">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#">4</a>
+                <a href="#">5</a>
+                <a href="#" aria-label="Next page"><i class="fas fa-chevron-right"></i></a>
+            </div>
+        </main>
+        
+        <aside class="right-sidebar blog-sidebar">
+            <div class="sidebar-section">
+                <h3>Health Topics</h3>
+                <ul class="categories-list">
+                    <li><a href="#">Cardiovascular Health</a></li>
+                    <li><a href="#">Diabetes Management</a></li>
+                    <li><a href="#">Women's Health</a></li>
+                    <li><a href="#">Men's Health</a></li>
+                    <li><a href="#">Pediatric Care</a></li>
+                    <li><a href="#">Senior Health</a></li>
+                </ul>
+            </div>
+            
+            <div class="sidebar-section">
+                <h3>Health Tools</h3>
+                <ul class="categories-list">
+                    <li><a href="#">BMI Calculator</a></li>
+                    <li><a href="#">Calorie Counter</a></li>
+                    <li><a href="#">Symptom Checker</a></li>
+                    <li><a href="#">Medication Reminder</a></li>
+                    <li><a href="#">Exercise Planner</a></li>
+                </ul>
+            </div>
+            
+            <div class="sidebar-section">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <h3 class="notranslate" translate="no">Sehat Bakhsh</h3>
+                <p>Healthcare at its best</p>
+            </div>
+            <div class="footer-links">
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms-of-service.html">Terms of Service</a>
+                <a href="contact.html">Contact Us</a>
+            </div>
+            <div class="footer-social">
+                <a href="#" aria-label="Visit our Facebook page"><i class="fab fa-facebook"></i></a>
+                <a href="#" aria-label="Visit our Twitter page"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="Visit our Instagram page"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <p class="copyright">&copy; 2025 Sehat Bakhsh. All rights reserved.</p>
+    </footer>
+
+    <script src="scripts/main.js"></script>
+    <style>
+        .notification-container {
+            position: relative;
+            display: inline-block;
+            margin-right: 18px;
+        }
+        .notification-bell {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.4em;
+            position: relative;
+            color: #2b7a78;
+        }
+        .notification-dot {
+            position: absolute;
+            top: 3px;
+            right: 7px;
+            width: 9px;
+            height: 9px;
+            background: #fa5252;
+            border-radius: 50%;
+            display: inline-block;
+            border: 2px solid #fff;
+            box-shadow: 0 0 2px #0002;
+        }
+        .notification-dropdown {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 40px;
+            background: rgba(255,255,255,0.98);
+            min-width: 270px;
+            box-shadow: 0 8px 24px rgba(44,62,80,0.14);
+            border-radius: 10px;
+            z-index: 1050;
+            padding: 0;
+            font-size: 1em;
+        }
+        .notification-dropdown.active {
+            display: block;
+            animation: fadeInDown 0.3s;
+        }
+        .notification-header {
+            padding: 12px 16px;
+            border-bottom: 1px solid #e0e0e0;
+            font-weight: bold;
+            background: #f7fafc;
+            border-radius: 10px 10px 0 0;
+        }
+        .notification-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .notification-list li {
+            padding: 10px 16px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .notification-list li:last-child { border-bottom: none; }
+        .notification-list a {
+            text-decoration: none;
+            color: #222;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .notif-date {
+            color: #888;
+            font-size: 0.9em;
+            margin-left: 10px;
+        }
+        .notification-footer {
+            padding: 10px 16px;
+            text-align: right;
+            background: #f7fafc;
+            border-radius: 0 0 10px 10px;
+        }
+        .notification-footer a {
+            color: #2b7a78;
+            font-weight: 500;
+            text-decoration: none;
+        }
+        @media (max-width: 700px) {
+            .notification-dropdown { right: auto; left: 0; min-width: 200px; }
+        }
+    </style>
+    <script>
+        // Notification dropdown functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const bell = document.getElementById('notificationBell');
+            const dropdown = document.getElementById('notificationDropdown');
+            const dot = document.getElementById('notificationDot');
+            let seen = false;
+            if (bell && dropdown) {
+                bell.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    dropdown.classList.toggle('active');
+                    if (!seen) {
+                        dot.style.display = 'none';
+                        seen = true;
+                    }
+                });
+                document.addEventListener('click', function(e) {
+                    if (!dropdown.contains(e.target) && !bell.contains(e.target)) {
+                        dropdown.classList.remove('active');
+                    }
+                });
+            }
+        });
+    </script>
+    <script type="text/javascript">
+        function googleTranslateElementInit(){
+            new google.translate.TranslateElement(
+                {pageLanguage: 'en'},
+                'google_translate_element'
+            );
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script src="scripts/translate-manager.js"></script>
+    <script>
+        // Mobile menu functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileMenuClose = document.getElementById('mobileMenuClose');
+            
+            if (mobileMenuBtn && mobileMenu && mobileMenuClose) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    mobileMenu.classList.add('active');
+                    document.body.classList.add('menu-open');
+                    document.body.classList.remove('menu-closed');
+                });
+                
+                mobileMenuClose.addEventListener('click', function() {
+                    mobileMenu.classList.remove('active');
+                    document.body.classList.remove('menu-open');
+                    document.body.classList.add('menu-closed');
+                });
+            }
+            
+            // Load profile picture if saved
+            const savedAvatar = localStorage.getItem('profileAvatar');
+            const savedPic = localStorage.getItem('pic');
+            const profilePic = document.getElementById('profilePic');
+            
+            if (profilePic) {
+                if (savedAvatar) {
+                    profilePic.src = savedAvatar;
+                } else if (savedPic) {
+                    profilePic.src = savedPic;
+                }
+                
+                // Toggle dropdown when profile picture is clicked
+                profilePic.onclick = function(event) {
+                    event.preventDefault();
+                    const dropdownContent = document.getElementById('dropdownContent');
+                    if (dropdownContent) {
+                        dropdownContent.classList.toggle('show');
+                    }
+                };
+            }
+            
+            // Close dropdown when clicking outside
+            window.onclick = function(event) {
+                if (!event.target.matches('#profilePic')) {
+                    const dropdowns = document.getElementsByClassName('dropdown-content');
+                    for (let i = 0; i < dropdowns.length; i++) {
+                        const openDropdown = dropdowns[i];
+                        if (openDropdown.classList.contains('show')) {
+                            openDropdown.classList.remove('show');
+                        }
+                    }
+                }
+            };
+            
+            // Newsletter form submission
+            const newsletterForm = document.querySelector('.newsletter-form');
+            if (newsletterForm) {
+                newsletterForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const email = this.querySelector('input[type="email"]').value;
+                    alert(`Thank you for subscribing with ${email}! You will receive our latest health updates.`);
+                    this.reset();
+                });
+            }
+        });
+    </script>
+</body>
+<script src="scripts/blogs.js"></script>
+</html>

@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Department of Urology - MediPlus</title>
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/department-detail.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="../scripts/fix-translations.js"></script>
+    <style>
+        /* Horizontal Sections Layout */
+        .horizontal-sections {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 3rem auto;
+            max-width: 1400px;
+            padding: 0 1rem;
+        }
+
+        .horizontal-sections > section {
+            flex: 1;
+            min-width: 300px;
+            flex-basis: calc(25% - 1.5rem);
+        }
+
+        .horizontal-sections .container {
+            padding: 0;
+            height: 100%;
+        }
+
+        /* Digital Card Styles */
+        .digital-card {
+            background: linear-gradient(165deg, #ffffff, #f8faff);
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(71, 120, 244, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+        }
+
+        .digital-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, 
+                rgba(71, 120, 244, 0.15), 
+                rgba(71, 120, 244, 0.05));
+            clip-path: circle(0% at 50% 0%);
+            transition: clip-path 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .digital-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(71, 120, 244, 0.2);
+            border-color: rgba(71, 120, 244, 0.3);
+        }
+
+        .digital-card:hover::before {
+            clip-path: circle(150% at 50% 0%);
+        }
+
+        .digital-card h3 {
+            color: #2857d0;
+            margin-bottom: 1.8rem;
+            font-size: 1.6rem;
+            text-align: center;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .digital-card:hover h3 {
+            transform: translateY(-5px);
+            color: #1a3c9f;
+        }
+
+        .digital-card i {
+            font-size: 2.8rem;
+            color: #4778f4;
+            margin-bottom: 1.8rem;
+            display: block;
+            text-align: center;
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .digital-card:hover i {
+            transform: scale(1.2) rotate(15deg);
+            color: #2857d0;
+        }
+
+        .digital-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .digital-card ul li {
+            padding: 0.8rem 0;
+            position: relative;
+            padding-left: 2rem;
+            transition: all 0.4s ease;
+            color: #445577;
+            font-size: 1.1rem;
+        }
+
+        .digital-card ul li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #4778f4;
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.4s ease;
+        }
+
+        .digital-card:hover ul li {
+            padding-left: 2.5rem;
+            color: #2857d0;
+        }
+
+        .digital-card:hover ul li::before {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .digital-card .counter {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            font-family: 'Courier New', monospace;
+            color: #4778f4;
+            opacity: 0.7;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .digital-card:hover .counter {
+            opacity: 1;
+            transform: scale(1.1);
+            color: #2857d0;
+        }
+
+        /* Research card specific styles */
+        .research-section .digital-card p {
+            text-align: center;
+            line-height: 1.6;
+            color: #445577;
+            font-size: 1.1rem;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 1200px) {
+            .horizontal-sections > section {
+                flex-basis: calc(50% - 1rem);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .horizontal-sections > section {
+                flex-basis: 100%;
+            }
+            
+            .digital-card {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        /* Centered Headings with Animation */
+        .container > h2 {
+            text-align: center;
+            position: relative;
+            color: #2857d0;
+            margin-bottom: 3rem;
+            font-size: 2.2rem;
+            padding-bottom: 1rem;
+        }
+
+        .container > h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, #4778f4, #2857d0);
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+
+        .container > h2:hover::after {
+            width: 120px;
+        }
+
+        /* Center all card headings */
+        .service-card h3,
+        .center-card h3,
+        .team-card h3,
+        .info-card h3,
+        .condition-card h3,
+        .tech-card h3,
+        .prevention-card h3 {
+            text-align: center;
+            color: #2857d0;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.8rem;
+        }
+
+        .service-card h3::after,
+        .center-card h3::after,
+        .team-card h3::after,
+        .info-card h3::after,
+        .condition-card h3::after,
+        .tech-card h3::after,
+        .prevention-card h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 2px;
+            background: linear-gradient(to right, #4778f4, #2857d0);
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+
+        .service-card:hover h3::after,
+        .center-card:hover h3::after,
+        .team-card:hover h3::after,
+        .info-card:hover h3::after,
+        .condition-card:hover h3::after,
+        .tech-card:hover h3::after,
+        .prevention-card:hover h3::after {
+            width: 60px;
+        }
+
+        /* Center card content */
+        .service-card p,
+        .center-card p,
+        .team-card .team-info p,
+        .info-card p,
+        .condition-card p,
+        .tech-card p,
+        .prevention-card p {
+            text-align: center;
+            color: #445577;
+        }
+
+        /* Center lists in cards */
+        .service-card ul,
+        .center-card ul,
+        .info-card ul,
+        .condition-card ul {
+            text-align: center;
+            list-style-position: inside;
+        }
+
+        /* Hero section centered content */
+        .hero-content {
+            text-align: center;
+        }
+
+        .hero-content h1 {
+            margin-bottom: 1rem;
+            font-size: 2.8rem;
+            color: #fff;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .hero-content i {
+            font-size: 3.5rem;
+            color: #fff;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
+        /* Center CTA section */
+        .dept-cta {
+            text-align: center;
+        }
+
+        .dept-cta h2,
+        .dept-cta p {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Overview section */
+        .overview-card {
+            text-align: center;
+        }
+
+        .overview-card h2 {
+            margin-bottom: 2rem;
+        }
+
+        .overview-card p {
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Team expertise tags center */
+        .team-card .expertise {
+            text-align: center;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        /* New CSS class for center alignment */
+        .center-text {
+            text-align: center;
+        }
+    </style>
+    <link rel="stylesheet" href="../styles/responsive.css">
+</head>
+<body>
+    <!-- Department Hero -->
+    <section class="dept-hero urology">
+        <div class="container">
+            <div class="hero-content">
+                <i class="fas fa-kidney"></i>
+                <h1>Department of Urology</h1>
+                <p>Modern urological care and treatment</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="overview-section">
+        <div class="container">
+            <div class="overview-card">
+                <h2>Department Overview</h2>
+                <p>Our Department of Urology provides comprehensive care covering conditions related to the urinary tract and male reproductive system. Using advanced technology and minimally invasive techniques, our expert team delivers personalized treatment for optimal outcomes.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section class="services-section">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-procedures"></i>
+                    <h3>General Urology</h3>
+                    <ul>
+                        <li>Urinary Tract Infections</li>
+                        <li>Bladder Conditions</li>
+                        <li>Prostate Care</li>
+                        <li>Kidney Stones</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <i class="fas fa-microscope"></i>
+                    <h3>Specialized Care</h3>
+                    <ul>
+                        <li>Cancer</li>
+                        <li>Male Infertility</li>
+                        <li>Sexual Health</li>
+                        <li>Reconstructive Surgery</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <i class="fas fa-robot"></i>
+                    <h3>Advanced Approaches</h3>
+                    <ul>
+                        <li>Robotic Surgery</li>
+                        <li>Laparoscopic Surgery</li>
+                        <li>Laser Treatments</li>
+                        <li>Minimally Invasive Options</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Treatment Centers -->
+    <section class="centers-section">
+        <div class="container">
+            <h2>Specialized Centers</h2>
+            <div class="centers-grid">
+                <div class="center-card">
+                    <img src="../images/urology/Kidney-Stone-Center.jpg" alt="Stone Center">
+                    <h3>Kidney Stone Center</h3>
+                    <p>Complete stone management</p>
+                    <ul>
+                        <li>Lithotripsy</li>
+                        <li>Laser Stone Surgery</li>
+                        <li>Prevention Programs</li>
+                    </ul>
+                </div>
+
+                <div class="center-card">
+                    <img src="../images/urology/Prostate-Care-Center.jpg" alt="Prostate Center">
+                    <h3>Prostate Care Center</h3>
+                    <p>Advanced treatments for prostate</p>
+                    <ul>
+                        <li>Cancer Treatment</li>
+                        <li>BPH Management</li>
+                        <li>Prostate Screening</li>
+                    </ul>
+                </div>
+
+                <div class="center-card">
+                    <img src="../images/urology/Continence-Center.jpg" alt="Continence Center">
+                    <h3>Continence Center</h3>
+                    <p>Bladder health solutions</p>
+                    <ul>
+                        <li>Continence Therapy</li>
+                        <li>Pelvic Floor Therapy</li>
+                        <li>Behavior Modification</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <h2>Our Urology Team</h2>
+            <div class="team-grid">
+                <div class="team-card">
+                    <img src="../images/urology/Dr-William-Harris.jpg" alt="Dr. William Harris">
+                    <div class="team-info">
+                        <h3>Dr. William Harris</h3>
+                        <p>Head of Urology</p>
+                        <div class="expertise">
+                            <span>Robotic Surgery</span>
+                            <span>Cancer</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <img src="../images/urology/Dr-Emily-Parker.jpg" alt="Dr. Emily Parker">
+                    <div class="team-info">
+                        <h3>Dr. Emily Parker</h3>
+                        <p>Urological Surgeon</p>
+                        <div class="expertise">
+                            <span>Reconstructive Surgery</span>
+                            <span>Female Urology</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <img src="../images/urology/Dr-Richard-Kim.jpg" alt="Dr. Richard Kim">
+                    <div class="team-info">
+                        <h3>Dr. Richard Kim</h3>
+                        <p>Urologic Oncologist</p>
+                        <div class="expertise">
+                            <span>Cancer Treatment</span>
+                            <span>Minimally Invasive Surgery</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Horizontal Sections -->
+    <div class="horizontal-sections">
+        <!-- Conditions Section -->
+        <section class="conditions-section">
+            <div class="container">
+                <div class="digital-card">
+                    <span class="counter">01</span>
+                    <i class="fas fa-stethoscope"></i>
+                    <h3>Conditions We Treat</h3>
+                    <ul>
+                        <li>Kidney Diseases</li>
+                        <li>Prostate Issues</li>
+                        <li>Bladder Problems</li>
+                        <li>Urological Cancers</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Advanced Technology Section -->
+        <section class="technology-section">
+            <div class="container">
+                <div class="digital-card">
+                    <span class="counter">02</span>
+                    <i class="fas fa-microchip"></i>
+                    <h3>Advanced Technology</h3>
+                    <ul>
+                        <li>Robotic Surgery</li>
+                        <li>Laser Treatments</li>
+                        <li>3D Imaging</li>
+                        <li>Minimally Invasive Tools</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Prevention Section -->
+        <section class="prevention-section">
+            <div class="container">
+                <div class="digital-card">
+                    <span class="counter">03</span>
+                    <i class="fas fa-heart"></i>
+                    <h3>Prevention & Wellness</h3>
+                    <ul>
+                        <li>Health Screenings</li>
+                        <li>Lifestyle Guidance</li>
+                        <li>Preventive Care</li>
+                        <li>Wellness Programs</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research Section -->
+        <section class="research-section">
+            <div class="container">
+                <div class="digital-card">
+                    <span class="counter">04</span>
+                    <i class="fas fa-flask"></i>
+                    <h3>Clinical Research</h3>
+                    <p>Our department actively participates in clinical trials and research to improve urological care. Ask about ongoing studies and participation opportunities.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Appointment CTA -->
+    <section class="dept-cta">
+        <div class="container">
+            <h2 class="center-text">Need Urological Care?</h2>
+            <p class="center-text">Schedule a consultation with our urology specialists.</p>
+            <a href="../doctors.html" class="cta-btn">Appointment</a>
+        </div>
+    </section>
+
+    <script src="../js/profile-dropdown.js"></script>
+    <script src="../scripts/fix-translations.js"></script>
+    <script src="../scripts/translate-manager.js"></script>
+</body>
+</html>

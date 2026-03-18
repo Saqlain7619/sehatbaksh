@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardiology Department - MedPlus</title>
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/department-detail.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="../scripts/fix-translations.js"></script>
+    <style>
+    /* Common heading styles for all sections */
+    .services-section h2,
+    .team-section h2,
+    .programs-section h2,
+    .centers-section h2,
+    .info-section h2,
+    .horizontal-section h2,
+    .overview-section h2,
+    .dept-hero h1 {
+        text-align: center;
+        margin-bottom: 40px;
+        color: #2c3e50;
+        font-size: 2.5rem;
+        font-weight: 600;
+        position: relative;
+        padding-bottom: 15px;
+    }
+
+    .services-section h2::after,
+    .team-section h2::after,
+    .programs-section h2::after,
+    .centers-section h2::after,
+    .info-section h2::after,
+    .horizontal-section h2::after,
+    .overview-section h2::after,
+    .dept-hero h1::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 3px;
+        background-color: #e74c3c;  /* Red theme for cardiology */
+    }
+
+    /* Horizontal section styles */
+    .horizontal-section {
+        padding: 60px 0;
+        background: #f8f9fa;
+    }
+
+    .horizontal-grid {
+        display: flex;
+        justify-content: space-between;
+        gap: 40px;
+        padding: 20px 0;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .horizontal-card {
+        flex: 1;
+        min-width: 300px;
+        max-width: 350px;
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        margin: 0 10px;
+    }
+
+    .horizontal-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .horizontal-card i {
+        color: #e74c3c;
+        margin-bottom: 20px;
+        display: block;
+        text-align: center;
+    }
+
+    .horizontal-card h3 {
+        color: #2c3e50;
+        margin-bottom: 15px;
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    .horizontal-card p {
+        color: #666;
+        margin-bottom: 20px;
+        text-align: center;
+        line-height: 1.6;
+    }
+
+    .horizontal-card ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .horizontal-card ul li {
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        color: #555;
+        line-height: 1.4;
+    }
+
+    .horizontal-card ul li i {
+        margin-right: 12px;
+        color: #27ae60;
+        font-size: 1rem;
+        display: inline;
+        text-align: left;
+        margin-bottom: 0;
+    }
+
+    @media (max-width: 1200px) {
+        .horizontal-grid {
+            padding: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .horizontal-card {
+            flex: 0 1 calc(33.333% - 40px);
+            margin: 0;
+        }
+    }
+
+    @media (max-width: 992px) {
+        .horizontal-card {
+            flex: 0 1 calc(50% - 40px);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .horizontal-grid {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .horizontal-card {
+            flex: none;
+            width: 100%;
+            max-width: 400px;
+            margin: 0 0 20px 0;
+        }
+
+        .horizontal-card:last-child {
+            margin-bottom: 0;
+        }
+    }
+    </style>
+    <link rel="stylesheet" href="../styles/responsive.css">
+</head>
+<body>
+    
+    <!-- Department Hero -->
+    <section class="dept-hero cardiology">
+        <div class="container">
+            <div class="hero-content">
+                <i class="fas fa-heart"></i>
+                <h1>Cardiology Department</h1>
+                <p>Expert care for your heart</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="overview-section">
+        <div class="container">
+            <div class="overview-card">
+                <h2>Department Overview</h2>
+                <p>Our Cardiology Department provides comprehensive care for all types of heart conditions. With cutting-edge technology and experienced specialists, we offer both preventive care and advanced treatments for heart diseases.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section class="services-section">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-heartbeat"></i>
+                    <h3>Diagnostic Services</h3>
+                    <ul>
+                        <li>Electrocardiogram (ECG)</li>
+                        <li>Stress Testing</li>
+                        <li>Holter Monitoring</li>
+                        <li>Echocardiography</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <i class="fas fa-procedures"></i>
+                    <h3>Interventional Procedures</h3>
+                    <ul>
+                        <li>Angioplasty</li>
+                        <li>Stent Placement</li>
+                        <li>Cardiac Catheterization</li>
+                        <li>Valve Repair</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <i class="fas fa-user-md"></i>
+                    <h3>Consultative Services</h3>
+                    <ul>
+                        <li>Risk Assessment</li>
+                        <li>Prevention Strategies</li>
+                        <li>Lifestyle Counseling</li>
+                        <li>Follow-up Care</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <h2>Our Cardiology Team</h2>
+            <div class="team-grid">
+                <div class="team-card">
+                    <img src="../images/doctor11.jpg" alt="Dr. Sarah Johnson">
+                    <div class="team-info">
+                        <h3>Dr. Sarah Johnson</h3>
+                        <p>Head of Cardiology</p>
+                        <div class="expertise">
+                            <span>Interventional Cardiology</span>
+                            <span>Heart Failure</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <img src="../images/doctor12.jpg" alt="Dr. John Smith">
+                    <div class="team-info">
+                        <h3>Dr. John Smith</h3>
+                        <p>Senior Cardiologist</p>
+                        <div class="expertise">
+                            <span>Electrophysiology</span>
+                            <span>Cardiac Imaging</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <img src="../images/doctor13.jpg" alt="Dr. Michael Chen">
+                    <div class="team-info">
+                        <h3>Dr. Michael Chen</h3>
+                        <p>Cardiac Surgeon</p>
+                        <div class="expertise">
+                            <span>Minimally Invasive Surgery</span>
+                            <span>Valve Repair</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Facilities Section -->
+    <section class="facilities-section">
+        <div class="container">
+            <h2>Our Facilities</h2>
+            <div class="centers-grid">
+                <div class="center-card">
+                    <img src="../images/Catheterization-Lab.png" alt="Cardiac Catheterization Lab">
+                    <div class="card-content">
+                        <h3>Cardiac Catheterization Lab</h3>
+                        <p>State-of-the-art cardiac catheterization laboratory for diagnostic and interventional procedures.</p>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Coronary Angiography</li>
+                            <li><i class="fas fa-check"></i> Angioplasty</li>
+                            <li><i class="fas fa-check"></i> Stent Placement</li>
+                        </ul>
+                        <a href="#" class="btn-primary">Learn More</a>
+                    </div>
+                </div>
+
+                <div class="center-card">
+                    <img src="../images/Echo-Lab.png" alt="Echo Lab">
+                    <div class="card-content">
+                        <h3>Echo Lab</h3>
+                        <p>Advanced echocardiography facility for comprehensive cardiac imaging and diagnosis.</p>
+                        <ul>
+                            <li><i class="fas fa-check"></i> 3D Echocardiography</li>
+                            <li><i class="fas fa-check"></i> Stress Echo Testing</li>
+                            <li><i class="fas fa-check"></i> Doppler Studies</li>
+                        </ul>
+                        <a href="#" class="btn-primary">Learn More</a>
+                    </div>
+                </div>
+
+                <div class="center-card">
+                    <img src="../images/Cardiac-ICU.png" alt="Cardiac ICU">
+                    <div class="card-content">
+                        <h3>Cardiac ICU</h3>
+                        <p>Specialized intensive care unit for critical cardiac patients.</p>
+                        <ul>
+                            <li><i class="fas fa-check"></i> 24/7 Monitoring</li>
+                            <li><i class="fas fa-check"></i> Advanced Life Support</li>
+                            <li><i class="fas fa-check"></i> Post-surgical Care</li>
+                        </ul>
+                        <a href="#" class="btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Patient Information -->
+    <section class="info-section">
+        <div class="container">
+            <h2>Patient Information</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>Appointment Hours</h3>
+                    <ul>
+                        <li>Monday - Friday: 8:00 AM - 6:00 PM</li>
+                        <li>Saturday: 9:00 AM - 1:00 PM</li>
+                        <li>Emergency: 24/7</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <i class="fas fa-file-medical"></i>
+                    <h3>Required Documents</h3>
+                    <ul>
+                        <li>Previous Medical Records</li>
+                        <li>Insurance Information</li>
+                        <li>Government ID</li>
+                        <li>Current Medication List</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <i class="fas fa-phone"></i>
+                    <h3>Contact Information</h3>
+                    <ul>
+                        <li>Emergency: (555) 911-1234</li>
+                        <li>Appointments: (555) 123-4567</li>
+                        <li>Email: cardiology@mediplus.com</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Appointment CTA -->
+    <section class="dept-cta">
+        <div class="container">
+            <h2>Need Cardiac Advice?</h2>
+            <p>Schedule an appointment with our heart specialists today.</p>
+            <a href="../doctors.html" class="cta-btn">Appointment</a>
+        </div>
+    </section>
+
+    <script src="../js/profile-dropdown.js"></script>
+    <script src="../scripts/fix-translations.js"></script>
+    <script src="../scripts/translate-manager.js"></script>
+
+</body>
+</html>

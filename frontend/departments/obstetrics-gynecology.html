@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Department of Obstetrics & Gynecology - MediPlus</title>
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/department-detail.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="../scripts/fix-translations.js"></script>
+    <style>
+    /* Common heading styles for all sections */
+    .services-section h2,
+    .team-section h2,
+    .programs-section h2,
+    .centers-section h2,
+    .info-section h2,
+    .horizontal-section h2,
+    .overview-section h2,
+    .dept-hero h1 {
+        text-align: center;
+        margin-bottom: 40px;
+        color: #2c3e50;
+        font-size: 2.5rem;
+        font-weight: 600;
+        position: relative;
+        padding-bottom: 15px;
+    }
+
+    .services-section h2::after,
+    .team-section h2::after,
+    .programs-section h2::after,
+    .centers-section h2::after,
+    .info-section h2::after,
+    .horizontal-section h2::after,
+    .overview-section h2::after,
+    .dept-hero h1::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 3px;
+        background-color: #2a8ff4;
+    }
+
+    .horizontal-section {
+        padding: 60px 0;
+        background: #f8f9fa;
+    }
+
+    .horizontal-grid {
+        display: flex;
+        gap: 30px;
+        overflow-x: auto;
+        padding: 20px 0;
+        scroll-snap-type: x mandatory;
+    }
+
+    .horizontal-card {
+        flex: 0 0 300px;
+        background: white;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+        scroll-snap-align: start;
+    }
+
+    .horizontal-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .horizontal-card i {
+        color: #2a8ff4;
+        margin-bottom: 15px;
+        display: block;
+        text-align: center;
+    }
+
+    .horizontal-card h3 {
+        color: #2c3e50;
+        margin-bottom: 10px;
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    .horizontal-card p {
+        color: #666;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+
+    .horizontal-card ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .horizontal-card ul li {
+        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+    }
+
+    .horizontal-card ul li i {
+        margin-right: 10px;
+        color: #2ecc71;
+        font-size: 1rem;
+        display: inline;
+        text-align: left;
+    }
+
+    @media (max-width: 768px) {
+        .horizontal-grid {
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .horizontal-card {
+            flex: none;
+            width: 100%;
+        }
+    }
+    </style>
+    <link rel="stylesheet" href="../styles/responsive.css">
+</head>
+<body>
+    <!-- Department Hero -->
+    <section class="dept-hero obgyn">
+        <div class="container">
+            <div class="hero-content">
+                <i class="fas fa-baby"></i>
+                <h1>Department of Obstetrics & Gynecology</h1>
+                <p>Comprehensive women's healthcare at every stage of life</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="overview-section">
+        <div class="container">
+            <div class="overview-card">
+                <h2>Department Overview</h2>
+                <p>Our Department of Obstetrics and Gynecology provides comprehensive care for women at every stage of life. From routine check-ups to pregnancy care and specialized treatments, our expert team ensures high-quality healthcare for all women's health needs.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section class="services-section">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-baby-carriage"></i>
+                    <h3>Obstetric Care</h3>
+                    <ul>
+                        <li>Prenatal Care</li>
+                        <li>High-Risk Pregnancy</li>
+                        <li>Labor and Delivery</li>
+                        <li>Postpartum Care</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <i class="fas fa-stethoscope"></i>
+                    <h3>Gynecology</h3>
+                    <ul>
+                        <li>Annual Check-ups</li>
+                        <li>Cancer Screening</li>
+                        <li>Family Planning</li>
+                        <li>Menopause Care</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <i class="fas fa-hospital-user"></i>
+                    <h3>Specialized Care</h3>
+                    <ul>
+                        <li>Infertility Treatment</li>
+                        <li>Minimally Invasive Surgery</li>
+                        <li>Urogynecology</li>
+                        <li>Genetic Counseling</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specialty Centers -->
+    <section class="centers-section">
+        <div class="container">
+            <h2>Treatment Centers</h2>
+            <div class="centers-grid">
+                <div class="center-card">
+                    <img src="../images/obestetric/Maternity-Center.jpg" alt="Maternity Center">
+                    <h3>Maternity Center</h3>
+                    <p>State-of-the-art birthing facilities</p>
+                    <ul>
+                        <li>Private Birthing Suites</li>
+                        <li>Access to Neonatal Intensive Care Unit</li>
+                        <li>Family-Centered Care</li>
+                    </ul>
+                </div>
+
+                <div class="center-card">
+                    <img src="../images/obestetric/Women-Health-Center.jpg" alt="Women's Health Center">
+                    <h3>Women's Health Center</h3>
+                    <p>Comprehensive gynecological care</p>
+                    <ul>
+                        <li>Advanced Diagnostic Services</li>
+                        <li>Minimally Invasive Surgery</li>
+                        <li>Preventive Care</li>
+                    </ul>
+                </div>
+
+                <div class="center-card">
+                    <img src="../images/obestetric/Fertility-Center.jpg" alt="Fertility Center">
+                    <h3>Fertility Center</h3>
+                    <p>Advanced reproductive services</p>
+                    <ul>
+                        <li>IVF Treatments</li>
+                        <li>Fertility Preservation</li>
+                        <li>Genetic Testing</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <h2>Our OB-GYN Team</h2>
+            <div class="team-grid">
+                <div class="team-card">
+                    <img src="../images/obestetric/Dr-Sarah-Anderson.jpg" alt="Dr. Sarah Anderson">
+                    <div class="team-info">
+                        <h3>Dr. Sarah Anderson</h3>
+                        <p>Head of Obstetrics & Gynecology</p>
+                        <div class="expertise">
+                            <span>High-Risk Pregnancy</span>
+                            <span>Minimally Invasive Surgery</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <img src="../images/obestetric/Dr-Rachel-Martinez.jpg" alt="Dr. Rachel Martinez">
+                    <div class="team-info">
+                        <h3>Dr. Rachel Martinez</h3>
+                        <p>Obstetrics Specialist</p>
+                        <div class="expertise">
+                            <span>Prenatal Care</span>
+                            <span>Labor and Delivery</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <img src="../images/obestetric/Dr-Emily-Wong.jpg" alt="Dr. Emily Wong">
+                    <div class="team-info">
+                        <h3>Dr. Emily Wong</h3>
+                        <p>Gynecological Surgeon</p>
+                        <div class="expertise">
+                            <span>Laparoscopic Surgery</span>
+                            <span>Gynecological Oncology</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section class="programs-section">
+        <div class="container">
+            <h2>Special Programs</h2>
+            <div class="programs-grid">
+                <div class="program-card">
+                    <i class="fas fa-baby"></i>
+                    <h3>Maternity Program</h3>
+                    <ul>
+                        <li>Birth Planning</li>
+                        <li>Childbirth Classes</li>
+                        <li>Breastfeeding Support</li>
+                    </ul>
+                </div>
+
+                <div class="program-card">
+                    <i class="fas fa-venus"></i>
+                    <h3>Women's Health</h3>
+                    <ul>
+                        <li>Preventive Care</li>
+                        <li>Health Screenings</li>
+                        <li>Health Education</li>
+                    </ul>
+                </div>
+
+                <div class="program-card">
+                    <i class="fas fa-dna"></i>
+                    <h3>Fertility Program</h3>
+                    <ul>
+                        <li>Fertility Assessment</li>
+                        <li>Treatment Planning</li>
+                        <li>Support Services</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Appointment CTA -->
+    <section class="dept-cta">
+        <div class="container">
+            <h2>Schedule Your Appointment</h2>
+            <p>Book an appointment with our obstetrics and gynecology specialists.</p>
+            <a href="../doctors.html" class="cta-btn">Appointment</a>
+        </div>
+    </section>
+
+    <script src="../js/profile-dropdown.js"></script>
+    <script src="../scripts/fix-translations.js"></script>
+    <script src="../scripts/translate-manager.js"></script>
+</body>
+</html>

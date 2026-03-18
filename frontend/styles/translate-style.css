@@ -1,0 +1,143 @@
+/* Custom styling for Google Translate integration */
+
+/* Hide the default Google translate widget */
+.goog-te-gadget {
+    font-size: 0 !important;
+}
+
+.goog-te-gadget .goog-te-combo {
+    display: none !important;
+}
+
+/* Hide Google Translate top banner and toolbar */
+.goog-te-banner-frame,
+#goog-gt-tt, 
+.goog-te-balloon-frame,
+div#goog-gt-,
+div.skiptranslate,
+iframe.goog-te-banner-frame,
+iframe.skiptranslate {
+    display: none !important;
+}
+
+/* Fix for body shifting when translate is active */
+body {
+    top: 0 !important;
+    position: static !important;
+}
+
+/* Fix for translated content */
+body > .skiptranslate {
+    display: none !important;
+}
+
+/* Override Google Translate inline CSS */
+.goog-text-highlight {
+    background-color: transparent !important;
+    box-shadow: none !important;
+}
+
+/* Fix for popup windows */
+.goog-tooltip {
+    display: none !important;
+}
+
+.goog-tooltip:hover {
+    display: none !important;
+}
+
+.goog-text-highlight {
+    background-color: transparent !important;
+    border: none !important; 
+    box-shadow: none !important;
+}
+
+/* Styling for our custom language selector */
+#google_translate_element {
+    display: inline-block;
+    position: relative;
+    margin-right: 15px;
+}
+
+/* Custom language button styling */
+.language-selector {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 15px;
+    background-color: #7BD3F7;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 15px rgba(123, 211, 247, 0.4);
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    margin-right: 15px;
+    position: relative;
+    overflow: hidden;
+}
+
+.language-selector:hover {
+    background-color: #5EC8F2;
+    box-shadow: 0 8px 20px rgba(123, 211, 247, 0.6);
+}
+
+.language-selector i {
+    margin-right: 8px;
+}
+
+/* Language dropdown styling */
+.language-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    padding: 10px 0;
+    z-index: 1000;
+    width: 150px;
+    display: none;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.language-dropdown.show {
+    display: block;
+}
+
+.language-option {
+    padding: 8px 15px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    font-size: 14px;
+    color: #333;
+    display: flex;
+    align-items: center;
+}
+
+.language-option:hover {
+    background-color: #f5f5f5;
+}
+
+/* RTL support for languages like Urdu */
+html[dir="rtl"] .language-selector i {
+    margin-right: 0;
+    margin-left: 8px;
+}
+
+/* Language icon */
+.language-icon {
+    font-size: 16px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Current language indicator */
+.current-language {
+    font-size: 14px;
+    font-weight: bold;
+    margin-left: 6px;
+}

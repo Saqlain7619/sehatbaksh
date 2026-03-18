@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Mediplus</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/translate-style.css">
+    <style>
+        /* Position the Google Translate element properly */
+        #google_translate_element {
+            position: absolute;
+            top: 20px;
+            right: 150px;
+            z-index: 1000;
+        }
+        
+        /* Fix for translated content */
+        .goog-te-menu-value {
+            color: #fff !important;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 10px;
+            border-radius: 5px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+    </style>
+    <style>
+        .privacy-content {
+            max-width: 1200px;
+            margin: 120px auto 50px;
+            padding: 0 20px;
+        }
+        
+        .back-to-home {
+            display: inline-block;
+            margin-bottom: 30px;
+            color: #1e90ff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 2px solid #1e90ff;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .back-to-home:hover {
+            background: #1e90ff;
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .privacy-content h1 {
+            color: #1e90ff;
+            margin-bottom: 30px;
+            transition: transform 0.3s ease;
+        }
+        
+        .privacy-content h1:hover {
+            transform: scale(1.02);
+        }
+        
+        .privacy-section {
+            margin-bottom: 40px;
+            padding: 20px;
+            border-radius: 10px;
+            background: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .privacy-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .privacy-section::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 4px;
+            height: 0;
+            background: #1e90ff;
+            transition: height 0.3s ease;
+        }
+        
+        .privacy-section:hover::before {
+            height: 100%;
+        }
+        
+        .privacy-section h2 {
+            color: #333;
+            margin-bottom: 20px;
+            transition: color 0.3s ease, transform 0.3s ease;
+            display: inline-block;
+        }
+        
+        .privacy-section:hover h2 {
+            color: #1e90ff;
+            transform: translateX(10px);
+        }
+        
+        .privacy-section p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            transition: transform 0.3s ease;
+        }
+        
+        .privacy-section:hover p {
+            transform: translateX(5px);
+        }
+        
+        .privacy-section ul {
+            list-style-type: none;
+            margin-left: 0;
+            margin-bottom: 15px;
+            padding-left: 20px;
+        }
+        
+        .privacy-section ul li {
+            color: #666;
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 25px;
+            transition: all 0.3s ease;
+        }
+        
+        .privacy-section ul li::before {
+            content: '•';
+            color: #1e90ff;
+            position: absolute;
+            left: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .privacy-section ul li:hover {
+            color: #333;
+            transform: translateX(10px);
+        }
+        
+        .privacy-section ul li:hover::before {
+            color: #1e90ff;
+            transform: scale(1.2);
+        }
+        
+        .last-updated {
+            font-style: italic;
+            color: #888;
+            margin-top: 50px;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        .last-updated:hover {
+            color: #1e90ff;
+            transform: translateX(5px);
+        }
+
+        @media (max-width: 768px) {
+            .privacy-content {
+                margin: 80px auto 30px;
+                padding: 0 15px;
+            }
+            
+            .privacy-section {
+                padding: 15px;
+            }
+            
+            .privacy-section:hover {
+                transform: translateY(-3px);
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="styles/responsive.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <h1 class="notranslate" translate="no">Sehat Bakhsh</h1>
+            </div>
+            <div id="google_translate_element"></div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+
+        </nav>
+    </header>
+<!-- Mobile Menu Button (Add this to your nav section) -->
+<button class="mobile-menu-btn" id="mobileMenuBtn">
+    <i class="fas fa-bars"></i>
+</button>
+
+<!-- Mobile Menu (Add this after the header) -->
+<div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu-close" id="mobileMenuClose">
+        <i class="fas fa-times"></i>
+    </button>
+    <div class="mobile-menu-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="departments.html">Department</a>
+        <a href="doctors.html">Doctors</a>
+        <a href="blog.html">Blog</a>
+        <a href="contact.html">Contact</a>
+        <a href="health-library/index.html">Health Library</a>
+        <a href="doctors.html">Appointment</a>
+        <a href="profile.html">My Profile</a>
+        <a href="settings.html">Settings</a>
+        <a href="login.html">Logout</a>
+    </div>
+</div>
+
+<div class="overlay" id="overlay"></div>
+
+<!-- Mobile Menu JavaScript (Add this before the closing body tag) -->
+<script>
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileMenuClose = document.getElementById('mobileMenuClose');
+    const overlay = document.getElementById('overlay');
+
+    mobileMenuBtn.addEventListener('click', function() {
+        mobileMenu.classList.add('active');
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    });
+
+    mobileMenuClose.addEventListener('click', function() {
+        mobileMenu.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    });
+
+    overlay.addEventListener('click', function() {
+        mobileMenu.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    });
+</script>
+
+
+    <main class="privacy-content">
+        <a href="index.html" class="back-to-home">
+            <i class="fas fa-arrow-left"></i> Back to Home
+        </a>
+        
+        <h1>Privacy Policy</h1>
+        
+        <div class="privacy-section">
+            <h2>Introduction</h2>
+            <p>Welcome to Sehat Bakhsh's Privacy Policy. This document outlines how we collect, use, and protect your personal information when you use our services.</p>
+        </div>
+
+        <div class="privacy-section">
+            <h2>Information We Collect</h2>
+            <p>We collect the following types of information:</p>
+            <ul>
+                <li>Personal identification information (Name, email address, phone number, etc.)</li>
+                <li>Medical history and health information</li>
+                <li>Insurance information</li>
+                <li>Appointment and scheduling information</li>
+                <li>Website usage data and cookies</li>
+            </ul>
+        </div>
+
+        <div class="privacy-section">
+            <h2>How We Use Your Information</h2>
+            <p>Your information is used for:</p>
+            <ul>
+                <li>Providing medical services and treatment</li>
+                <li>Scheduling and managing appointments</li>
+                <li>Processing insurance claims</li>
+                <li>Improving our services</li>
+                <li>Communicating important updates and information</li>
+                <li>Legal compliance and reporting requirements</li>
+            </ul>
+        </div>
+
+        <div class="privacy-section">
+            <h2>Data Protection</h2>
+            <p>We implement various security measures to protect your personal information:</p>
+            <ul>
+                <li>Encryption of sensitive data</li>
+                <li>Secure servers and databases</li>
+                <li>Regular security audits</li>
+                <li>Staff training on data protection</li>
+                <li>Access controls and authentication</li>
+            </ul>
+        </div>
+
+        <div class="privacy-section">
+            <h2>Your Rights</h2>
+            <p>You have the right to:</p>
+            <ul>
+                <li>Access your personal information</li>
+                <li>Request corrections to your data</li>
+                <li>Request deletion of your data</li>
+                <li>Opt-out of marketing communications</li>
+                <li>File a complaint with relevant authorities</li>
+            </ul>
+        </div>
+
+        <div class="privacy-section">
+            <h2>Contact Us</h2>
+            <p>If you have any questions about this Privacy Policy, please contact us:</p>
+            <ul>
+                <li>Email: privacy@sehatbakhsh.com</li>
+                <li>Phone: 1-800-MEDIPLUS</li>
+                <li>Address: 123 Healthcare Avenue, Medical District, City, Country</li>
+            </ul>
+        </div>
+
+        <p class="last-updated">Last Updated: February 7, 2025</p>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <h3 class="notranslate" translate="no">Sehat Bakhsh</h3>
+                <p>Healthcare at its finest</p>
+            </div>
+            <div class="footer-links">
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="contact.html">Contact Us</a>
+            </div>
+            <div class="footer-social">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Mediplus. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="scripts/main.js"></script>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script src="scripts/fix-translations.js"></script>
+    <script src="scripts/translate-manager.js"></script>
+</body>
+</html>

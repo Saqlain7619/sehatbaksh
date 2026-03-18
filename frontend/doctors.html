@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctors and Appointments - MediPlus</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/doctors.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/responsive-update.css">
+    <link rel="stylesheet" href="styles/translate-style.css">
+    <style>
+        /* Department styles */
+        .departments-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        /* Profile dropdown styles */
+        .profile-icon {
+            position: relative;
+            margin-left: 15px;
+            cursor: pointer;
+        }
+
+        .profile-icon img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .profile-icon img:hover {
+            transform: scale(1.1);
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: white;
+            min-width: 160px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-content a {
+            color: #333;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s ease;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+            color: #1e90ff;
+        }
+
+        .dropdown-content.show {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .dept-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .dept-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .dept-icon {
+            font-size: 2.5rem;
+            color: #1e90ff;
+            margin-bottom: 15px;
+        }
+
+        .dept-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .dept-features {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+
+        .dept-features li {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+
+        .dept-features li i {
+            color: #1e90ff;
+            margin-right: 10px;
+        }
+
+        .dept-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(45deg, #1e90ff, #00bfff);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .dept-btn:hover {
+            background: linear-gradient(45deg, #00bfff, #1e90ff);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Booking Form Styles */
+        .booking-form {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            width: 90%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .booking-form h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #1e90ff;
+            font-size: 1.8rem;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #1e90ff;
+            outline: none;
+            box-shadow: 0 0 5px rgba(30, 144, 255, 0.3);
+        }
+
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        .form-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .book-btn {
+            padding: 12px 25px;
+            background: linear-gradient(45deg, #1e90ff, #00bfff);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex: 1;
+            margin-right: 10px;
+        }
+
+        .book-btn:hover {
+            background: linear-gradient(45deg, #00bfff, #1e90ff);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .close-btn {
+            padding: 12px 25px;
+            background: #f5f5f5;
+            color: #555;
+            border: none;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex: 1;
+            margin-left: 10px;
+        }
+
+        .close-btn:hover {
+            background: #eee;
+            color: #333;
+        }
+
+        /* Overlay for booking form */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        /* CTA Section */
+        .dept-cta {
+            background: linear-gradient(135deg, #1e90ff, #00bfff);
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+            margin-top: 50px;
+        }
+
+        .dept-cta h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .dept-cta p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .departments-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .booking-form {
+                width: 95%;
+                padding: 20px;
+            }
+            
+            .form-buttons {
+                flex-direction: column;
+            }
+            
+            .book-btn, .close-btn {
+                margin: 5px 0;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>Sehat Bakhsh</h1>
+            </div>
+            <div id="google_translate_element"></div>
+            <div class="nav-links">
+                <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                <a href="departments.html"><i class="fas fa-hospital"></i> Departments</a>
+                <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
+                <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+                <a href="health-library/index.html"><i class="fas fa-book-medical"></i> Health Library</a>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open mobile menu" title="Open mobile menu">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <div class="nav-buttons">
+                <a href="doctors.html" class="cta-btn">Appointment</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close mobile menu">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="mobile-menu-links">
+            <a href="index.html"><i class="fas fa-home"></i> Home</a>
+            <a href="departments.html"><i class="fas fa-hospital"></i> Departments</a>
+            <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
+            <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+            <a href="health-library/index.html"><i class="fas fa-book-medical"></i> Health Library</a>
+        </div>
+    </div>
+
+    <div id="overlay" class="overlay"></div>
+
+    <!-- Mobile Menu JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileMenuClose = document.getElementById('mobileMenuClose');
+
+        mobileMenuBtn.addEventListener('click', function() {
+            mobileMenu.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        mobileMenuClose.addEventListener('click', function() {
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+    </script>
+
+    <section class="doctors-hero">
+        <div class="container">
+            <h1>Our Expert Doctors</h1>
+            <p>Meet our team of dedicated healthcare professionals committed to providing you with high-quality care.</p>
+        </div>
+    </section>
+
+    <main>
+        <div class="container">
+            <h1>Our Medical Departments and Doctors</h1>
+            
+            <div class="dept-container">
+                <!-- Cardiology -->
+                <div class="dept-card">
+                    <div class="dept-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h3>Cardiology</h3>
+                    <p>Expert care for heart diseases with state-of-the-art diagnostic and treatment facilities.</p>
+                    <ul class="dept-features">
+                        <li><i class="fas fa-check"></i> Heart Disease Treatment</li>
+                        <li><i class="fas fa-check"></i> Cardiac Surgery</li>
+                        <li><i class="fas fa-check"></i> Heart Rhythm Management</li>
+                    </ul>
+                    <a href="#" class="dept-btn" onclick="showBookingForm('Dr. John Doe', 'Cardiology'); return false;">Book Appointment</a>
+                </div>
+
+                <!-- Neurology -->
+                <div class="dept-card">
+                    <div class="dept-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Neurology</h3>
+                    <p>Comprehensive care for neurological disorders with advanced treatment options.</p>
+                    <ul class="dept-features">
+                        <li><i class="fas fa-check"></i> Brain Surgery</li>
+                        <li><i class="fas fa-check"></i> Spine Treatment</li>
+                        <li><i class="fas fa-check"></i> Stroke Care</li>
+                    </ul>
+                    <a href="#" class="dept-btn" onclick="showBookingForm('Dr. Jane Smith', 'Neurology'); return false;">Book Appointment</a>
+                </div>
+
+                <!-- Orthopedics -->
+                <div class="dept-card">
+                    <div class="dept-icon">
+                        <i class="fas fa-bone"></i>
+                    </div>
+                    <h3>Orthopedics</h3>
+                    <p>Expert treatment for the musculoskeletal system, including bones, joints, ligaments, and muscles.</p>
+                    <ul class="dept-features">
+                        <li><i class="fas fa-check"></i> Joint Replacement</li>
+                        <li><i class="fas fa-check"></i> Sports Medicine</li>
+                        <li><i class="fas fa-check"></i> Spine Surgery</li>
+                    </ul>
+                    <a href="#" class="dept-btn" onclick="showBookingForm('Dr. Bob Johnson', 'Orthopedics'); return false;">Book Appointment</a>
+                </div>
+
+                <!-- Dental -->
+                <div class="dept-card">
+                    <div class="dept-icon">
+                        <i class="fas fa-tooth"></i>
+                    </div>
+                    <h3>Dental Care</h3>
+                    <p>Comprehensive dental care for all ages, from routine cleanings to complex procedures.</p>
+                    <ul class="dept-features">
+                        <li><i class="fas fa-check"></i> General Dentistry</li>
+                        <li><i class="fas fa-check"></i> Cosmetic Dentistry</li>
+                        <li><i class="fas fa-check"></i> Oral Surgery</li>
+                    </ul>
+                    <a href="#" class="dept-btn" onclick="showBookingForm('Dr. John Doe', 'Dental Care'); return false;">Book Appointment</a>
+                </div>
+
+                <!-- Dermatology -->
+                <div class="dept-card">
+                    <div class="dept-icon">
+                        <i class="fas fa-allergies"></i>
+                    </div>
+                    <h3>Dermatology</h3>
+                    <p>Expert care for skin, hair, and nail conditions, including acne, psoriasis, and skin cancer.</p>
+                    <ul class="dept-features">
+                        <li><i class="fas fa-check"></i> Clinical Dermatology</li>
+                        <li><i class="fas fa-check"></i> Cosmetic Dermatology</li>
+                        <li><i class="fas fa-check"></i> Skin Cancer Treatment</li>
+                    </ul>
+                    <a href="#" class="dept-btn" onclick="showBookingForm('Dr. Jane Smith', 'Dermatology'); return false;">Book Appointment</a>
+                </div>
+
+                <!-- Pediatrics -->
+                <div class="dept-card">
+                    <div class="dept-icon">
+                        <i class="fas fa-baby"></i>
+                    </div>
+                    <h3>Pediatrics</h3>
+                    <p>Specialized healthcare for infants, children, and adolescents up to age 18.</p>
+                    <ul class="dept-features">
+                        <li><i class="fas fa-check"></i> Well-Child Visits</li>
+                        <li><i class="fas fa-check"></i> Childhood Immunizations</li>
+                        <li><i class="fas fa-check"></i> Pediatric Consultations</li>
+                    </ul>
+                    <a href="#" class="dept-btn" onclick="showBookingForm('Dr. Bob Johnson', 'Pediatrics'); return false;">Book Appointment</a>
+                </div>
+
+                <!-- Pulmonology -->
+                <div class="dept-card">
+                    <div class="dept-icon">
+                        <i class="fas fa-lungs"></i>
+                    </div>
+                    <h3>Pulmonology</h3>
+                    <p>Specialized care for respiratory conditions and lung diseases with advanced diagnostic capabilities.</p>
+                    <ul class="dept-features">
+                        <li><i class="fas fa-check"></i> Asthma Management</li>
+                        <li><i class="fas fa-check"></i> COPD Treatment</li>
+                        <li><i class="fas fa-check"></i> Sleep Disorders</li>
+                    </ul>
+                    <a href="#" class="dept-btn" onclick="showBookingForm('Dr. Jane Smith', 'Pulmonology'); return false;">Book Appointment</a>
+                </div>
+
+                <!-- Emergency Medicine -->
+                <div class="dept-card">
+                    <div class="dept-icon">
+                        <i class="fas fa-ambulance"></i>
+                    </div>
+                    <h3>Emergency Medicine</h3>
+                    <p>24/7 emergency care for acute illnesses and injuries requiring immediate medical attention.</p>
+                    <ul class="dept-features">
+                        <li><i class="fas fa-check"></i> Trauma Care</li>
+                        <li><i class="fas fa-check"></i> Critical Care</li>
+                        <li><i class="fas fa-check"></i> Emergency Procedures</li>
+                    </ul>
+                    <a href="#" class="dept-btn" onclick="showBookingForm('Dr. John Doe', 'Emergency Medicine'); return false;">Book Appointment</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Booking Form Modal -->
+    <div id="bookingForm" class="booking-form">
+        <h2>Book an Appointment</h2>
+        <form>
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone:</label>
+                <input type="tel" id="phone" required>
+            </div>
+            <div class="form-group">
+                <label for="date">Date:</label>
+                <input type="date" id="date" required>
+            </div>
+            <div class="form-group">
+                <label for="time">Time:</label>
+                <input type="time" id="time" required>
+            </div>
+            <div class="form-group">
+                <label for="department">Department:</label>
+                <select id="department" required>
+                    <option value="">Select Department</option>
+                    <option value="Cardiology">Cardiology</option>
+                    <option value="Neurology">Neurology</option>
+                    <option value="Orthopedics">Orthopedics</option>
+                    <option value="Dental">Dental Care</option>
+                    <option value="Dermatology">Dermatology</option>
+                    <option value="Pediatrics">Pediatrics</option>
+                    <option value="Nephrology">Nephrology</option>
+                    <option value="Psychiatry">Psychiatry</option>
+                    <option value="Pulmonology">Pulmonology</option>
+                    <option value="Oncology">Oncology</option>
+                    <option value="Obstetrics & Gynecology">Obstetrics & Gynecology</option>
+                    <option value="Endocrinology">Endocrinology</option>
+                    <option value="Emergency Medicine">Emergency Medicine</option>
+                    <option value="Ophthalmology">Ophthalmology</option>
+                    <option value="Urology">Urology</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="doctor">Doctor:</label>
+                <select id="doctor" required>
+                    <option value="">Select Doctor</option>
+                    <option value="Dr. John Doe">Dr. John Doe</option>
+                    <option value="Dr. Jane Smith">Dr. Jane Smith</option>
+                    <option value="Dr. Bob Johnson">Dr. Bob Johnson</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="symptoms">Symptoms:</label>
+                <textarea id="symptoms" required></textarea>
+            </div>
+            <div class="form-buttons">
+                <button type="submit" class="book-btn">Book Now</button>
+                <button type="button" class="close-btn" onclick="closeBookingForm()">Close</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Appointment CTA -->
+    <section class="dept-cta">
+        <div class="container">
+            <h2>Need Medical Attention?</h2>
+            <p>Schedule an appointment with our specialists today.</p>
+        </div>
+    </section>
+    <script type="text/javascript">
+        function googleTranslateElementInit(){
+            new google.translate.TranslateElement(
+                {pageLanguage: 'en'},
+                'google_translate_element'
+            );
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script src="scripts/translate-manager.js"></script>
+    
+
+    <script>
+        function showBookingForm(doctor, department) {
+            console.log('Button clicked!');
+            var form = document.getElementById('bookingForm');
+            var overlay = document.getElementById('overlay');
+            console.log('Form element:', form);
+            if (form) {
+                form.style.display = 'block';
+                
+                // Pre-select the doctor and department
+                var doctorSelect = document.getElementById('doctor');
+                var departmentSelect = document.getElementById('department');
+                
+                if (doctorSelect) {
+                    for (var i = 0; i < doctorSelect.options.length; i++) {
+                        if (doctorSelect.options[i].text === doctor) {
+                            doctorSelect.selectedIndex = i;
+                            break;
+                        }
+                    }
+                }
+                
+                if (departmentSelect) {
+                    for (var i = 0; i < departmentSelect.options.length; i++) {
+                        if (departmentSelect.options[i].text === department) {
+                            departmentSelect.selectedIndex = i;
+                            break;
+                        }
+                    }
+                }
+                
+                if (overlay) {
+                    overlay.style.display = 'block';
+                }
+                
+                document.body.style.overflow = 'hidden';
+            }
+        }
+        
+        function closeBookingForm() {
+            document.getElementById('bookingForm').style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Profile dropdown functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const profilePic = document.getElementById('profilePic');
+            const dropdownContent = document.getElementById('dropdownContent');
+            
+            if (profilePic && dropdownContent) {
+                profilePic.addEventListener('click', function(event) {
+                    event.stopPropagation();
+                    dropdownContent.classList.toggle('show');
+                });
+                
+                document.addEventListener('click', function(event) {
+                    if (!event.target.matches('#profilePic') && dropdownContent.classList.contains('show')) {
+                        dropdownContent.classList.remove('show');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

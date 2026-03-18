@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Departments - MedPlus</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/departments.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/responsive-update.css">
+    <link rel="stylesheet" href="styles/translate-style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <h1 class="notranslate" translate="no">Sehat Bakhsh</h1>
+            </div>
+            <div id="google_translate_element"></div>
+            <div class="nav-links">
+                <a href="index.html" title="Go to home page"><i class="fas fa-home"></i> Home</a>
+                <a href="departments.html" class="active" title="View departments"><i class="fas fa-hospital"></i> Departments</a>
+                <a href="blog.html" title="Read our blog"><i class="fas fa-blog"></i> Blog</a>
+                <a href="contact.html" title="Contact us"><i class="fas fa-envelope"></i> Contact Us</a>
+                <a href="health-library/index.html" title="Access health library"><i class="fas fa-book-medical"></i> Health Library</a>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" title="Open mobile menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="nav-buttons">
+                <a href="doctors.html" class="cta-btn" title="Book an appointment">Appointment</a>
+                <div class="profile-icon">
+                    <img src="images/profile-avatar.png" alt="Profile" id="profilePic">
+                    <div class="dropdown-content" id="dropdownContent">
+                        <a href="profile.html" title="View profile">My Profile</a>
+                        <a href="settings.html" title="Edit settings">Settings</a>
+                        <a href="login.html" title="Logout">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close mobile menu">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="mobile-menu-links">
+            <a href="index.html"><i class="fas fa-home"></i> Home</a>
+            <a href="departments.html"><i class="fas fa-hospital"></i> Departments</a>
+            <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
+            <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+            <a href="health-library/index.html"><i class="fas fa-book-medical"></i> Health Library</a>
+            <a href="doctors.html"><i class="fas fa-user-md"></i> Appointment</a>
+            <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
+            <a href="login.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Mobile Menu JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileMenuClose = document.getElementById('mobileMenuClose');
+        const overlay = document.getElementById('overlay');
+
+        mobileMenuBtn.addEventListener('click', function() {
+            mobileMenu.classList.add('active');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        mobileMenuClose.addEventListener('click', function() {
+            mobileMenu.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        overlay.addEventListener('click', function() {
+            mobileMenu.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+    </script>
+
+    <!-- Hero Section -->
+    <section class="dept-hero">
+        <div class="container">
+            <h1>Our Departments</h1>
+            <p>Expert care for every need</p>
+        </div>
+    </section>
+
+    <!-- Departments Grid -->
+    <section class="departments-grid">
+        <div class="container">
+            <div class="dept-card">
+                <div class="dept-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <h3>Cardiology</h3>
+                <p>Expert care for heart conditions with state-of-the-art diagnostic and treatment facilities.</p>
+                <ul class="dept-features">
+                    <li><i class="fas fa-check"></i> Heart disease treatment</li>
+                    <li><i class="fas fa-check"></i> Heart surgery</li>
+                    <li><i class="fas fa-check"></i> Heart rhythm management</li>
+                </ul>
+                <a href="departments/cardiology.html" class="dept-btn" title="Learn more about cardiology">Learn More</a>
+            </div>
+
+            <div class="dept-card">
+                <div class="dept-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h3>Neurology</h3>
+                <p>Comprehensive care for neurological disorders with advanced treatment options.</p>
+                <ul class="dept-features">
+                    <li><i class="fas fa-check"></i> Brain surgery</li>
+                    <li><i class="fas fa-check"></i> Spine treatment</li>
+                    <li><i class="fas fa-check"></i> Stroke care</li>
+                </ul>
+                <a href="departments/neurology.html" class="dept-btn" title="Learn more about neurology">Learn More</a>
+            </div>
+
+            <div class="dept-card">
+                <div class="dept-icon">
+                    <i class="fas fa-bone"></i>
+                </div>
+                <h3>Orthopedics</h3>
+                <p>Expert care for bones, joints, and musculoskeletal conditions.</p>
+                <ul class="dept-features">
+                    <li><i class="fas fa-check"></i> Joint replacement</li>
+                    <li><i class="fas fa-check"></i> Sports medicine</li>
+                    <li><i class="fas fa-check"></i> Trauma care</li>
+                </ul>
+                <a href="departments/orthopedics.html" class="dept-btn" title="Learn more about orthopedics">Learn More</a>
+            </div>
+
+            <div class="dept-card">
+                <div class="dept-icon">
+                    <i class="fas fa-eye"></i>
+                </div>
+                <h3>Ophthalmology</h3>
+                <p>Comprehensive eye care services from routine exams to complex surgeries.</p>
+                <ul class="dept-features">
+                    <li><i class="fas fa-check"></i> Cataract surgery</li>
+                    <li><i class="fas fa-check"></i> Laser treatment</li>
+                    <li><i class="fas fa-check"></i> Vision correction</li>
+                </ul>
+                <a href="departments/ophthalmology.html" class="dept-btn" title="Learn more about ophthalmology">Learn More</a>
+            </div>
+
+            <div class="dept-card">
+                <div class="dept-icon">
+                    <i class="fas fa-tooth"></i>
+                </div>
+                <h3>Dental Care</h3>
+                <p>Comprehensive dental services for all ages with modern technology.</p>
+                <ul class="dept-features">
+                    <li><i class="fas fa-check"></i> Cosmetic dentistry</li>
+                    <li><i class="fas fa-check"></i> Oral surgery</li>
+                    <li><i class="fas fa-check"></i> Orthodontics</li>
+                </ul>
+                <a href="dental-redirect.html" class="dept-btn" title="Learn more about dental care">Learn More</a>
+            </div>
+
+            <div class="dept-card">
+                <div class="dept-icon">
+                    <i class="fas fa-baby"></i>
+                </div>
+                <h3>Pediatrics</h3>
+                <p>Expert care for infants, children, and adolescents.</p>
+                <ul class="dept-features">
+                    <li><i class="fas fa-check"></i> Pediatric development</li>
+                    <li><i class="fas fa-check"></i> Vaccination</li>
+                    <li><i class="fas fa-check"></i> Pediatric surgery</li>
+                </ul>
+                <a href="departments/pediatrics.html" class="dept-btn" title="Learn more about pediatrics">Learn More</a>
+            </div>
+
+            <div class="dept-card">
+                <div class="dept-icon">
+                    <i class="fas fa-x-ray"></i>
+                </div>
+                <h3>Radiology</h3>
+                <p>Advanced imaging services with state-of-the-art technology.</p>
+                <ul class="dept-features">
+                    <li><i class="fas fa-check"></i> MRI scanning</li>
+                    <li><i class="fas fa-check"></i> CT scan</li>
+                    <li><i class="fas fa-check"></i> Ultrasound</li>
+                </ul>
+                <a href="departments/radiology.html" class="dept-btn" title="Learn more about radiology">Learn More</a>
+            </div>
+
+            <div class="dept-card">
+                <div class="dept-icon">
+                    <i class="fas fa-lungs"></i>
+                </div>
+                <h3>Pulmonology</h3>
+                <p>Expert care for lung and breathing conditions.</p>
+                <ul class="dept-features">
+                    <li><i class="fas fa-check"></i> Respiratory care</li>
+                    <li><i class="fas fa-check"></i> Sleep studies</li>
+                    <li><i class="fas fa-check"></i> Bronchoscopy</li>
+                </ul>
+                <a href="departments/pulmonology.html" class="dept-btn" title="Learn more about pulmonology">Learn More</a>
+            </div>
+
+            <div class="dept-card">
+                <div class="dept-icon">
+                    <i class="fas fa-kidneys"></i>
+                </div>
+                <h3>Nephrology</h3>
+                <p>Expert care for kidney conditions and related disorders.</p>
+                <ul class="dept-features">
+                    <li><i class="fas fa-check"></i> Dialysis</li>
+                    <li><i class="fas fa-check"></i> Kidney treatment</li>
+                    <li><i class="fas fa-check"></i> Transplant care</li>
+                </ul>
+                <a href="departments/nephrology.html" class="dept-btn" title="Learn more about nephrology">Learn More</a>
+            </div>
+
+            <div class="dept-card">
+                <div class="dept-icon">
+                    <i class="fas fa-ambulance"></i>
+                </div>
+                <h3>Emergency</h3>
+                <p>24/7 emergency care with rapid response and trauma services.</p>
+                <ul class="dept-features">
+                    <li><i class="fas fa-check"></i> Trauma care</li>
+                    <li><i class="fas fa-check"></i> Critical care</li>
+                    <li><i class="fas fa-check"></i> 24/7 service</li>
+                </ul>
+                <a href="departments/emergency.html" class="dept-btn" title="Learn more about emergency services">Learn More</a>
+            </div>
+
+            <div class="dept-card">
+                <div class="dept-icon">
+                    <i class="fas fa-dna"></i>
+                </div>
+                <h3>Endocrinology</h3>
+                <p>Expert care for hormonal and metabolic disorders.</p>
+                <ul class="dept-features">
+                    <li><i class="fas fa-check"></i> Diabetes management</li>
+                    <li><i class="fas fa-check"></i> Thyroid care</li>
+                    <li><i class="fas fa-check"></i> Hormone therapy</li>
+                </ul>
+                <a href="departments/endocrinology.html" class="dept-btn" title="Learn more about endocrinology">Learn More</a>
+            </div>
+
+            <div class="dept-card">
+                <div class="dept-icon">
+                    <i class="fas fa-venus"></i>
+                </div>
+                <h3>Gynecology</h3>
+                <p>Comprehensive care for women's health, including obstetrics and gynecology services.</p>
+                <ul class="dept-features">
+                    <li><i class="fas fa-check"></i> Obstetric care</li>
+                    <li><i class="fas fa-check"></i> Gynecologic surgery</li>
+                    <li><i class="fas fa-check"></i> Infertility treatment</li>
+                </ul>
+                <a href="departments/obstetrics-gynecology.html" class="dept-btn" title="Learn more about gynecology">Learn More</a>
+            </div>
+
+            <div class="dept-card">
+                <div class="dept-icon">
+                    <i class="fas fa-heartbeat"></i>
+                </div>
+                <h3>Oncology</h3>
+                <p>Comprehensive care for cancer patients, from diagnosis to treatment.</p>
+                <ul class="dept-features">
+                    <li><i class="fas fa-check"></i> Chemotherapy</li>
+                    <li><i class="fas fa-check"></i> Radiation therapy</li>
+                    <li><i class="fas fa-check"></i> Surgical oncology</li>
+                </ul>
+                <a href="departments/oncology.html" class="dept-btn" title="Learn more about oncology">Learn More</a>
+            </div>
+
+            <div class="dept-card">
+                <div class="dept-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h3>Psychiatry</h3>
+                <p>Expert care for mental health, from therapy to treatment.</p>
+                <ul class="dept-features">
+                    <li><i class="fas fa-check"></i> Mental health</li>
+                    <li><i class="fas fa-check"></i> Therapy services</li>
+                    <li><i class="fas fa-check"></i> Crisis intervention</li>
+                </ul>
+                <a href="departments/psychiatry.html" class="dept-btn" title="Learn more about psychiatry">Learn More</a>
+            </div>
+
+            <div class="dept-card">
+                <div class="dept-icon">
+                    <i class="fas fa-kidney"></i>
+                </div>
+                <h3>Urology</h3>
+                <p>Expert care for kidney and related conditions.</p>
+                <ul class="dept-features">
+                    <li><i class="fas fa-check"></i> Kidney surgery</li>
+                    <li><i class="fas fa-check"></i> Kidney care</li>
+                    <li><i class="fas fa-check"></i> Men's health</li>
+                </ul>
+                <a href="departments/urology.html" class="dept-btn" title="Learn more about urology">Learn More</a>
+            </div>
+
+            <div class="dept-card">
+                <div class="dept-icon">
+                    <i class="fas fa-hand-sparkles"></i>
+                </div>
+                <h3>Dermatology</h3>
+                <p>Expert care for skin, hair, and nail conditions.</p>
+                <ul class="dept-features">
+                    <li><i class="fas fa-check"></i> Skin treatment</li>
+                    <li><i class="fas fa-check"></i> Cosmetic services</li>
+                    <li><i class="fas fa-check"></i> Laser procedures</li>
+                </ul>
+                <a href="departments/dermatology.html" class="dept-btn" title="Learn more about dermatology">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Department Stats -->
+    <section class="dept-stats">
+        <div class="container">
+            <div class="stat-item">
+                <i class="fas fa-user-md"></i>
+                <h3>150+</h3>
+                <p>Specialist Doctors</p>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-procedures"></i>
+                <h3>1000+</h3>
+                <p>Successful Surgeries</p>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-smile"></i>
+                <h3>98%</h3>
+                <p>Patient Satisfaction</p>
+            </div>
+        </div>
+    </section>
+<!-- Appointment CTA -->
+<section class="dept-cta">
+    <div class="container">
+        <h2>Need Medical Attention?</h2>
+        <p>Schedule an appointment with our specialists today.</p>
+    </div>
+</section>
+    <script src="js/profile-dropdown.js"></script>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script src="scripts/fix-translations.js"></script>
+    <script src="scripts/translate-manager.js"></script>
+</body>
+</html>

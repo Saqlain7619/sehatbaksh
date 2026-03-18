@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disease Search - MediPlus</title>
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/disease-search.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .glassy-btn {
+            display: inline-block;
+            padding: 10px 25px;
+            background-color: #7BD3F7;
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            -webkit-box-shadow: 0 4px 15px rgba(123, 211, 247, 0.4);
+            box-shadow: 0 4px 15px rgba(123, 211, 247, 0.4);
+            -webkit-backdrop-filter: blur(5px);
+            backdrop-filter: blur(5px);
+            -webkit-transition: all 0.3s ease;
+            transition: all 0.3s ease;
+            margin-right: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glassy-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+            -webkit-transition: all 0.6s ease;
+            transition: all 0.6s ease;
+        }
+
+        .glassy-btn:hover, .glassy-btn:focus {
+            background-color: #5EC8F2;
+            -webkit-transform: translateY(-2px);
+            transform: translateY(-2px);
+            -webkit-box-shadow: 0 8px 20px rgba(123, 211, 247, 0.6);
+            box-shadow: 0 8px 20px rgba(123, 211, 247, 0.6);
+            outline: none;
+        }
+
+        .glassy-btn:hover::before, .glassy-btn:focus::before {
+            left: 100%;
+        }
+
+        .glassy-btn:active {
+            -webkit-transform: translateY(2px);
+            transform: translateY(2px);
+            -webkit-box-shadow: 0 3px 10px rgba(123, 211, 247, 0.3);
+            box-shadow: 0 3px 10px rgba(123, 211, 247, 0.3);
+        }
+        
+        .search-section {
+            padding-top: 60px;
+            background-color: #f9f9f9;
+            border-radius: 15px;
+            -webkit-box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            padding-bottom: 40px;
+        }
+        
+        .search-section h1 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+        }
+        
+        .search-btn {
+            background: #7BD3F7;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            -webkit-transition: all 0.3s ease;
+            transition: all 0.3s ease;
+            -webkit-box-shadow: 0 4px 15px rgba(123, 211, 247, 0.4);
+            box-shadow: 0 4px 15px rgba(123, 211, 247, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .search-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+            -webkit-transition: all 0.6s ease;
+            transition: all 0.6s ease;
+        }
+        
+        .search-btn:hover, .search-btn:focus {
+            background: #5EC8F2;
+            -webkit-transform: translateY(-2px);
+            transform: translateY(-2px);
+            -webkit-box-shadow: 0 8px 20px rgba(123, 211, 247, 0.6);
+            box-shadow: 0 8px 20px rgba(123, 211, 247, 0.6);
+            outline: none;
+        }
+        
+        .search-btn:hover::before, .search-btn:focus::before {
+            left: 100%;
+        }
+        
+        .result-card {
+            -webkit-transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .result-card:hover, .result-card:focus {
+            -webkit-transform: translateY(-5px);
+            transform: translateY(-5px);
+            -webkit-box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            outline: none;
+        }
+        
+        .search-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+        
+        .search-icon {
+            position: absolute;
+            top: 50%;
+            left: 1rem;
+            -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+            font-size: 1.2rem;
+            color: #666;
+        }
+        
+        .add-btn {
+            background: #7BD3F7;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            -webkit-transition: all 0.3s ease;
+            transition: all 0.3s ease;
+            -webkit-box-shadow: 0 4px 15px rgba(123, 211, 247, 0.4);
+            box-shadow: 0 4px 15px rgba(123, 211, 247, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .add-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+            -webkit-transition: all 0.6s ease;
+            transition: all 0.6s ease;
+        }
+        
+        .add-btn:hover, .add-btn:focus {
+            background: #5EC8F2;
+            -webkit-transform: translateY(-2px);
+            transform: translateY(-2px);
+            -webkit-box-shadow: 0 8px 20px rgba(123, 211, 247, 0.6);
+            box-shadow: 0 8px 20px rgba(123, 211, 247, 0.6);
+            outline: none;
+        }
+        
+        .add-btn:hover::before, .add-btn:focus::before {
+            left: 100%;
+        }
+        
+        .results-header {
+            margin-bottom: 2rem;
+        }
+        
+        .results-header h2 {
+            font-size: 2rem;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+        
+        .results-header p {
+            font-size: 1.2rem;
+            color: #666;
+        }
+        
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .card-header i {
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+        }
+        
+        .card-content {
+            padding: 1rem;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            -webkit-box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        #diseasesList.card-content {
+            max-height: 350px;
+            overflow-y: auto;
+        }
+
+        /* WebKit browsers (Chrome, Safari, newer versions of Opera, etc) */
+        #diseasesList.card-content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        #diseasesList.card-content::-webkit-scrollbar-track {
+            background: #f9f9f9;
+            border-radius: 10px;
+        }
+
+        #diseasesList.card-content::-webkit-scrollbar-thumb {
+            background-color: #7BD3F7;
+            border-radius: 10px;
+            border: 2px solid #f9f9f9;
+        }
+
+        /* Firefox */
+        @supports (scrollbar-width: thin) {
+            #diseasesList.card-content {
+                scrollbar-width: thin;
+                scrollbar-color: #7BD3F7 #f9f9f9;
+            }
+        }
+
+        .symptom-tag {
+            background: #e1f5fe;
+            color: #0277bd;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            margin: 0.5rem;
+            display: inline-block;
+            font-weight: 500;
+            position: relative;
+            padding-right: 2rem;
+            -webkit-transition: all 0.3s ease;
+            transition: all 0.3s ease;
+        }
+
+        .symptom-tag:hover, .symptom-tag:focus {
+            background: #b3e5fc;
+            -webkit-transform: translateY(-2px);
+            transform: translateY(-2px);
+            -webkit-box-shadow: 0 3px 8px rgba(2, 119, 189, 0.2);
+            box-shadow: 0 3px 8px rgba(2, 119, 189, 0.2);
+            outline: none;
+        }
+
+        .symptom-tag .remove-symptom {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #0277bd;
+            cursor: pointer;
+            font-size: 1rem;
+            -webkit-transition: all 0.3s ease;
+            transition: all 0.3s ease;
+        }
+
+        .symptom-tag .remove-symptom:hover, .symptom-tag .remove-symptom:focus {
+            color: #01579b;
+            -webkit-transform: translateY(-50%) scale(1.2);
+            transform: translateY(-50%) scale(1.2);
+        }
+
+        .selected-symptoms {
+            margin: 1.5rem 0;
+            min-height: 60px;
+            padding: 0.5rem;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.7);
+            -webkit-box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .search-box {
+            position: relative;
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 1rem 1rem 1rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            -webkit-box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            -webkit-transition: all 0.3s ease;
+            transition: all 0.3s ease;
+        }
+
+        .search-box input:focus {
+            -webkit-box-shadow: 0 4px 20px rgba(123, 211, 247, 0.3);
+            box-shadow: 0 4px 20px rgba(123, 211, 247, 0.3);
+            outline: none;
+        }
+
+        .search-link {
+            display: flex;
+            align-items: center;
+            padding: 0.8rem 1.5rem;
+            margin-bottom: 0.8rem;
+            background-color: white;
+            border-radius: 10px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            -webkit-transition: all 0.3s ease;
+            transition: all 0.3s ease;
+            -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .search-link i {
+            margin-right: 0.8rem;
+            font-size: 1.2rem;
+        }
+
+        .search-link.google i {
+            color: #4285F4;
+        }
+
+        .search-link.mayo i {
+            color: #0057B8;
+        }
+
+        .search-link.webmd i {
+            color: #00A9E0;
+        }
+
+        .search-link.medline i {
+            color: #336699;
+        }
+
+        .search-link.healthline i {
+            color: #FF6B6B;
+        }
+
+        .search-link:hover, .search-link:focus {
+            -webkit-transform: translateY(-3px);
+            transform: translateY(-3px);
+            -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            outline: none;
+        }
+
+        .search-link.google:hover, .search-link.google:focus {
+            background-color: #f8f9fa;
+        }
+
+        .search-link.mayo:hover, .search-link.mayo:focus {
+            background-color: #f0f7ff;
+        }
+
+        .search-link.webmd:hover, .search-link.webmd:focus {
+            background-color: #f0fbff;
+        }
+
+        .search-link.medline:hover, .search-link.medline:focus {
+            background-color: #f5f8fc;
+        }
+
+        .search-link.healthline:hover, .search-link.healthline:focus {
+            background-color: #fff5f5;
+        }
+
+        .disease-item {
+            padding: 1.25rem;
+            margin-bottom: 1.25rem;
+            background-color: white;
+            border-radius: 12px;
+            -webkit-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            cursor: pointer;
+            -webkit-transition: all 0.3s ease;
+            transition: all 0.3s ease;
+            border-left: 4px solid #7BD3F7;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .disease-item:hover, .disease-item:focus {
+            -webkit-transform: translateY(-3px);
+            transform: translateY(-3px);
+            -webkit-box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+            outline: none;
+        }
+        
+        .disease-item.selected {
+            border-left: 4px solid #4CAF50;
+            background-color: #f9fffa;
+        }
+
+        .disease-item h3 {
+            color: #2c3e50;
+            margin-bottom: 0.75rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .disease-item p {
+            color: #666;
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+        }
+        
+        .disease-item p:last-child {
+            margin-bottom: 0;
+        }
+
+        .match-percentage {
+            font-weight: bold;
+            color: #0277bd;
+            background-color: rgba(2, 119, 189, 0.1);
+            padding: 2px 8px;
+            border-radius: 12px;
+            margin-left: 5px;
+            display: inline-block;
+        }
+        
+        .severity-low {
+            color: #4CAF50;
+            font-weight: 600;
+            background-color: rgba(76, 175, 80, 0.1);
+            padding: 2px 8px;
+            border-radius: 12px;
+            margin-left: 5px;
+            display: inline-block;
+        }
+        
+        .severity-medium {
+            color: #FF9800;
+            font-weight: 600;
+            background-color: rgba(255, 152, 0, 0.1);
+            padding: 2px 8px;
+            border-radius: 12px;
+            margin-left: 5px;
+            display: inline-block;
+        }
+        
+        .severity-high {
+            color: #F44336;
+            font-weight: 600;
+            background-color: rgba(244, 67, 54, 0.1);
+            padding: 2px 8px;
+            border-radius: 12px;
+            margin-left: 5px;
+            display: inline-block;
+        }
+
+        .treatment-section {
+            margin-top: 1rem;
+            padding: 1.25rem;
+            border-radius: 12px;
+            background-color: white;
+            -webkit-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid #4CAF50;
+        }
+
+        .treatment-section h4 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .treatment-section p {
+            color: #555;
+            margin-bottom: 0.75rem;
+            line-height: 1.5;
+        }
+
+        .treatment-section ul {
+            padding-left: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .treatment-section li {
+            margin-bottom: 0.75rem;
+            color: #555;
+            position: relative;
+        }
+        
+        .disclaimer-mini {
+            margin-top: 1.25rem;
+            padding: 0.75rem;
+            background-color: #fff3e0;
+            border-radius: 8px;
+            border-left: 4px solid #ff9800;
+        }
+
+        .disclaimer-mini p {
+            margin: 0;
+            font-size: 0.85rem;
+            color: #e65100;
+        }
+        
+        /* Enhance result cards */
+        .result-card {
+            border-radius: 12px;
+            overflow: hidden;
+            -webkit-box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+            background: white;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .card-header {
+            display: flex;
+            align-items: center;
+            padding: 1rem 1.25rem;
+            background-color: #f8f9fa;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .card-header i {
+            font-size: 1.5rem;
+            margin-right: 0.75rem;
+            color: #7BD3F7;
+        }
+        
+        .card-header h2 {
+            font-size: 1.25rem;
+            color: #2c3e50;
+            margin: 0;
+        }
+        
+        .card-content {
+            padding: 1.25rem;
+            background-color: white;
+            border-radius: 0 0 12px 12px;
+            flex: 1;
+        }
+        
+        #diseasesList.card-content {
+            max-height: 400px;
+            overflow-y: auto;
+            padding: 1rem;
+        }
+        
+        /* Make the results grid more responsive */
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+    </style>
+    <link rel="stylesheet" href="../styles/responsive-update.css">
+    <link rel="stylesheet" href="../styles/translate-style.css">
+    <script src="../scripts/fix-translations.js"></script>
+    <style>
+        /* Position the Google Translate element properly */
+        #google_translate_element {
+            position: absolute;
+            top: 20px;
+            right: 150px;
+            z-index: 1000;
+        }
+        
+        /* Fix for translated content */
+        .goog-te-menu-value {
+            color: #fff !important;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 10px;
+            border-radius: 5px;
+            -webkit-backdrop-filter: blur(5px);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <h1 class="notranslate" translate="no">Sehat Bakhsh</h1>
+            </div>
+            <div id="google_translate_element"></div>
+            <div class="nav-links">
+                <a href="../index.html"><i class="fas fa-home"></i> Home</a>
+                <a href="../departments.html"><i class="fas fa-hospital"></i> Departments</a>
+                <a href="../blog.html"><i class="fas fa-blog"></i> Blog</a>
+                <a href="../contact.html"><i class="fas fa-envelope"></i> Contact</a>
+                <a href="../health-library/index.html"><i class="fas fa-book-medical"></i> Health Library</a>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle mobile menu" title="Toggle mobile menu">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <div class="nav-buttons">
+                
+                <div class="profile-icon">
+                    <img src="" alt="Profile" id="profilePic" onerror="this.onerror=null;this.src='../images/profile-avatar.png';">
+                    <div class="dropdown-content" id="dropdownContent">
+                        <a href="../profile.html">My Profile</a>
+                        <a href="../settings.html">Settings</a>
+                        <a href="../login.html">Log Out</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+<!-- Mobile Menu (Add this after the header) -->
+<div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close mobile menu">
+        <i class="fas fa-times"></i>
+    </button>
+    <div class="mobile-menu-links">
+        <a href="../index.html"><i class="fas fa-home"></i> Home</a>
+        <a href="../departments.html"><i class="fas fa-hospital"></i> Departments</a>
+        <a href="../blog.html"><i class="fas fa-blog"></i> Blog</a>
+        <a href="../contact.html"><i class="fas fa-envelope"></i> Contact</a>
+        <a href="../health-library/index.html"><i class="fas fa-book-medical"></i> Health Library</a>
+        <a href="../doctors.html">Appointment</a>
+        <a href="../profile.html"><i class="fas fa-user"></i> My Profile</a>
+        <a href="../settings.html"><i class="fas fa-cog"></i> Settings</a>
+        <a href="../login.html"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+    </div>
+</div>
+
+<div class="overlay" id="overlay"></div>
+
+<!-- Mobile Menu JavaScript -->
+<script>
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileMenuClose = document.getElementById('mobileMenuClose');
+    const overlay = document.getElementById('overlay');
+
+    mobileMenuBtn.addEventListener('click', function() {
+        mobileMenu.classList.add('active');
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    });
+
+    mobileMenuClose.addEventListener('click', function() {
+        mobileMenu.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    });
+
+    overlay.addEventListener('click', function() {
+        mobileMenu.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    });
+</script>
+
+    <main class="disease-search-container">
+        <section class="search-section animate__animated animate__fadeIn">
+            <h1>Digital Disease Search</h1>
+            <p class="search-subtitle">Enter your symptoms and we'll provide information about possible diseases and treatments.</p>
+            
+            <div class="symptom-search">
+                <div class="search-box">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" id="symptomInput" placeholder="Enter a symptom...">
+                    <button id="addSymptom" class="add-btn" aria-label="Add symptom"><i class="fas fa-plus"></i></button>
+                </div>
+                <div class="selected-symptoms" id="selectedSymptoms">
+                    <!-- Selected symptoms will appear here -->
+                </div>
+                <button id="searchDiseases" class="search-btn">
+                    <i class="fas fa-microscope"></i> Search Diseases
+                </button>
+            </div>
+        </section>
+
+        <section class="results-section" id="resultsSection">
+            <div class="results-header">
+                <h2>Your Health Analysis</h2>
+                <p>Based on your symptoms, here are possible matches and recommendations</p>
+            </div>
+            <div class="results-grid">
+                <div class="result-card diseases-list">
+                    <div class="card-header">
+                        <i class="fas fa-clipboard-list"></i>
+                        <h2>Possible Diseases</h2>
+                    </div>
+                    <div id="diseasesList" class="card-content">
+                        <!-- Disease results will appear here -->
+                    </div>
+                </div>
+
+                <div class="result-card probability-chart">
+                    <div class="card-header">
+                        <i class="fas fa-chart-pie"></i>
+                        <h2>Probability Analysis</h2>
+                    </div>
+                    <div class="card-content">
+                        <canvas id="probabilityChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="result-card symptoms-match">
+                    <div class="card-header">
+                        <i class="fas fa-check-circle"></i>
+                        <h2>Symptoms Match</h2>
+                    </div>
+                    <div class="card-content">
+                        <canvas id="symptomsMatchChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="result-card treatment-info">
+                    <div class="card-header">
+                        <i class="fas fa-medkit"></i>
+                        <h2>Treatment Information</h2>
+                    </div>
+                    <div id="treatmentInfo" class="card-content">
+                        <!-- Treatment information will appear here -->
+                    </div>
+                </div>
+
+                <div class="result-card online-results">
+                    <div class="card-header">
+                        <i class="fas fa-globe"></i>
+                        <h2>Online Resources</h2>
+                    </div>
+                    <div class="search-buttons card-content">
+                        <a href="#" class="search-link google" target="_blank">
+                            <i class="fab fa-google"></i>
+                            Google Search
+                        </a>
+                        <a href="#" class="search-link mayo" target="_blank">
+                            <i class="fas fa-hospital"></i>
+                            Mayo Clinic
+                        </a>
+                        <a href="#" class="search-link webmd" target="_blank">
+                            <i class="fas fa-notes-medical"></i>
+                            WebMD
+                        </a>
+                        <a href="#" class="search-link medline" target="_blank">
+                            <i class="fas fa-book-medical"></i>
+                            Medline Plus
+                        </a>
+                        <a href="#" class="search-link healthline" target="_blank">
+                            <i class="fas fa-heartbeat"></i>
+                            Healthline
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="disclaimer">
+        <p><strong>Disclaimer:</strong> This tool is for educational purposes only and should not be used as a substitute for professional medical advice. Please consult a doctor for proper diagnosis and treatment.</p>
+    </div>
+
+    <script src="https://kit.fontawesome.com/your-font-awesome-kit.js"></script>
+    <script>
+    // Load profile picture if available
+    function updateProfilePic() {
+    const profilePic = document.getElementById('profilePic');
+    if (!profilePic) return;
+    const savedAvatar = localStorage.getItem('profileAvatar');
+    const savedPic = localStorage.getItem('pic');
+    const storedProfilePic = localStorage.getItem('profilePicture');
+    if (savedAvatar) {
+        profilePic.src = savedAvatar;
+    } else if (savedPic) {
+        profilePic.src = savedPic;
+    } else if (storedProfilePic && storedProfilePic !== 'null') {
+        profilePic.src = storedProfilePic;
+    } else {
+        profilePic.src = '../images/profile-avatar.png';
+    }
+}
+    document.addEventListener('DOMContentLoaded', updateProfilePic);
+    window.onload = updateProfilePic;
+    window.addEventListener('storage', function(event) {
+        if (event.key === 'profilePicture') {
+            updateProfilePic();
+        }
+    });
+    setInterval(updateProfilePic, 1000);
+    
+    // Toggle dropdown when clicking on profile
+    // Ensure click handler is set after DOM is ready
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('profilePic').onclick = function(event) {
+        document.getElementById('dropdownContent').classList.toggle('show');
+        event.stopPropagation();
+    };
+    
+    }); // End DOMContentLoaded
+    // Close dropdown when clicking outside
+    window.onclick = function(event) {
+        if (!event.target.matches('#profilePic')) {
+            const dropdowns = document.getElementsByClassName('dropdown-content');
+            for (let i = 0; i < dropdowns.length; i++) {
+                const openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
+    };
+    </script>
+    <script src="../scripts/disease-database.js"></script>
+    <script src="../scripts/disease-search.js"></script>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script src="../scripts/fix-translations.js"></script>
+    <script src="../scripts/translate-manager.js"></script>
+</body>
+</html>

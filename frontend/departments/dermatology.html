@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Department of Dermatology - MediPlus</title>
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/department-detail.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="../scripts/fix-translations.js"></script>
+    <style>
+    /* Common heading styles for all sections */
+    .services-section h2,
+    .team-section h2,
+    .programs-section h2,
+    .centers-section h2,
+    .info-section h2,
+    .horizontal-section h2,
+    .overview-section h2,
+    .dept-hero h1 {
+        text-align: center;
+        margin-bottom: 40px;
+        color: #2c3e50;
+        font-size: 2.5rem;
+        font-weight: 600;
+        position: relative;
+        padding-bottom: 15px;
+    }
+
+    .services-section h2::after,
+    .team-section h2::after,
+    .programs-section h2::after,
+    .centers-section h2::after,
+    .info-section h2::after,
+    .horizontal-section h2::after,
+    .overview-section h2::after,
+    .dept-hero h1::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 3px;
+        background-color: #f1c40f;  /* Golden yellow theme for dermatology */
+    }
+
+    /* Horizontal section styles */
+    .horizontal-section {
+        padding: 60px 0;
+        background: #f8f9fa;
+    }
+
+    .horizontal-grid {
+        display: flex;
+        justify-content: space-between;
+        gap: 40px;
+        padding: 20px 0;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .horizontal-card {
+        flex: 1;
+        min-width: 300px;
+        max-width: 350px;
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        margin: 0 10px;
+    }
+
+    .horizontal-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .horizontal-card i {
+        color: #f1c40f;
+        margin-bottom: 20px;
+        display: block;
+        text-align: center;
+    }
+
+    .horizontal-card h3 {
+        color: #2c3e50;
+        margin-bottom: 15px;
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    .horizontal-card p {
+        color: #666;
+        margin-bottom: 20px;
+        text-align: center;
+        line-height: 1.6;
+    }
+
+    .horizontal-card ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .horizontal-card ul li {
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        color: #555;
+        line-height: 1.4;
+    }
+
+    .horizontal-card ul li i {
+        margin-right: 12px;
+        color: #27ae60;
+        font-size: 1rem;
+        display: inline;
+        text-align: left;
+        margin-bottom: 0;
+    }
+
+    @media (max-width: 1200px) {
+        .horizontal-grid {
+            padding: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .horizontal-card {
+            flex: 0 1 calc(33.333% - 40px);
+            margin: 0;
+        }
+    }
+
+    @media (max-width: 992px) {
+        .horizontal-card {
+            flex: 0 1 calc(50% - 40px);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .horizontal-grid {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .horizontal-card {
+            flex: none;
+            width: 100%;
+            max-width: 400px;
+            margin: 0 0 20px 0;
+        }
+
+        .horizontal-card:last-child {
+            margin-bottom: 0;
+        }
+    }
+    </style>
+    <link rel="stylesheet" href="../styles/responsive.css">
+</head>
+<body>
+    <!-- Department Hero -->
+    <section class="dept-hero dermatology">
+        <div class="container">
+            <div class="hero-content">
+                <i class="fas fa-hand-sparkles"></i>
+                <h1>Department of Dermatology</h1>
+                <p>Expert care for skin, hair, and nail health</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="overview-section">
+        <div class="container">
+            <div class="overview-card">
+                <h2>Department Overview</h2>
+                <p>Our Department of Dermatology provides comprehensive care for all skin, hair, and nail conditions. Using the latest technology and evidence-based treatments, our expert team offers both medical and cosmetic dermatology services.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section class="services-section">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-clinic-medical"></i>
+                    <h3>Medical Dermatology</h3>
+                    <ul>
+                        <li>Skin Cancer Screening</li>
+                        <li>Acne Treatment</li>
+                        <li>Psoriasis Management</li>
+                        <li>Eczema Care</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <i class="fas fa-spa"></i>
+                    <h3>Cosmetic Dermatology</h3>
+                    <ul>
+                        <li>Botox and Fillers</li>
+                        <li>Laser Treatments</li>
+                        <li>Chemical Peels</li>
+                        <li>Anti-Aging Procedures</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <i class="fas fa-microscope"></i>
+                    <h3>Specialized Care</h3>
+                    <ul>
+                        <li>Mohs Surgery</li>
+                        <li>Phototherapy</li>
+                        <li>Hair Loss Treatment</li>
+                        <li>Scar Revision</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Treatment Centers -->
+    <section class="centers-section">
+        <div class="container">
+            <h2>Specialized Treatment Centers</h2>
+            <div class="centers-grid">
+                <div class="center-card">
+                    <img src="../images/dermatology/Laser-Center.jpg" alt="Laser Center">
+                    <div class="card-content">
+                        <h3>Advanced Laser Center</h3>
+                        <p>State-of-the-art laser treatments for precise care</p>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i>Laser Hair Removal</li>
+                            <li><i class="fas fa-check-circle"></i>Skin Resurfacing</li>
+                            <li><i class="fas fa-check-circle"></i>Vascular Treatments</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="center-card">
+                    <img src="../images/dermatology/Mohs-Surgery-Center.jpg" alt="Mohs Surgery Center">
+                    <div class="card-content">
+                        <h3>Mohs Surgery Center</h3>
+                        <p>Advanced skin cancer treatment with microscopic precision</p>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i>Precise Tumor Removal</li>
+                            <li><i class="fas fa-check-circle"></i>Microscopic Analysis</li>
+                            <li><i class="fas fa-check-circle"></i>Reconstructive Surgery</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="center-card">
+                    <img src="../images/dermatology/Aesthetic-center.jpg" alt="Aesthetic Center">
+                    <div class="card-content">
+                        <h3>Aesthetic Center</h3>
+                        <p>State-of-the-art aesthetic treatments and procedures</p>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i>Injectable Treatments</li>
+                            <li><i class="fas fa-check-circle"></i>Skin Rejuvenation</li>
+                            <li><i class="fas fa-check-circle"></i>Body Contouring</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <h2>Our Dermatology Team</h2>
+            <div class="team-grid">
+                <div class="team-card">
+                    <img src="../images/dermatology/Dr-ichael-Ross.jpg" alt="Dr. Michael Ross">
+                    <div class="team-info">
+                        <h3>Dr. Michael Ross</h3>
+                        <p>Head of Dermatology</p>
+                        <div class="expertise">
+                            <span>Medical Dermatology</span>
+                            <span>Skin Cancer</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <img src="../images/dermatology/Dr-Laura-Chen.jpg" alt="Dr. Laura Chen">
+                    <div class="team-info">
+                        <h3>Dr. Laura Chen</h3>
+                        <p>Cosmetic Dermatologist</p>
+                        <div class="expertise">
+                            <span>Aesthetic Procedures</span>
+                            <span>Laser Therapy</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <img src="../images/dermatology/Dr-James-Wilson.jpg" alt="Dr. James Wilson">
+                    <div class="team-info">
+                        <h3>Dr. James Wilson</h3>
+                        <p>Mohs Surgeon</p>
+                        <div class="expertise">
+                            <span>Mohs Surgery</span>
+                            <span>Reconstructive Surgery</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Advanced Treatments -->
+    <section class="treatments-section">
+        <div class="container">
+            <h2>Advanced Treatments</h2>
+            <p>We offer advanced treatment methods:</p>
+            <ul>
+                <li>Treatment of Skin Conditions</li>
+                <li>Cosmetic Treatments</li>
+                <li>Facial Skin Rejuvenation</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Skin Care Programs -->
+    <section class="programs-section">
+        <div class="container">
+            <h2>Treatment Programs</h2>
+            <div class="programs-grid">
+                <div class="program-card">
+                    <i class="fas fa-sun"></i>
+                    <h3>Preventive Care</h3>
+                    <p>Skin cancer prevention and screening</p>
+                </div>
+
+                <div class="program-card">
+                    <i class="fas fa-leaf"></i>
+                    <h3>Healthy Skin</h3>
+                    <p>Comprehensive and balanced approach to skin health</p>
+                </div>
+
+                <div class="program-card">
+                    <i class="fas fa-clock-rotate-left"></i>
+                    <h3>Anti-Aging Prevention</h3>
+                    <p>Specialized program to reduce signs of aging</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Patient Information -->
+    <section class="info-section">
+        <div class="container">
+            <h2>Patient Information</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>Clinic Hours</h3>
+                    <ul>
+                        <li>Monday to Friday: 8:00 AM to 5:00 PM</li>
+                        <li>Saturday: 9:00 AM to 1:00 PM</li>
+                        <li>Cosmetic Services: By appointment</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <i class="fas fa-clipboard-list"></i>
+                    <h3>First Appointment</h3>
+                    <ul>
+                        <li>Medical History</li>
+                        <li>Current Medications</li>
+                        <li>Insurance Information</li>
+                        <li>Previous Treatments</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <i class="fas fa-phone"></i>
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li>Appointments: (555) 123-4567</li>
+                        <li>Cosmetic Services: (555) 123-8901</li>
+                        <li>Email: dermatology@mediplus.com</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Appointment CTA -->
+    <section class="dept-cta">
+        <div class="container">
+            <h2>Are You Ready for Healthy Skin?</h2>
+            <p>Schedule a consultation with our dermatology specialists.</p>
+            <a href="../doctors.html" class="cta-btn">Appointment</a>
+        </div>
+    </section>
+
+    <script src="../js/profile-dropdown.js"></script>
+    <script src="../scripts/fix-translations.js"></script>
+    <script src="../scripts/translate-manager.js"></script>
+</body>
+</html>

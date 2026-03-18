@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Library A-Z with New Entries - Mediplus</title>
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="styles/health-library.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+    <link rel="stylesheet" href="../styles/translate-style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <h1 class="notranslate" translate="no">Sehat Bakhsh</h1>
+            </div>
+            <div id="google_translate_element"></div>
+            <div class="nav-links">
+                <a href="../index.html">Home</a>
+                <a href="index.html">Health Library</a>
+                <a href="#" class="active">Enhanced Library</a>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle mobile menu">
+                <i class="fas fa-bars"></i>
+            </button>
+
+        </nav>
+    </header>
+
+<div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close mobile menu">
+        <i class="fas fa-times"></i>
+    </button>
+    <div class="mobile-menu-links">
+        <a href="index.html">Home</a>
+        <a href="departments.html">Department</a>
+        <a href="blog.html">Blog</a>
+        <a href="contact.html">Contact</a>
+        <a href="health-library/index.html">Health Library</a>
+        <a href="../doctors.html">Appointment</a>
+    </div>
+</div>
+
+<div class="overlay" id="overlay"></div>
+
+<script>
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileMenuClose = document.getElementById('mobileMenuClose');
+    const overlay = document.getElementById('overlay');
+
+    mobileMenuBtn.addEventListener('click', function() {
+        mobileMenu.classList.add('active');
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    });
+
+    mobileMenuClose.addEventListener('click', function() {
+        mobileMenu.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    });
+
+    overlay.addEventListener('click', function() {
+        mobileMenu.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    });
+</script>
+
+
+    <main class="health-library">
+        <section class="intro-section">
+            <div class="container">
+                <h2>Enhanced Health Library</h2>
+                <p>Welcome to our enhanced health library, now with additional entries for the J, K, and L sections. This version demonstrates how to integrate new entries into the existing library.</p>
+            </div>
+        </section>
+
+        <section class="search-section">
+            <div class="container">
+                <div class="search-container">
+                    <input type="text" id="search-input" placeholder="Search health conditions...">
+                    <button id="search-button" aria-label="Search" title="Search"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <section class="alphabet-section">
+            <div class="container">
+                <div class="alphabet-buttons" id="alphabet-buttons">
+                    <!-- Alphabet buttons will be generated here -->
+                </div>
+            </div>
+        </section>
+
+        <section class="conditions-section">
+            <div class="container">
+                <div id="conditions-container">
+                    <!-- Health conditions will be displayed here -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Mediplus Health Library. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/health-library.js"></script>
+    <script src="js/new-entries.js"></script>
+    
+    <script>
+        // Wait for DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            // Store the original initialization functions
+            const originalInitializeAlphabetButtons = initializeAlphabetButtons;
+            const originalDisplayAllConditions = displayAllConditions;
+            
+            // Add all J section entries after Jaundice
+            const jIndex = healthConditions.findIndex(c => c.name === "Jaundice") + 1;
+            if (jIndex > 0) {
+                healthConditions.splice(jIndex, 0, ...jSectionEntries);
+            } else {
+                console.warn("Jaundice entry not found, J section entries will be appended");
+                healthConditions.push(...jSectionEntries);
+            }
+            
+            // Add all K section entries after Kidney Stones
+            const kIndex = healthConditions.findIndex(c => c.name === "Kidney Stones") + 1;
+            if (kIndex > 0) {
+                healthConditions.splice(kIndex, 0, ...kSectionEntries);
+            } else {
+                console.warn("Kidney Stones entry not found, K section entries will be appended");
+                healthConditions.push(...kSectionEntries);
+            }
+            
+            // Add all L section entries after Lupus
+            const lIndex = healthConditions.findIndex(c => c.name === "Lupus") + 1;
+            if (lIndex > 0) {
+                healthConditions.splice(lIndex, 0, ...lSectionEntries);
+            } else {
+                console.warn("Lupus entry not found, L section entries will be appended");
+                healthConditions.push(...lSectionEntries);
+            }
+            
+            // Initialize the library with the updated entries
+            originalInitializeAlphabetButtons();
+            originalDisplayAllConditions();
+            
+            console.log("Enhanced Health Library loaded with additional entries for J, K, and L sections");
+        });
+    </script>
+    <script type="text/javascript">
+        function googleTranslateElementInit(){
+            new google.translate.TranslateElement(
+                {pageLanguage: 'en'},
+                'google_translate_element'
+            );
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script src="../scripts/translate-manager.js"></script>
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/profile.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles/responsive.css">
+    <link rel="stylesheet" href="styles/translate-style.css">
+    <style>
+        /* Position the Google Translate element properly */
+        #google_translate_element {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            z-index: 1000;
+        }
+        
+        /* Fix for translated content */
+        .goog-te-menu-value {
+            color: #2c3e50 !important;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 10px;
+            border-radius: 5px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <div class="profile-header">
+            <h1><i class="fas fa-user-circle"></i> My Profile</h1>
+        </div>
+        <div id="google_translate_element"></div>
+
+        <!-- Avatar Section -->
+        <div class="profile-section">
+            <div class="avatar-container">
+                <img src="images/profile-avatar.png" alt="Profile Avatar" class="profile-avatar" id="profileImage">
+                <input type="file" id="avatarInput" accept="image/*" class="hidden-input" aria-label="Upload profile picture">
+                <button onclick="document.getElementById('avatarInput').click()" class="change-avatar-btn">
+                    <i class="fas fa-camera"></i> Change Avatar
+                </button>
+            </div>
+        </div>
+
+        <!-- Personal Information -->
+        <div class="profile-section">
+            <h2><i class="fas fa-user"></i> Personal Information</h2>
+            <div class="profile-item">
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" class="profile-input" value="John Doe">
+            </div>
+            <div class="profile-item">
+                <label for="email">Email</label>
+                <input type="email" id="email" class="profile-input" value="john.doe@example.com">
+            </div>
+            <div class="profile-item">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" class="profile-input" value="+1 234 567 8900">
+            </div>
+        </div>
+
+        <!-- Address Information -->
+        <div class="profile-section">
+            <h2><i class="fas fa-map-marker-alt"></i> Address</h2>
+            <div class="profile-item">
+                <label for="street">Street</label>
+                <input type="text" id="street" class="profile-input" value="123 Main St">
+            </div>
+            <div class="profile-item">
+                <label for="city">City</label>
+                <input type="text" id="city" class="profile-input" value="New York">
+            </div>
+            <div class="profile-item">
+                <label for="state">State</label>
+                <input type="text" id="state" class="profile-input" value="NY">
+            </div>
+            <div class="profile-item">
+                <label for="zipCode">ZIP Code</label>
+                <input type="text" id="zipCode" class="profile-input" value="10001">
+            </div>
+        </div>
+
+        <!-- Medical Information -->
+        <div class="profile-section">
+            <h2><i class="fas fa-heartbeat"></i> Medical Information</h2>
+            <div class="profile-item">
+                <label for="bloodType">Blood Type</label>
+                <input type="text" id="bloodType" class="profile-input" value="A+">
+            </div>
+            <div class="profile-item">
+                <label for="allergies">Allergies</label>
+                <input type="text" id="allergies" class="profile-input" value="None">
+            </div>
+            <div class="profile-item">
+                <label for="medications">Current Medications</label>
+                <input type="text" id="medications" class="profile-input" value="None">
+            </div>
+        </div>
+
+        <!-- Emergency Contact -->
+        <div class="profile-section">
+            <h2><i class="fas fa-phone"></i> Emergency Contact</h2>
+            <div class="profile-item">
+                <label for="emergencyName">Contact Name</label>
+                <input type="text" id="emergencyName" class="profile-input" value="Jane Doe">
+            </div>
+            <div class="profile-item">
+                <label for="emergencyRelation">Relationship</label>
+                <input type="text" id="emergencyRelation" class="profile-input" value="Spouse">
+            </div>
+            <div class="profile-item">
+                <label for="emergencyPhone">Contact Phone</label>
+                <input type="tel" id="emergencyPhone" class="profile-input" value="+1 234 567 8901">
+            </div>
+        </div>
+
+        <!-- Save Button -->
+        <div class="profile-footer">
+            <button class="save-btn" id="saveProfile">
+                <i class="fas fa-save"></i> Save Changes
+            </button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Handle avatar change
+        document.getElementById('avatarInput').addEventListener('change', function(e) {
+            if (e.target.files && e.target.files[0]) {
+                const reader = new FileReader();
+                
+                reader.onload = function(event) {
+                    // Update profile image
+                    document.getElementById('profileImage').src = event.target.result;
+                    
+                    // Save to localStorage
+                    localStorage.setItem('profileAvatar', event.target.result);
+                    
+                    // Update all profile pictures across the site
+                    const allProfilePics = document.querySelectorAll('.profile-avatar, #profilePic');
+                    allProfilePics.forEach(pic => {
+                        pic.src = event.target.result;
+                    });
+                };
+                
+                reader.readAsDataURL(e.target.files[0]);
+            }
+        });
+
+        // Load saved avatar
+        window.addEventListener('DOMContentLoaded', function() {
+            const savedAvatar = localStorage.getItem('profileAvatar');
+            if (savedAvatar) {
+                document.getElementById('profileImage').src = savedAvatar;
+                const allProfilePics = document.querySelectorAll('.profile-avatar, #profilePic');
+                allProfilePics.forEach(pic => {
+                    pic.src = savedAvatar;
+                });
+            }
+        });
+
+        // Handle profile save
+        document.getElementById('saveProfile').addEventListener('click', function() {
+            const profile = {
+                fullName: document.getElementById('fullName').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                street: document.getElementById('street').value,
+                city: document.getElementById('city').value,
+                state: document.getElementById('state').value,
+                zipCode: document.getElementById('zipCode').value,
+                bloodType: document.getElementById('bloodType').value,
+                allergies: document.getElementById('allergies').value,
+                medications: document.getElementById('medications').value,
+                emergencyName: document.getElementById('emergencyName').value,
+                emergencyRelation: document.getElementById('emergencyRelation').value,
+                emergencyPhone: document.getElementById('emergencyPhone').value
+            };
+            
+            localStorage.setItem('profileData', JSON.stringify(profile));
+            
+            // Show save confirmation
+            const saveBtn = this;
+            const originalText = saveBtn.innerHTML;
+            saveBtn.innerHTML = '<i class="fas fa-check"></i> Saved!';
+            saveBtn.classList.add('success');
+            
+            setTimeout(() => {
+                saveBtn.innerHTML = originalText;
+                saveBtn.classList.remove('success');
+            }, 2000);
+        });
+
+        // Load saved profile data
+        window.addEventListener('DOMContentLoaded', function() {
+            const savedProfile = localStorage.getItem('profileData');
+            if (savedProfile) {
+                const profile = JSON.parse(savedProfile);
+                document.getElementById('fullName').value = profile.fullName || '';
+                document.getElementById('email').value = profile.email || '';
+                document.getElementById('phone').value = profile.phone || '';
+                document.getElementById('street').value = profile.street || '';
+                document.getElementById('city').value = profile.city || '';
+                document.getElementById('state').value = profile.state || '';
+                document.getElementById('zipCode').value = profile.zipCode || '';
+                document.getElementById('bloodType').value = profile.bloodType || '';
+                document.getElementById('allergies').value = profile.allergies || '';
+                document.getElementById('medications').value = profile.medications || '';
+                document.getElementById('emergencyName').value = profile.emergencyName || '';
+                document.getElementById('emergencyRelation').value = profile.emergencyRelation || '';
+                document.getElementById('emergencyPhone').value = profile.emergencyPhone || '';
+            }
+        });
+    </script>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script src="scripts/fix-translations.js"></script>
+    <script src="scripts/translate-manager.js"></script>
+</body>
+</html>

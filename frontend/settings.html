@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Mediplus</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/settings.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles/responsive.css">
+</head>
+<body>
+
+    <div class="settings-container">
+        <div class="settings-header">
+            <h1><i class="fas fa-cog"></i> Settings</h1>
+        </div>
+
+        <!-- Theme Settings -->
+        <div class="settings-section">
+            <h2><i class="fas fa-palette"></i> Theme</h2>
+            <div class="theme-options">
+                <div class="theme-btn" data-theme="light">
+                    <i class="fas fa-sun"></i>
+                    <span>Light</span>
+                </div>
+                <div class="theme-btn" data-theme="dark">
+                    <i class="fas fa-moon"></i>
+                    <span>Dark</span>
+                </div>
+            </div>
+            <div class="setting-item">
+                <label class="switch">
+                    <input type="checkbox" id="autoTheme">
+                    <span class="slider round"></span>
+                </label>
+                <span>Auto Dark Mode (6 PM - 6 AM)</span>
+            </div>
+        </div>
+
+        <!-- Language Settings -->
+        <div class="settings-section">
+            <h2><i class="fas fa-language"></i> Language</h2>
+            <select id="language" class="settings-select">
+                <option value="en">English</option>
+                <option value="es">Español</option>
+                <option value="fr">Français</option>
+                <option value="de">Deutsch</option>
+                <option value="ar">العربية</option>
+                <option value="hi">हिंदी</option>
+                <option value="zh">中文</option>
+                <option value="ur">اردو</option>
+            </select>
+        </div>
+
+        <!-- Accessibility Settings -->
+        <div class="settings-section">
+            <h2><i class="fas fa-universal-access"></i> Accessibility</h2>
+            <div class="setting-item">
+                <label class="switch">
+                    <input type="checkbox" id="highContrast">
+                    <span class="slider round"></span>
+                </label>
+                <span>High Contrast</span>
+            </div>
+            <div class="setting-item">
+                <label class="switch">
+                    <input type="checkbox" id="largeText">
+                    <span class="slider round"></span>
+                </label>
+                <span>Large Text</span>
+            </div>
+            <div class="setting-item">
+                <label class="switch">
+                    <input type="checkbox" id="reduceMotion">
+                    <span class="slider round"></span>
+                </label>
+                <span>Reduce Motion</span>
+            </div>
+            <div class="font-size-control">
+                <label>Text Size</label>
+                <div class="size-controls">
+                    <button id="decreaseText"><i class="fas fa-minus"></i></button>
+                    <span id="textSize">16px</span>
+                    <button id="increaseText"><i class="fas fa-plus"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Security Settings -->
+        <div class="settings-section">
+            <h2><i class="fas fa-shield-alt"></i> Security</h2>
+            <div class="setting-item">
+                <label class="switch">
+                    <input type="checkbox" id="twoFactor">
+                    <span class="slider round"></span>
+                </label>
+                <span>Two-Factor Authentication</span>
+            </div>
+            <div class="setting-item">
+                <label class="switch">
+                    <input type="checkbox" id="loginAlerts">
+                    <span class="slider round"></span>
+                </label>
+                <span>Login Alerts</span>
+            </div>
+            <button class="change-password-btn">
+                <i class="fas fa-key"></i> Change Password
+            </button>
+        </div>
+
+        <!-- Notification Settings -->
+        <div class="settings-section">
+            <h2><i class="fas fa-bell"></i> Notifications</h2>
+            <div class="setting-item">
+                <label class="switch">
+                    <input type="checkbox" id="emailNotif">
+                    <span class="slider round"></span>
+                </label>
+                <span>Email Notifications</span>
+            </div>
+            <div class="setting-item">
+                <label class="switch">
+                    <input type="checkbox" id="appointmentReminder">
+                    <span class="slider round"></span>
+                </label>
+                <span>Appointment Reminders</span>
+            </div>
+            <div class="setting-item">
+                <label class="switch">
+                    <input type="checkbox" id="newsUpdates">
+                    <span class="slider round"></span>
+                </label>
+                <span>News & Updates</span>
+            </div>
+        </div>
+
+        <!-- Privacy Settings -->
+        <div class="settings-section">
+            <h2><i class="fas fa-user-shield"></i> Privacy</h2>
+            <div class="setting-item">
+                <label class="switch">
+                    <input type="checkbox" id="cookies">
+                    <span class="slider round"></span>
+                </label>
+                <span>Allow Cookies</span>
+            </div>
+            <div class="setting-item">
+                <label class="switch">
+                    <input type="checkbox" id="analytics">
+                    <span class="slider round"></span>
+                </label>
+                <span>Allow Analytics</span>
+            </div>
+            <div class="setting-item">
+                <label class="switch">
+                    <input type="checkbox" id="marketing">
+                    <span class="slider round"></span>
+                </label>
+                <span>Marketing Communications</span>
+            </div>
+        </div>
+
+        <div class="settings-footer">
+            <button id="saveSettings" class="save-btn">
+                <i class="fas fa-save"></i> Save Changes
+            </button>
+        </div>
+    </div>
+
+    <script src="js/settings.js"></script>
+</body>
+</html>

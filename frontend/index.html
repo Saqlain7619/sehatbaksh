@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Website</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        body {
+            transition: background-color 0.5s ease;
+        }
+
+        body:hover {
+            background-color: #f0f8ff;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(45deg, #1e90ff, #00bfff);
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(30, 144, 255, 0.3);
+        }
+
+        .cta-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: all 0.6s ease;
+        }
+
+        .cta-btn:hover {
+            box-shadow: 0 8px 25px rgba(30, 144, 255, 0.4);
+            background: linear-gradient(45deg, #00bfff, #1e90ff);
+        }
+
+        .cta-btn:hover::before {
+            left: 100%;
+        }
+
+        .cta-btn:active {
+            box-shadow: 0 3px 10px rgba(30, 144, 255, 0.3);
+        }
+
+        .doctor-btn {
+            display: inline-block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .doctor-btn:hover {
+            background-color: #45a049;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .doctor-btn:active {
+            transform: scale(0.95);
+        }
+
+        .appointment-btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(45deg, #1e90ff, #00bfff);
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(30, 144, 255, 0.3);
+        }
+
+        .appointment-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: all 0.6s ease;
+        }
+
+        .appointment-btn:hover {
+            box-shadow: 0 8px 25px rgba(30, 144, 255, 0.4);
+            background: linear-gradient(45deg, #00bfff, #1e90ff);
+        }
+
+        .appointment-btn:hover::before {
+            left: 100%;
+        }
+
+        .appointment-btn:active {
+            box-shadow: 0 3px 10px rgba(30, 144, 255, 0.3);
+        }
+
+        .glassy-btn {
+            display: inline-block;
+            padding: 10px 25px;
+            background-color: #7BD3F7;
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 15px rgba(123, 211, 247, 0.4);
+            -webkit-backdrop-filter: blur(5px);
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+            margin-right: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glassy-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+            transition: all 0.6s ease;
+        }
+
+        .glassy-btn:hover {
+            background-color: #5EC8F2;
+            box-shadow: 0 8px 20px rgba(123, 211, 247, 0.6);
+        }
+
+        .glassy-btn:hover::before {
+            left: 100%;
+        }
+
+        .glassy-btn:active {
+            box-shadow: 0 3px 10px rgba(123, 211, 247, 0.3);
+        }
+
+        footer {
+            background-color: #1e90ff;
+            color: white;
+            padding: 20px 0;
+            transition: background-color 0.3s ease;
+        }
+
+        footer:hover {
+            background-color: #0078d7;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #ffeb3b;
+        }
+    </style>
+    <link rel="stylesheet" href="styles/responsive-update.css">
+    <link rel="stylesheet" href="styles/translate-style.css">
+    <script src="scripts/remove-gtranslate-banner.js"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>Sehat Bakhsh</h1>
+            </div> 
+            <div id="google_translate_element"></div>
+            <div class="nav-links">
+                <a href="index.html" class="glassy-btn"><i class="fas fa-home"></i> Home</a>
+                <a href="departments.html"><i class="fas fa-hospital"></i> Departments</a>
+                <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
+                <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+                <a href="health-library/index.html"><i class="fas fa-book-medical"></i> Health Library</a>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <div class="nav-buttons">
+                <a href="doctors.html" class="cta-btn">Appointment</a>
+                <div class="profile-icon">
+                    <img src="images/profile-avatar.png" alt="Profile" id="profilePic">
+                    <div class="dropdown-content" id="dropdownContent">
+                        <a href="profile.html">My Profile</a>
+                        <a href="settings.html">Settings</a>
+                        <a href="login.html">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+<!-- Mobile Menu (Add this after the header) -->
+<div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close mobile menu">
+        <i class="fas fa-times"></i>
+    </button>
+    <div class="mobile-menu-links">
+        <a href="index.html"><i class="fas fa-home"></i> Home</a>
+        <a href="departments.html"><i class="fas fa-hospital"></i> Departments</a>
+        <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
+        <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+        <a href="health-library/index.html"><i class="fas fa-book-medical"></i> Health Library</a>
+        <a href="doctors.html"><i class="fas fa-user-md"></i> Appointment</a>
+        <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
+        <a href="login.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+    </div>
+</div>
+
+<div class="overlay" id="overlay"></div>
+
+<!-- Mobile Menu JavaScript (Add this before the closing body tag) -->
+<script>
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileMenuClose = document.getElementById('mobileMenuClose');
+    const overlay = document.getElementById('overlay');
+
+    if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', function() {
+            mobileMenu.classList.add('active');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+    }
+
+    if (mobileMenuClose) {
+        mobileMenuClose.addEventListener('click', function() {
+            mobileMenu.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+    }
+</script>
+
+    <main>
+        <section class="hero">
+            <div class="hero-bg-animation"></div>
+            <div class="hero-content animate__animated animate__fadeIn">
+                <h2 class="animate__animated animate__fadeInDown notranslate" translate="no">Welcome to Sehat Bakhsh</h2>
+                <h1 class="animate__animated animate__fadeInUp">We care for your health</h1>
+                <p class="animate__animated animate__fadeInUp animate__delay-1s">We provide you with the latest medical facilities and expert doctors. Your health is our top priority.</p>
+                <a href="diseases/disease-search.html" class="cta-btn animate__animated animate__pulse animate__infinite">Get Started</a>
+            </div>
+            
+        </section>
+
+        <section class="about">
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="images/doctorPatient.jpg" alt="Doctor with Patient">
+                </div>
+                <div class="about-text animate__animated animate__fadeInRight">
+                    <h2 class="notranslate" translate="no">Sehat Bakhsh - Your trusted medical center</h2>
+                    <p>At Sehat Bakhsh, we are committed to raising the standard of healthcare. With our expert doctors and latest medical facilities, we provide you with the best medical services. Our services include diagnosis, treatment, and health recovery.</p>
+                    <div class="stats">
+                        <div class="stat-item">
+                            <h3>30+</h3>
+                            <p>Years of Experience</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>50+</h3>
+                            <p>Expert Doctors</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>100%</h3>
+                            <p>Patient Satisfaction</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="services">
+            <div class="section-title">
+                <h2 class="animate__animated animate__fadeIn">Our Services</h2>
+                <p class="animate__animated animate__fadeIn">We provide comprehensive medical services</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card animate__animated animate__fadeInUp">
+                    <div class="service-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h3>Cardiology</h3>
+                    <p>Diagnosis and treatment of heart diseases with the latest technology</p>
+                    <a href="#" class="learn-more">Learn More →</a>
+                </div>
+                <div class="service-card animate__animated animate__fadeInUp" data-wow-delay="0.2s">
+                    <div class="service-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Neurology</h3>
+                    <p>Comprehensive care for neurological diseases and conditions</p>
+                    <a href="#" class="learn-more">Learn More →</a>
+                </div>
+                <div class="service-card animate__animated animate__fadeInUp" data-wow-delay="0.4s">
+                    <div class="service-icon">
+                        <i class="fas fa-tooth"></i>
+                    </div>
+                    <h3>Dental Care</h3>
+                    <p>Complete dental services from prevention to restoration</p>
+                    <a href="#" class="learn-more">Learn More →</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="stats-counter">
+            <div class="counter-grid">
+                <div class="counter-item animate__animated animate__fadeIn">
+                    <i class="fas fa-user-md"></i>
+                    <div class="counter" data-target="50">0</div>
+                    <h4>Expert Doctors</h4>
+                </div>
+                <div class="counter-item animate__animated animate__fadeIn">
+                    <i class="fas fa-procedures"></i>
+                    <div class="counter" data-target="1500">0</div>
+                    <h4>Satisfied Patients</h4>
+                </div>
+                <div class="counter-item animate__animated animate__fadeIn">
+                    <i class="fas fa-hospital"></i>
+                    <div class="counter" data-target="15">0</div>
+                    <h4>Medical Centers</h4>
+                </div>
+                <div class="counter-item animate__animated animate__fadeIn">
+                    <i class="fas fa-award"></i>
+                    <div class="counter" data-target="25">0</div>
+                    <h4>Years of Experience</h4>
+                </div>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="features-grid">
+                <div class="feature-content">
+                    <h2 class="animate__animated animate__fadeInLeft">Why Choose Us?</h2>
+                    <div class="feature-list">
+                        <div class="feature-item animate__animated animate__fadeInLeft">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <h3>24/7 Emergency Care</h3>
+                                <p>24-hour emergency medical services available</p>
+                            </div>
+                        </div>
+                        <div class="feature-item animate__animated animate__fadeInLeft">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <h3>Expert Staff</h3>
+                                <p>Experienced and compassionate medical staff</p>
+                            </div>
+                        </div>
+                        <div class="feature-item animate__animated animate__fadeInLeft">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <h3>Modern Equipment</h3>
+                                <p>Latest medical technology and facilities</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="feature-image animate__animated animate__fadeInRight">
+                    <img src="images/medical-facalty.jpg" alt="Modern Medical Facilities">
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonials">
+            <div class="section-title">
+                <h2 class="animate__animated animate__fadeIn">Patient Testimonials</h2>
+                <p class="animate__animated animate__fadeIn">What our patients say about us</p>
+            </div>
+            <div class="testimonials-slider">
+                <div class="testimonial-card animate__animated animate__fadeIn">
+                    <div class="testimonial-content">
+                        <i class="fas fa-quote-left"></i>
+                        <p>"High-quality care and attention. The staff was professional and caring during my treatment."</p>
+                        <div class="testimonial-author">
+                            <div class="author-info">
+                                <h4>Sarah Johnson</h4>
+                                <span>Patient</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- More testimonial cards can be added here -->
+            </div>
+        </section>
+    </main>
+
+    <div class="center-text">
+        <a href="doctors.html" class="doctor-btn">Meet Our Doctors</a>
+        <a href="health-library/index.html" class="doctor-btn blue">Health Library A to Z</a>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <h3 class="notranslate" translate="no">Sehat Bakhsh</h3>
+                <p>Healthcare at its best</p>
+            </div>
+            <div class="footer-links">
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms-of-service.html">Terms of Service</a>
+                <a href="contact.html">Contact Us</a>
+            </div>
+            <div class="footer-social">
+                <a href="#" aria-label="Visit our Facebook page"><i class="fab fa-facebook"></i></a>
+                <a href="#" aria-label="Visit our Twitter page"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="Visit our Instagram page"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <p class="copyright">&copy; 2025 Sehat Bakhsh. All rights reserved.</p>
+    </footer>
+
+    <script src="scripts/main.js"></script>
+    
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement(
+                {pageLanguage: 'en'},
+                'google_translate_element'
+            );
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script src="scripts/translate-manager.js"></script>
+    <script>
+        // Load profile picture if saved
+        window.addEventListener('DOMContentLoaded', function() {
+            const savedAvatar = localStorage.getItem('profileAvatar');
+            const savedPic = localStorage.getItem('pic');
+            if (savedAvatar) {
+                document.getElementById('profilePic').src = savedAvatar;
+            } else if (savedPic) {
+                document.getElementById('profilePic').src = savedPic;
+            }
+            
+            // Toggle dropdown when profile picture is clicked
+            const profilePic = document.getElementById('profilePic');
+            if (profilePic) {
+                profilePic.onclick = function(event) {
+                    event.preventDefault();
+                    document.getElementById('dropdownContent').classList.toggle('show');
+                };
+            }
+            
+            // Close dropdown when clicking outside
+            window.onclick = function(event) {
+                if (!event.target.matches('#profilePic')) {
+                    const dropdowns = document.getElementsByClassName('dropdown-content');
+                    for (let i = 0; i < dropdowns.length; i++) {
+                        const openDropdown = dropdowns[i];
+                        if (openDropdown.classList.contains('show')) {
+                            openDropdown.classList.remove('show');
+                        }
+                    }
+                }
+            };
+        });
+    </script>
+    <!-- Add language-aware logo script -->
+    <script src="scripts/language-aware-logo.js"></script>
+</body>
+</html>

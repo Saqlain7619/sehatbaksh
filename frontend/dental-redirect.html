@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting to Dental Department</title>
+    <script>
+        // Use multiple methods to ensure redirect works
+        window.onload = function() {
+            // Direct approach
+            window.location.href = "departments/dental.html";
+            
+            // Fallback with slight delay if the first method doesn't work
+            setTimeout(function() {
+                window.location.replace("departments/dental.html");
+            }, 100);
+            
+            // Another fallback if both methods above fail
+            setTimeout(function() {
+                document.location = "departments/dental.html";
+            }, 200);
+        }
+    </script>
+</head>
+<body>
+    <p>Redirecting to the Dental Department page...</p>
+    <p>If you are not redirected automatically, <a href="departments/dental.html">click here</a>.</p>
+</body>
+</html>

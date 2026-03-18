@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Department of Endocrinology - MediPlus</title>
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/department-detail.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="../scripts/fix-translations.js"></script>
+    <style>
+        /* Common heading styles for all sections */
+        .services-section h2,
+        .team-section h2,
+        .programs-section h2,
+        .centers-section h2,
+        .info-section h2,
+        .horizontal-section h2,
+        .overview-section h2,
+        .dept-hero h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #2c3e50;
+            font-size: 2.5rem;
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .services-section h2::after,
+        .team-section h2::after,
+        .programs-section h2::after,
+        .centers-section h2::after,
+        .info-section h2::after,
+        .horizontal-section h2::after,
+        .overview-section h2::after,
+        .dept-hero h1::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: #27ae60;  /* Green theme for endocrinology */
+        }
+
+        /* Horizontal section styles */
+        .horizontal-section {
+            padding: 60px 0;
+            background: #f8f9fa;
+        }
+
+        .horizontal-grid {
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+            padding: 20px 0;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .horizontal-card {
+            flex: 1;
+            min-width: 300px;
+            max-width: 350px;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin: 0 10px;
+        }
+
+        .horizontal-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .horizontal-card i {
+            color: #27ae60;
+            margin-bottom: 20px;
+            display: block;
+            text-align: center;
+        }
+
+        .horizontal-card h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+
+        .horizontal-card p {
+            color: #666;
+            margin-bottom: 20px;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        .horizontal-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .horizontal-card ul li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            color: #555;
+            line-height: 1.4;
+        }
+
+        .horizontal-card ul li i {
+            margin-right: 12px;
+            color: #27ae60;
+            font-size: 1rem;
+            display: inline;
+            text-align: left;
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 1200px) {
+            .horizontal-grid {
+                padding: 20px;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .horizontal-card {
+                flex: 0 1 calc(33.333% - 40px);
+                margin: 0;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .horizontal-card {
+                flex: 0 1 calc(50% - 40px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .horizontal-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .horizontal-card {
+                flex: none;
+                width: 100%;
+                max-width: 400px;
+                margin: 0 0 20px 0;
+            }
+
+            .horizontal-card:last-child {
+                margin-bottom: 0;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="../styles/responsive.css">
+</head>
+<body>
+    <!-- Department Hero -->
+    <section class="dept-hero endocrinology">
+        <div class="container">
+            <div class="hero-content">
+                <i class="fas fa-dna"></i>
+                <h1>Department of Endocrinology</h1>
+                <p>Our Department of Endocrinology specializes in diagnosing and treating disorders related to hormones and the endocrine system. Our expert team provides comprehensive care for diabetes, thyroid disorders, and other hormonal conditions using the latest medical advances and personalized treatment approaches.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="overview-section">
+        <div class="container">
+            <div class="overview-card">
+                <h2>Department Overview</h2>
+                <p>Our Department of Endocrinology specializes in diagnosing and treating disorders related to hormones and the endocrine system. Our expert team provides comprehensive care for diabetes, thyroid disorders, and other hormonal conditions using the latest medical advances and personalized treatment approaches.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section class="services-section">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-capsules"></i>
+                    <h3>Diabetes Care</h3>
+                    <ul>
+                        <li>Type 1 Diabetes</li>
+                        <li>Type 2 Diabetes</li>
+                        <li>Gestational Diabetes</li>
+                        <li>Insulin Management</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <i class="fas fa-wind"></i>
+                    <h3>Thyroid Treatment</h3>
+                    <ul>
+                        <li>Hypothyroidism</li>
+                        <li>Hyperthyroidism</li>
+                        <li>Thyroid Nodules</li>
+                        <li>Thyroid Cancer</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <i class="fas fa-dna"></i>
+                    <h3>Hormone Therapy</h3>
+                    <ul>
+                        <li>Growth Disorders</li>
+                        <li>Adrenal Disorders</li>
+                        <li>Pituitary Disorders</li>
+                        <li>Metabolic Disorders</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specialty Centers -->
+    <section class="centers-section">
+        <div class="container">
+            <h2>Specialty Centers</h2>
+            <div class="centers-grid">
+                <div class="center-card">
+                    <img src="../images/endocrinology/Diabetes-Center.jpg" alt="Diabetes Center">
+                    <h3>Diabetes Excellence Center</h3>
+                    <p>Comprehensive diabetes management</p>
+                    <ul>
+                        <li>Blood Sugar Monitoring</li>
+                        <li>Insulin Pump Therapy</li>
+                        <li>Nutritional Counseling</li>
+                    </ul>
+                </div>
+
+                <div class="center-card">
+                    <img src="../images/endocrinology/Thyroid-Center.jpg" alt="Thyroid Center">
+                    <h3>Thyroid Center</h3>
+                    <p>Advanced thyroid care</p>
+                    <ul>
+                        <li>Thyroid Testing</li>
+                        <li>Radioactive Iodine Treatment</li>
+                        <li>Thyroid Surgery</li>
+                    </ul>
+                </div>
+
+                <div class="center-card">
+                    <img src="../images/endocrinology/Metabolic-Center.jpg" alt="Metabolic Center">
+                    <h3>Metabolic Center</h3>
+                    <p>Treatment for metabolic disorders</p>
+                    <ul>
+                        <li>Metabolism Testing</li>
+                        <li>Weight Management</li>
+                        <li>Hormone Testing</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <h2>Our Endocrinology Team</h2>
+            <div class="team-grid">
+                <div class="team-card">
+                    <img src="../images/endocrinology/Dr-Emily-Roberts.jpg" alt="Dr. Emily Roberts">
+                    <div class="team-info">
+                        <h3>Dr. Emily Roberts</h3>
+                        <p>Head of Endocrinology</p>
+                        <div class="expertise">
+                            <span>Diabetes Management</span>
+                            <span>Thyroid Disorders</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <img src="../images/endocrinology/Dr-James-Wilson.jpg" alt="Dr. James Wilson">
+                    <div class="team-info">
+                        <h3>Dr. James Wilson</h3>
+                        <p>Diabetes Specialist</p>
+                        <div class="expertise">
+                            <span>Type 1 Diabetes</span>
+                            <span>Insulin Therapy</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <img src="../images/endocrinology/Dr-Lisa-Chen.jpg" alt="Dr. Lisa Chen">
+                    <div class="team-info">
+                        <h3>Dr. Lisa Chen</h3>
+                        <p>Thyroid Specialist</p>
+                        <div class="expertise">
+                            <span>Thyroid Disease</span>
+                            <span>Hormone Therapy</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Treatment Programs -->
+    <section class="programs-section">
+        <div class="container">
+            <h2>Treatment Programs</h2>
+            <div class="programs-grid">
+                <div class="program-card">
+                    <i class="fas fa-heartbeat"></i>
+                    <h3>Diabetes Management</h3>
+                    <ul>
+                        <li>Blood Sugar Control</li>
+                        <li>Lifestyle Modification</li>
+                        <li>Medication Management</li>
+                    </ul>
+                </div>
+
+                <div class="program-card">
+                    <i class="fas fa-shield-virus"></i>
+                    <h3>Thyroid Care</h3>
+                    <ul>
+                        <li>Hormone Replacement</li>
+                        <li>Nodule Management</li>
+                        <li>Cancer Screening</li>
+                    </ul>
+                </div>
+
+                <div class="program-card">
+                    <i class="fas fa-weight"></i>
+                    <h3>Metabolic Health</h3>
+                    <ul>
+                        <li>Weight Management</li>
+                        <li>Metabolic Testing</li>
+                        <li>Nutritional Planning</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Patient Information -->
+    <section class="info-section">
+        <div class="container">
+            <h2>Patient Information</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>Clinic Hours</h3>
+                    <ul>
+                        <li>Monday - Friday: 8:00 AM - 5:00 PM</li>
+                        <li>Saturday: 9:00 AM - 1:00 PM</li>
+                        <li>Sunday: Closed</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <i class="fas fa-clipboard-list"></i>
+                    <h3>First Appointment</h3>
+                    <ul>
+                        <li>Medical History</li>
+                        <li>Current Medications</li>
+                        <li>Recent Lab Results</li>
+                        <li>Insurance Information</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <i class="fas fa-phone"></i>
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li>Appointments: (555) 234-5678</li>
+                        <li>Diabetes Care: (555) 234-5679</li>
+                        <li>Email: endocrinology@mediplus.com</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="education-section">
+        <div class="container">
+            <h2>Patient Education</h2>
+            <div class="education-grid">
+                <div class="education-card">
+                    <div class="card-inner">
+                        <i class="fas fa-book-medical"></i>
+                        <h3>Diabetes Education</h3>
+                        <p>Comprehensive diabetes management training</p>
+                        <div class="hover-content">
+                            <ul>
+                                <li>Blood Sugar Monitoring</li>
+                                <li>Insulin Management</li>
+                                <li>Emergency Care</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="education-card">
+                    <div class="card-inner">
+                        <i class="fas fa-utensils"></i>
+                        <h3>Nutritional Counseling</h3>
+                        <p>Dietary guidance for hormonal health</p>
+                        <div class="hover-content">
+                            <ul>
+                                <li>Meal Planning</li>
+                                <li>Carbohydrate Counting</li>
+                                <li>Healthy Eating Recipes</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="education-card">
+                    <div class="card-inner">
+                        <i class="fas fa-heartbeat"></i>
+                        <h3>Lifestyle Programs</h3>
+                        <p>Exercise and wellness programs</p>
+                        <div class="hover-content">
+                            <ul>
+                                <li>Physical Activity</li>
+                                <li>Stress Management</li>
+                                <li>Sleep Hygiene</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        .education-section {
+            padding: 4rem 0;
+            background: #f8f9fa;
+        }
+
+        .education-grid {
+            display: flex;
+            justify-content: space-between;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .education-card {
+            flex: 1;
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .education-card .card-inner {
+            padding: 2rem;
+            text-align: center;
+            height: 100%;
+        }
+
+        .education-card i {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .education-card h3 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+            font-size: 1.25rem;
+        }
+
+        .education-card p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .education-card .hover-content {
+            opacity: 0;
+            height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .education-card .hover-content ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .education-card .hover-content li {
+            color: #666;
+            margin: 0.5rem 0;
+            font-size: 0.9rem;
+        }
+
+        /* Hover effects */
+        .education-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .education-card:hover i {
+            transform: scale(1.2);
+            color: #3498db;
+        }
+
+        .education-card:hover .hover-content {
+            opacity: 1;
+            height: auto;
+            margin-top: 1rem;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .education-grid {
+                flex-direction: column;
+            }
+            
+            .education-card {
+                margin-bottom: 1rem;
+            }
+
+            .education-card .hover-content {
+                opacity: 1;
+                height: auto;
+                margin-top: 1rem;
+            }
+        }
+    </style>
+
+    <!-- Research Section -->
+    <section class="research-section">
+        <div class="container">
+            <h2>Clinical Research</h2>
+            <div class="research-grid">
+                <div class="research-card">
+                    <div class="card-inner">
+                        <i class="fas fa-microscope"></i>
+                        <h3>Diabetes Research</h3>
+                        <p>Advanced treatments for diabetes management</p>
+                        <div class="hover-content">
+                            <ul>
+                                <li>New Insulin Therapies</li>
+                                <li>Artificial Pancreas Trials</li>
+                                <li>Prevention Studies</li>
+                            </ul>
+                            <a href="#" class="learn-more">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="research-card">
+                    <div class="card-inner">
+                        <i class="fas fa-dna"></i>
+                        <h3>Hormone Studies</h3>
+                        <p>Cutting-edge research in hormone therapy</p>
+                        <div class="hover-content">
+                            <ul>
+                                <li>Thyroid Treatment Trials</li>
+                                <li>Growth Hormone Studies</li>
+                                <li>Metabolic Research</li>
+                            </ul>
+                            <a href="#" class="learn-more">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="research-card">
+                    <div class="card-inner">
+                        <i class="fas fa-flask"></i>
+                        <h3>Clinical Trials</h3>
+                        <p>Participate in important research studies</p>
+                        <div class="hover-content">
+                            <ul>
+                                <li>Patient Enrollment</li>
+                                <li>Current Studies</li>
+                                <li>Research Outcomes</li>
+                            </ul>
+                            <a href="#" class="learn-more">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        .research-section {
+            padding: 4rem 0;
+            background: #fff;
+        }
+
+        .research-grid {
+            display: flex;
+            justify-content: space-between;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .research-card {
+            flex: 1;
+            background: #f8f9fa;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .research-card .card-inner {
+            padding: 2rem;
+            text-align: center;
+            height: 100%;
+        }
+
+        .research-card i {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .research-card h3 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+            font-size: 1.25rem;
+        }
+
+        .research-card p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .research-card .hover-content {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+        }
+
+        .research-card .hover-content ul {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+        }
+
+        .research-card .hover-content li {
+            color: #666;
+            margin: 0.5rem 0;
+            font-size: 0.9rem;
+        }
+
+        .research-card .learn-more {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        /* Hover effects */
+        .research-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .research-card:hover i {
+            transform: scale(1.2);
+            color: #3498db;
+        }
+
+        .research-card:hover .hover-content {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .research-card .learn-more:hover {
+            background: #2980b9;
+            transform: scale(1.05);
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .research-grid {
+                flex-direction: column;
+            }
+            
+            .research-card {
+                margin-bottom: 1rem;
+            }
+
+            .research-card .hover-content {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+
+    <!-- Appointment CTA -->
+    <section class="dept-cta">
+        <div class="container">
+            <h2>Need Endocrine Care?</h2>
+            <p>Schedule a consultation with our endocrinology specialists.</p>
+            <a href="../doctors.html" class="cta-btn">Appointment</a>
+        </div>
+    </section>
+
+    <script src="../js/profile-dropdown.js"></script>
+    <script src="../scripts/fix-translations.js"></script>
+    <script src="../scripts/translate-manager.js"></script>
+</body>
+</html>

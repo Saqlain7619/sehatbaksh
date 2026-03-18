@@ -1,0 +1,334 @@
+/* Department Hero Section */
+.dept-hero {
+    background: linear-gradient(rgba(42, 143, 244, 0.9), rgba(42, 143, 244, 0.9)), url('../images/hero-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 100px 0;
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.dept-hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    animation: fadeInUp 0.8s ease;
+}
+
+.dept-hero p {
+    font-size: 1.5rem;
+    opacity: 0.9;
+    animation: fadeInUp 0.8s ease 0.2s both;
+}
+
+/* Departments Grid */
+.departments-grid {
+    padding: 60px 0;
+    background: #f8f9fa;
+}
+
+.departments-grid .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 0 20px;
+}
+
+.dept-card {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.dept-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #2a8ff4, #1a7fd4);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+}
+
+.dept-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(42, 143, 244, 0.15);
+}
+
+.dept-card:hover::before {
+    opacity: 0.05;
+}
+
+.dept-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 20px;
+    background: #f0f7ff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.dept-card:hover .dept-icon {
+    transform: scale(1.1) rotate(5deg);
+    background: #2a8ff4;
+}
+
+.dept-icon i {
+    font-size: 2.5rem;
+    color: #2a8ff4;
+    transition: all 0.3s ease;
+}
+
+.dept-card:hover .dept-icon i {
+    color: white;
+}
+
+.dept-card h3 {
+    color: #333;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    position: relative;
+    z-index: 2;
+}
+
+.dept-card p {
+    color: #666;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.dept-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.dept-features li {
+    margin: 10px 0;
+    color: #666;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.dept-features li i {
+    color: #2a8ff4;
+}
+
+.dept-btn {
+    display: inline-block;
+    padding: 10px 25px;
+    background: #2a8ff4;
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+}
+
+.dept-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: all 0.5s ease;
+}
+
+.dept-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(42, 143, 244, 0.3);
+    background: #1a7fd4;
+}
+
+.dept-btn:hover::before {
+    left: 100%;
+}
+
+/* Department Stats */
+.dept-stats {
+    padding: 40px 0;
+    background: white;
+}
+
+.dept-stats .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    text-align: center;
+}
+
+.stat-item {
+    padding: 15px;
+    transition: all 0.3s ease;
+}
+
+.stat-item:hover {
+    transform: translateY(-3px);
+}
+
+.stat-item i {
+    font-size: 2rem;
+    color: #2a8ff4;
+    margin-bottom: 10px;
+}
+
+.stat-item h3 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.stat-item p {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* Department CTA */
+.dept-cta {
+    padding: 50px 0;
+    background: linear-gradient(rgba(42, 143, 244, 0.9), rgba(42, 143, 244, 0.9)), url('../images/cta-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    color: white;
+}
+
+.dept-cta h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    animation: fadeInUp 0.8s ease;
+}
+
+.dept-cta p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    opacity: 0.9;
+    animation: fadeInUp 0.8s ease 0.2s;
+}
+
+.cta-btn {
+    display: inline-block;
+    padding: 10px 30px;
+    background: white;
+    color: #2a8ff4;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: all 0.5s ease;
+}
+
+.cta-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    background: #2a8ff4;
+    color: white;
+}
+
+.cta-btn:hover::before {
+    left: 100%;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Dark Theme Support */
+body.dark-theme {
+    background: #1a1a1a;
+}
+
+body.dark-theme .departments-grid {
+    background: #222;
+}
+
+body.dark-theme .dept-card {
+    background: #2d2d2d;
+}
+
+body.dark-theme .dept-card h3 {
+    color: #fff;
+}
+
+body.dark-theme .dept-card p,
+body.dark-theme .dept-features li {
+    color: #ddd;
+}
+
+body.dark-theme .dept-icon {
+    background: #333;
+}
+
+body.dark-theme .stat-item h3 {
+    color: #fff;
+}
+
+body.dark-theme .stat-item p {
+    color: #ddd;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .dept-hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .dept-hero p {
+        font-size: 1.2rem;
+    }
+
+    .departments-grid .container {
+        grid-template-columns: 1fr;
+    }
+
+    .dept-stats .container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Footer Styles */
+.footer-container {
+    background: none;
+    /* Add any other styles needed for the footer */
+}

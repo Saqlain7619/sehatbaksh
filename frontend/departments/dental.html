@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dental Care - MedPlus</title>
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/department-detail.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="../scripts/fix-translations.js"></script>
+    <style>
+        /* Common heading styles for all sections */
+        .services-section h2,
+        .team-section h2,
+        .programs-section h2,
+        .centers-section h2,
+        .info-section h2,
+        .horizontal-section h2,
+        .overview-section h2,
+        .dept-hero h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #2c3e50;
+            font-size: 2.5rem;
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .services-section h2::after,
+        .team-section h2::after,
+        .programs-section h2::after,
+        .centers-section h2::after,
+        .info-section h2::after,
+        .horizontal-section h2::after,
+        .overview-section h2::after,
+        .dept-hero h1::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: #3498db;  /* Bright blue theme for dental */
+        }
+
+        /* Horizontal section styles */
+        .horizontal-section {
+            padding: 60px 0;
+            background: #f8f9fa;
+        }
+
+        .horizontal-grid {
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+            padding: 20px 0;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .horizontal-card {
+            flex: 1;
+            min-width: 300px;
+            max-width: 350px;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin: 0 10px;
+        }
+
+        .horizontal-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .horizontal-card i {
+            color: #3498db;
+            margin-bottom: 20px;
+            display: block;
+            text-align: center;
+        }
+
+        .horizontal-card h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+
+        .horizontal-card p {
+            color: #666;
+            margin-bottom: 20px;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        .horizontal-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .horizontal-card ul li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            color: #555;
+            line-height: 1.4;
+        }
+
+        .horizontal-card ul li i {
+            margin-right: 12px;
+            color: #27ae60;
+            font-size: 1rem;
+            display: inline;
+            text-align: left;
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 1200px) {
+            .horizontal-grid {
+                padding: 20px;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .horizontal-card {
+                flex: 0 1 calc(33.333% - 40px);
+                margin: 0;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .horizontal-card {
+                flex: 0 1 calc(50% - 40px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .horizontal-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .horizontal-card {
+                flex: none;
+                width: 100%;
+                max-width: 400px;
+                margin: 0 0 20px 0;
+            }
+
+            .horizontal-card:last-child {
+                margin-bottom: 0;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="../styles/responsive.css">
+</head>
+<body class="dental-page">
+    <!-- Department Hero Section -->
+    <section class="dept-hero dental">
+        <div class="container">
+            <div class="hero-content">
+                <i class="fas fa-tooth"></i>
+                <h1>Dental Care Department</h1>
+                <p>Expert dental care under specialist supervision</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="overview-section">
+        <div class="container">
+            <div class="overview-card">
+                <h2>Department Overview</h2>
+                <p>Our Dental Care Department provides comprehensive oral care with state-of-the-art technology and modern techniques. With experienced specialists and advanced facilities, we offer both preventive care and complex dental treatments to achieve optimal oral health.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-teeth"></i>
+                    <h3>Diagnostic Services</h3>
+                    <ul>
+                        <li>Digital X-rays</li>
+                        <li>3D Dental Scanning</li>
+                        <li>Oral Cancer Screening</li>
+                        <li>Comprehensive Assessment</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <i class="fas fa-tooth"></i>
+                    <h3>Treatment Procedures</h3>
+                    <ul>
+                        <li>Dental Implants</li>
+                        <li>Root Canal Therapy</li>
+                        <li>Cosmetic Dentistry</li>
+                        <li>Orthodontic Care</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <i class="fas fa-user-md"></i>
+                    <h3>Preventive Care</h3>
+                    <ul>
+                        <li>Regular Check-ups</li>
+                        <li>Professional Cleaning</li>
+                        <li>Fluoride Treatment</li>
+                        <li>Dental Sealants</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <h2>Our Specialists</h2>
+            <div class="team-grid">
+                <div class="team-card">
+                    <img src="../images/doctor1.jpg" alt="Dr. Thomas White">
+                    <div class="team-info">
+                        <h3>Dr. Thomas White</h3>
+                        <p>Head of Dental Care</p>
+                        <div class="expertise">
+                            <span>Cosmetic Dentistry</span>
+                            <span>Dental Implants</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <img src="../images/doctor2.jpg" alt="Dr. Sophia Rodriguez">
+                    <div class="team-info">
+                        <h3>Dr. Sophia Rodriguez</h3>
+                        <p>Senior Orthodontist</p>
+                        <div class="expertise">
+                            <span>Orthodontics</span>
+                            <span>Invisalign</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Facilities Section -->
+    <section class="facilities-section">
+        <div class="container">
+            <h2>Our Facilities</h2>
+            <p>Our modern facilities include:</p>
+            <ul>
+                <li>Modern Dental Clinic</li>
+                <li>X-ray and Diagnostic Equipment</li>
+                <li>Advanced Facilities for Dental Surgery</li>
+            </ul>
+            <div class="centers-grid">
+                <div class="center-card">
+                    <img src="../images/dental/Advanced-Dental-Equipment.png" alt="Advanced Dental Equipment">
+                    <div class="card-content">
+                        <h3>Advanced Equipment</h3>
+                        <p>Modern technology for accurate dental care</p>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i>Digital X-ray Systems</li>
+                            <li><i class="fas fa-check-circle"></i>3D Dental Scanners</li>
+                            <li><i class="fas fa-check-circle"></i>Modern Sterilization</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="center-card">
+                    <img src="../images/dental/Treatment-Rooms.png" alt="Treatment Rooms">
+                    <div class="card-content">
+                        <h3>Modern Treatment Rooms</h3>
+                        <p>Comfortable and technically advanced treatment spaces</p>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i>Comfortable Environment</li>
+                            <li><i class="fas fa-check-circle"></i>State-of-the-art Dental Chairs</li>
+                            <li><i class="fas fa-check-circle"></i>High-resolution Intraoral Cameras</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="center-card">
+                    <img src="../images/dental/Sterilization-Center.jpg" alt="Sterilization Center">
+                    <div class="card-content">
+                        <h3>Sterilization Center</h3>
+                        <p>Advanced sterilization facility for patient safety</p>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i>Modern Autoclaves</li>
+                            <li><i class="fas fa-check-circle"></i>UV Sterilization</li>
+                            <li><i class="fas fa-check-circle"></i>Safety Protocols</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Advanced Procedures Section -->
+    <section class="advanced-procedures">
+        <div class="container">
+            <h2>Advanced Dental Procedures</h2>
+            <p>We provide advanced dental care procedures:</p>
+            <ul>
+                <li>Dental Implantation</li>
+                <li>Teeth Cleaning</li>
+                <li>Dental Restoration</li>
+            </ul>
+            <div class="centers-grid">
+                <div class="center-card">
+                    <img src="../images/dental/Dental-Implants.jpg" alt="Dental Implants">
+                    <div class="card-content">
+                        <h3>Dental Implants</h3>
+                        <p>Permanent solution for missing teeth</p>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i>Titanium Root Implants</li>
+                            <li><i class="fas fa-check-circle"></i>Custom Crown Fitting</li>
+                            <li><i class="fas fa-check-circle"></i>Full Mouth Restoration</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="center-card">
+                    <img src="../images/dental/Cosmetic-Dentistry.jpg" alt="Cosmetic Dentistry">
+                    <div class="card-content">
+                        <h3>Cosmetic Dentistry</h3>
+                        <p>Transform your smile with the latest cosmetic techniques</p>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i>Porcelain Veneers</li>
+                            <li><i class="fas fa-check-circle"></i>Teeth Whitening</li>
+                            <li><i class="fas fa-check-circle"></i>Smile Design</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="center-card">
+                    <img src="../images/dental/Orthodontics.jpg" alt="Orthodontics">
+                    <div class="card-content">
+                        <h3>Orthodontics</h3>
+                        <p>Modern solutions for teeth alignment and bite correction</p>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i>Clear Aligners</li>
+                            <li><i class="fas fa-check-circle"></i>Digital Planning</li>
+                            <li><i class="fas fa-check-circle"></i>3D Progress Tracking</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Preventive Care Section -->
+    <section class="preventive-section">
+        <div class="container">
+            <h2>Preventive Dental Care</h2>
+            <div class="preventive-grid">
+                <div class="preventive-card">
+                    <div class="card-inner">
+                        <i class="fas fa-calendar-check"></i>
+                        <h3>Regular Check-ups</h3>
+                        <p>Examination and cleaning every six months</p>
+                    </div>
+                </div>
+
+                <div class="preventive-card">
+                    <div class="card-inner">
+                        <i class="fas fa-shield-virus"></i>
+                        <h3>Preventive Care</h3>
+                        <p>Fluoride treatments and sealants</p>
+                    </div>
+                </div>
+
+                <div class="preventive-card">
+                    <div class="card-inner">
+                        <i class="fas fa-teeth"></i>
+                        <h3>Oral Health Education</h3>
+                        <p>Proper techniques for dental care</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        .preventive-grid {
+            display: flex;
+            justify-content: space-between;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .preventive-card {
+            flex: 1;
+            background: #fff;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .preventive-card .card-inner {
+            text-align: center;
+        }
+
+        .preventive-card i {
+            font-size: 2.5rem;
+            color: #007bff;
+            margin-bottom: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .preventive-card h3 {
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .preventive-card p {
+            color: #666;
+        }
+
+        .preventive-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .preventive-card:hover i {
+            transform: scale(1.2);
+        }
+
+        @media (max-width: 768px) {
+            .preventive-grid {
+                flex-direction: column;
+            }
+            
+            .preventive-card {
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
+
+    <!-- Appointment Section -->
+    <section class="dept-cta">
+        <div class="container">
+            <h2>Need Dental Advice?</h2>
+            <p>Schedule an appointment with our dental specialists today.</p>
+            <a href="../doctors.html" class="cta-btn">Appointment</a>
+        </div>
+    </section>
+
+    <script src="../js/main.js"></script>
+    <script src="../scripts/fix-translations.js"></script>
+    <script src="../scripts/translate-manager.js"></script>
+</body>
+</html>

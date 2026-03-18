@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mediplus - Login</title>
+    <link rel="stylesheet" href="styles/login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/responsive.css">
+    <link rel="stylesheet" href="styles/translate-style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Language selector for Google Translate -->
+    <div id="google_translate_element"></div>
+    
+    <div class="login-container">
+        <div class="login-box">
+            <div class="logo">
+                <h1 class="notranslate" translate="no">Sehat Bakhsh</h1>
+            </div>
+            <h2>Welcome Back</h2>
+            <form id="loginForm">
+                <div class="input-group">
+                    <label>Email</label>
+                    <div class="input-field">
+                        <input type="email" id="email" placeholder="Enter your email" required>
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label>Password</label>
+                    <div class="input-field">
+                        <input type="password" id="password" placeholder="Enter your password" required>
+                        <i class="fas fa-eye-slash toggle-password"></i>
+                    </div>
+                </div>
+                <div class="remember-forgot">
+                    <label><input type="checkbox" id="remember"> Remember me</label>
+                    <a href="#" class="forgot-link">Forgot Password?</a>
+                </div>
+                <button type="submit" class="login-btn">Login →</button>
+                <div class="divider">
+                    <span>Or continue with</span>
+                </div>
+                <div class="social-login">
+                    <button type="button" class="google-btn">
+                        <img src="https://www.google.com/favicon.ico" alt="Google">
+                        Continue with Google
+                    </button>
+                    <button type="button" class="facebook-btn">
+                        <img src="https://www.facebook.com/favicon.ico" alt="Facebook">
+                        Continue with Facebook
+                    </button>
+                </div>
+                <p class="signup-link">Don't have an account? <a href="#" id="signupLink">Sign Up</a></p>
+            </form>
+        </div>
+    </div>
+    <script src="https://kit.fontawesome.com/your-code.js"></script>
+    <script src="js/auth.js"></script>
+    
+    <!-- Google Translate Integration -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script src="scripts/fix-translations.js"></script>
+    <script src="scripts/translate-manager.js"></script>
+    <script src="scripts/language-aware-logo.js"></script>
+    
+    <style>
+        /* Custom styling for logo in login page */
+        .login-box .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .login-box .logo h1 {
+            color: #1e90ff;
+            font-size: 28px;
+            font-weight: 600;
+            margin: 0;
+            transition: all 0.3s ease;
+        }
+        
+        /* Styling for Google Translate button on login page */
+        #google_translate_element {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+    </style>
+</body>
+</html>

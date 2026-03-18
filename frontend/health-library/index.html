@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Library A-Z - MediPlus</title>
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="styles/health-library.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../styles/responsive-update.css">
+    <link rel="stylesheet" href="../styles/translate-style.css">
+    <script src="../scripts/remove-gtranslate-banner.js"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <h1 class="notranslate" translate="no">Sehat Bakhsh</h1>
+            </div>
+            <div id="google_translate_element"></div>
+            <div class="nav-links">
+                <a href="../index.html" title="Go to home page"><i class="fas fa-home"></i> Home</a>
+                <a href="#" class="active" title="Health library page"><i class="fas fa-book-medical"></i> Health Library</a>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" title="Open mobile menu">
+                <i class="fas fa-bars"></i>
+            </button>
+
+        </nav>
+    </header>
+
+<!-- Mobile Menu (Add this after the header) -->
+<div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu-close" id="mobileMenuClose" title="Close mobile menu">
+        <i class="fas fa-times"></i>
+    </button>
+    <div class="mobile-menu-links">
+        <a href="../index.html" title="Go to home page">Home</a>
+        <a href="index.html" title="Health library page">Health Library</a>
+        <a href="../appointments.html" title="Appointments page">Appointments</a>
+        <a href="../profile.html" title="My profile page">My Profile</a>
+        <a href="../settings.html" title="Settings page">Settings</a>
+        <a href="../login.html" title="Log out">Log Out</a>
+    </div>
+</div>
+
+<div class="overlay" id="overlay"></div>
+
+<!-- Mobile Menu JavaScript (Add this before the closing body tag) -->
+<script>
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileMenuClose = document.getElementById('mobileMenuClose');
+    const overlay = document.getElementById('overlay');
+
+    mobileMenuBtn.addEventListener('click', function() {
+        mobileMenu.classList.add('active');
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    });
+
+    mobileMenuClose.addEventListener('click', function() {
+        mobileMenu.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    });
+
+    overlay.addEventListener('click', function() {
+        mobileMenu.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    });
+</script>
+
+    <main class="health-library">
+        <section class="intro-section">
+            <div class="container">
+                <h2>Comprehensive Health Library</h2>
+                <p>Welcome to our extensive health library, providing detailed information on various health conditions from A to Z. Each entry includes causes, symptoms, diagnosis, treatment options, and preventive measures.</p>
+            </div>
+        </section>
+
+        <section class="search-section">
+            <div class="container">
+                <div class="search-container">
+                    <input type="text" id="conditionSearch" placeholder="Search health conditions...">
+                    <button onclick="searchConditions()" title="Search conditions">Search Conditions</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="alphabet-filter">
+            <div class="container">
+                <div class="alphabet-buttons" id="alphabetButtons">
+                    <!-- Alphabet buttons will be added here dynamically -->
+                </div>
+            </div>
+        </section>
+
+        <section class="conditions-section">
+            <div class="container">
+                <div id="conditionsContainer">
+                    <!-- Conditions will be loaded here -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Sehat Bakhsh Health Library. All rights reserved.</p>
+        </div>
+    </footer>
+    <script type="text/javascript">
+        function googleTranslateElementInit(){
+            new google.translate.TranslateElement(
+                {pageLanguage: 'en'},
+                'google_translate_element'
+            );
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script src="../scripts/translate-manager.js"></script>
+
+    <script src="js/health-library.js"></script>
+    <script src="js/direct-integration.js"></script>
+    <script src="js/h-integration.js"></script>
+    <script src="js/i-integration.js"></script>
+    <script src="js/k-integration.js"></script>
+    <script src="js/l-integration.js"></script>
+    <script src="js/m-integration.js"></script>
+    <script src="js/n-integration.js"></script>
+    <script src="js/o-integration.js"></script>
+    <script src="js/p-integration.js"></script>
+    <script src="js/q-integration.js"></script>
+    <script src="js/r-integration.js"></script>
+    <script src="js/s-integration.js"></script>
+    <script src="js/t-integration.js"></script>
+    <script src="js/t-integration-additional.js"></script>
+    <script src="js/u-integration.js"></script>
+    <script src="js/v-integration.js"></script>
+    <script src="js/w-integration.js"></script>
+    <script src="js/x-integration.js"></script>
+    <script src="js/y-integration.js"></script>
+    <script src="js/z-integration.js"></script>
+</body>
+</html>
