@@ -1,0 +1,43 @@
+# Dependencies
+node_modules
+
+# yarn error logs
+yarn-error.log
+
+# Environment varibales
+.env*
+!.env*.example
+
+# Code coverage
+coverage
+
+# misc
+.DS_Store
+
+# Dev db data
+db
+
+# TypeScript
+build
+# Node modules (never upload)
+node_modules/
+
+# Environment variables
+.env
+.env.local
+
+# Build outputs
+dist/
+build/
+
+# Logs
+*.log
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+
+node_modules/
+.env
+dist/
