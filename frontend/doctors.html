@@ -290,6 +290,28 @@
                 width: 100%;
             }
         }
+        /* API loading state */
+.api-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    color: #888;
+    grid-column: 1 / -1;
+}
+ 
+/* Success/Error message in booking form */
+#formMessage {
+    display: none;
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-top: 12px;
+    font-weight: 600;
+    font-size: 14px;
+    text-align: center;
+}
+ 
     </style>
 </head>
 <body>
@@ -362,126 +384,8 @@
             <h1>Our Medical Departments and Doctors</h1>
             
             <div class="dept-container">
-                <!-- Cardiology -->
-                <div class="dept-card">
-                    <div class="dept-icon">
-                        <i class="fas fa-heartbeat"></i>
-                    </div>
-                    <h3>Cardiology</h3>
-                    <p>Expert care for heart diseases with state-of-the-art diagnostic and treatment facilities.</p>
-                    <ul class="dept-features">
-                        <li><i class="fas fa-check"></i> Heart Disease Treatment</li>
-                        <li><i class="fas fa-check"></i> Cardiac Surgery</li>
-                        <li><i class="fas fa-check"></i> Heart Rhythm Management</li>
-                    </ul>
-                    <a href="#" class="dept-btn" onclick="showBookingForm('Dr. John Doe', 'Cardiology'); return false;">Book Appointment</a>
-                </div>
-
-                <!-- Neurology -->
-                <div class="dept-card">
-                    <div class="dept-icon">
-                        <i class="fas fa-brain"></i>
-                    </div>
-                    <h3>Neurology</h3>
-                    <p>Comprehensive care for neurological disorders with advanced treatment options.</p>
-                    <ul class="dept-features">
-                        <li><i class="fas fa-check"></i> Brain Surgery</li>
-                        <li><i class="fas fa-check"></i> Spine Treatment</li>
-                        <li><i class="fas fa-check"></i> Stroke Care</li>
-                    </ul>
-                    <a href="#" class="dept-btn" onclick="showBookingForm('Dr. Jane Smith', 'Neurology'); return false;">Book Appointment</a>
-                </div>
-
-                <!-- Orthopedics -->
-                <div class="dept-card">
-                    <div class="dept-icon">
-                        <i class="fas fa-bone"></i>
-                    </div>
-                    <h3>Orthopedics</h3>
-                    <p>Expert treatment for the musculoskeletal system, including bones, joints, ligaments, and muscles.</p>
-                    <ul class="dept-features">
-                        <li><i class="fas fa-check"></i> Joint Replacement</li>
-                        <li><i class="fas fa-check"></i> Sports Medicine</li>
-                        <li><i class="fas fa-check"></i> Spine Surgery</li>
-                    </ul>
-                    <a href="#" class="dept-btn" onclick="showBookingForm('Dr. Bob Johnson', 'Orthopedics'); return false;">Book Appointment</a>
-                </div>
-
-                <!-- Dental -->
-                <div class="dept-card">
-                    <div class="dept-icon">
-                        <i class="fas fa-tooth"></i>
-                    </div>
-                    <h3>Dental Care</h3>
-                    <p>Comprehensive dental care for all ages, from routine cleanings to complex procedures.</p>
-                    <ul class="dept-features">
-                        <li><i class="fas fa-check"></i> General Dentistry</li>
-                        <li><i class="fas fa-check"></i> Cosmetic Dentistry</li>
-                        <li><i class="fas fa-check"></i> Oral Surgery</li>
-                    </ul>
-                    <a href="#" class="dept-btn" onclick="showBookingForm('Dr. John Doe', 'Dental Care'); return false;">Book Appointment</a>
-                </div>
-
-                <!-- Dermatology -->
-                <div class="dept-card">
-                    <div class="dept-icon">
-                        <i class="fas fa-allergies"></i>
-                    </div>
-                    <h3>Dermatology</h3>
-                    <p>Expert care for skin, hair, and nail conditions, including acne, psoriasis, and skin cancer.</p>
-                    <ul class="dept-features">
-                        <li><i class="fas fa-check"></i> Clinical Dermatology</li>
-                        <li><i class="fas fa-check"></i> Cosmetic Dermatology</li>
-                        <li><i class="fas fa-check"></i> Skin Cancer Treatment</li>
-                    </ul>
-                    <a href="#" class="dept-btn" onclick="showBookingForm('Dr. Jane Smith', 'Dermatology'); return false;">Book Appointment</a>
-                </div>
-
-                <!-- Pediatrics -->
-                <div class="dept-card">
-                    <div class="dept-icon">
-                        <i class="fas fa-baby"></i>
-                    </div>
-                    <h3>Pediatrics</h3>
-                    <p>Specialized healthcare for infants, children, and adolescents up to age 18.</p>
-                    <ul class="dept-features">
-                        <li><i class="fas fa-check"></i> Well-Child Visits</li>
-                        <li><i class="fas fa-check"></i> Childhood Immunizations</li>
-                        <li><i class="fas fa-check"></i> Pediatric Consultations</li>
-                    </ul>
-                    <a href="#" class="dept-btn" onclick="showBookingForm('Dr. Bob Johnson', 'Pediatrics'); return false;">Book Appointment</a>
-                </div>
-
-                <!-- Pulmonology -->
-                <div class="dept-card">
-                    <div class="dept-icon">
-                        <i class="fas fa-lungs"></i>
-                    </div>
-                    <h3>Pulmonology</h3>
-                    <p>Specialized care for respiratory conditions and lung diseases with advanced diagnostic capabilities.</p>
-                    <ul class="dept-features">
-                        <li><i class="fas fa-check"></i> Asthma Management</li>
-                        <li><i class="fas fa-check"></i> COPD Treatment</li>
-                        <li><i class="fas fa-check"></i> Sleep Disorders</li>
-                    </ul>
-                    <a href="#" class="dept-btn" onclick="showBookingForm('Dr. Jane Smith', 'Pulmonology'); return false;">Book Appointment</a>
-                </div>
-
-                <!-- Emergency Medicine -->
-                <div class="dept-card">
-                    <div class="dept-icon">
-                        <i class="fas fa-ambulance"></i>
-                    </div>
-                    <h3>Emergency Medicine</h3>
-                    <p>24/7 emergency care for acute illnesses and injuries requiring immediate medical attention.</p>
-                    <ul class="dept-features">
-                        <li><i class="fas fa-check"></i> Trauma Care</li>
-                        <li><i class="fas fa-check"></i> Critical Care</li>
-                        <li><i class="fas fa-check"></i> Emergency Procedures</li>
-                    </ul>
-                    <a href="#" class="dept-btn" onclick="showBookingForm('Dr. John Doe', 'Emergency Medicine'); return false;">Book Appointment</a>
-                </div>
-            </div>
+    <!-- Cards will be loaded from API automatically -->
+</div>
         </div>
     </main>
 
@@ -541,6 +445,8 @@
             </div>
             <div class="form-buttons">
                 <button type="submit" class="book-btn">Book Now</button>
+                <div id="formMessage"></div>
+
                 <button type="button" class="close-btn" onclick="closeBookingForm()">Close</button>
             </div>
         </form>
@@ -565,69 +471,7 @@
     <script src="scripts/translate-manager.js"></script>
     
 
-    <script>
-        function showBookingForm(doctor, department) {
-            console.log('Button clicked!');
-            var form = document.getElementById('bookingForm');
-            var overlay = document.getElementById('overlay');
-            console.log('Form element:', form);
-            if (form) {
-                form.style.display = 'block';
-                
-                // Pre-select the doctor and department
-                var doctorSelect = document.getElementById('doctor');
-                var departmentSelect = document.getElementById('department');
-                
-                if (doctorSelect) {
-                    for (var i = 0; i < doctorSelect.options.length; i++) {
-                        if (doctorSelect.options[i].text === doctor) {
-                            doctorSelect.selectedIndex = i;
-                            break;
-                        }
-                    }
-                }
-                
-                if (departmentSelect) {
-                    for (var i = 0; i < departmentSelect.options.length; i++) {
-                        if (departmentSelect.options[i].text === department) {
-                            departmentSelect.selectedIndex = i;
-                            break;
-                        }
-                    }
-                }
-                
-                if (overlay) {
-                    overlay.style.display = 'block';
-                }
-                
-                document.body.style.overflow = 'hidden';
-            }
-        }
-        
-        function closeBookingForm() {
-            document.getElementById('bookingForm').style.display = 'none';
-            document.getElementById('overlay').style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
+    <script src="/frontend/scripts/doctors-connection.js"></script>
 
-        // Profile dropdown functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const profilePic = document.getElementById('profilePic');
-            const dropdownContent = document.getElementById('dropdownContent');
-            
-            if (profilePic && dropdownContent) {
-                profilePic.addEventListener('click', function(event) {
-                    event.stopPropagation();
-                    dropdownContent.classList.toggle('show');
-                });
-                
-                document.addEventListener('click', function(event) {
-                    if (!event.target.matches('#profilePic') && dropdownContent.classList.contains('show')) {
-                        dropdownContent.classList.remove('show');
-                    }
-                });
-            }
-        });
-    </script>
 </body>
 </html>

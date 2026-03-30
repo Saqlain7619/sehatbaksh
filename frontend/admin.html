@@ -1,0 +1,1298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sehat Baksh — Admin Panel</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+  :root {
+    --primary: #0ea5e9;
+    --primary-dark: #0284c7;
+    --primary-light: #e0f2fe;
+    --success: #22c55e;
+    --success-light: #dcfce7;
+    --warning: #f59e0b;
+    --warning-light: #fef3c7;
+    --danger: #ef4444;
+    --danger-light: #fee2e2;
+    --purple: #8b5cf6;
+    --purple-light: #ede9fe;
+    --sidebar-bg: #0f172a;
+    --sidebar-text: #94a3b8;
+    --sidebar-active: #1e293b;
+    --bg: #f1f5f9;
+    --card: #ffffff;
+    --text: #0f172a;
+    --text-muted: #64748b;
+    --border: #e2e8f0;
+    --shadow: 0 1px 3px rgba(0,0,0,0.07), 0 4px 16px rgba(0,0,0,0.05);
+    --radius: 12px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    display: flex;
+    min-height: 100vh;
+  }
+
+  /* ── SIDEBAR ── */
+  .sidebar {
+    width: 260px;
+    background: var(--sidebar-bg);
+    min-height: 100vh;
+    position: fixed;
+    top: 0; left: 0;
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+    transition: transform 0.3s ease;
+  }
+  .sidebar-logo {
+    padding: 24px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+  .sidebar-logo h2 { color: #fff; font-size: 20px; font-weight: 700; letter-spacing: -0.3px; }
+  .sidebar-logo span { color: var(--primary); }
+  .sidebar-logo p { color: var(--sidebar-text); font-size: 11px; margin-top: 2px; }
+  .sidebar-nav { flex: 1; padding: 16px 12px; overflow-y: auto; }
+  .nav-section-label {
+    color: #475569; font-size: 10px; font-weight: 600;
+    letter-spacing: 1px; text-transform: uppercase; padding: 12px 8px 6px;
+  }
+  .nav-item {
+    display: flex; align-items: center; gap: 10px;
+    padding: 10px 12px; border-radius: 8px;
+    color: var(--sidebar-text); cursor: pointer;
+    transition: all 0.2s; font-size: 14px; font-weight: 500;
+    margin-bottom: 2px; text-decoration: none;
+    border: none; background: none; width: 100%; text-align: left;
+  }
+  .nav-item i { width: 18px; font-size: 15px; }
+  .nav-item:hover { background: var(--sidebar-active); color: #fff; }
+  .nav-item.active { background: var(--primary); color: #fff; }
+  .nav-badge {
+    margin-left: auto; background: var(--danger); color: #fff;
+    font-size: 10px; font-weight: 700; padding: 2px 7px;
+    border-radius: 99px; min-width: 20px; text-align: center;
+  }
+  .sidebar-footer { padding: 16px 12px; border-top: 1px solid rgba(255,255,255,0.07); }
+  .admin-info {
+    display: flex; align-items: center; gap: 10px;
+    padding: 10px; border-radius: 8px; background: var(--sidebar-active);
+  }
+  .admin-avatar {
+    width: 36px; height: 36px; background: var(--primary);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    color: #fff; font-weight: 700; font-size: 14px; flex-shrink: 0;
+  }
+  .admin-info-text p { color: #fff; font-size: 13px; font-weight: 600; }
+  .admin-info-text span { color: var(--sidebar-text); font-size: 11px; }
+
+  /* ── MAIN ── */
+  .main { margin-left: 260px; flex: 1; min-height: 100vh; display: flex; flex-direction: column; }
+
+  /* ── TOPBAR ── */
+  .topbar {
+    background: var(--card); padding: 16px 28px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+    position: sticky; top: 0; z-index: 50;
+  }
+  .topbar-left h1 { font-size: 20px; font-weight: 700; color: var(--text); }
+  .topbar-left p { font-size: 13px; color: var(--text-muted); margin-top: 1px; }
+  .topbar-right { display: flex; align-items: center; gap: 12px; }
+  .topbar-btn {
+    width: 38px; height: 38px; background: var(--bg);
+    border: 1px solid var(--border); border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; color: var(--text-muted); font-size: 15px;
+    transition: all 0.2s; position: relative;
+  }
+  .topbar-btn:hover { background: var(--primary-light); color: var(--primary); }
+
+  /* ── PAGE ── */
+  .page { padding: 28px; display: none; }
+  .page.active { display: block; }
+
+  /* ── STATS ── */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px; margin-bottom: 28px;
+  }
+  .stat-card {
+    background: var(--card); border-radius: var(--radius);
+    padding: 20px; box-shadow: var(--shadow);
+    display: flex; align-items: center; gap: 16px;
+    border: 1px solid var(--border);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .stat-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.09); }
+  .stat-icon {
+    width: 52px; height: 52px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; flex-shrink: 0;
+  }
+  .stat-icon.blue { background: var(--primary-light); color: var(--primary); }
+  .stat-icon.green { background: var(--success-light); color: var(--success); }
+  .stat-icon.yellow { background: var(--warning-light); color: var(--warning); }
+  .stat-icon.purple { background: var(--purple-light); color: var(--purple); }
+  .stat-info p { font-size: 13px; color: var(--text-muted); font-weight: 500; }
+  .stat-info h3 { font-size: 26px; font-weight: 700; color: var(--text); line-height: 1.1; margin-top: 2px; }
+
+  /* ── CARD ── */
+  .card {
+    background: var(--card); border-radius: var(--radius);
+    box-shadow: var(--shadow); border: 1px solid var(--border);
+    margin-bottom: 20px; overflow: hidden;
+  }
+  .card-header {
+    padding: 18px 22px; border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .card-header h3 { font-size: 16px; font-weight: 700; }
+  .card-body { padding: 22px; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+  /* ── TABLE ── */
+  .table-wrap { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  thead tr { background: var(--bg); }
+  th {
+    padding: 12px 16px; text-align: left; font-size: 11px;
+    font-weight: 700; color: var(--text-muted);
+    text-transform: uppercase; letter-spacing: 0.5px;
+    border-bottom: 1px solid var(--border); white-space: nowrap;
+  }
+  td { padding: 14px 16px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+  tr:last-child td { border-bottom: none; }
+  tbody tr:hover { background: #f8fafc; }
+  .avatar-cell { display: flex; align-items: center; gap: 10px; }
+  .avatar {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: var(--primary-light); color: var(--primary);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 13px; flex-shrink: 0;
+  }
+  .avatar-name { font-weight: 600; font-size: 14px; }
+  .avatar-sub { font-size: 12px; color: var(--text-muted); }
+
+  /* ── BADGES ── */
+  .badge {
+    display: inline-flex; align-items: center;
+    padding: 4px 10px; border-radius: 99px;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.2px;
+  }
+  .badge-pending { background: var(--warning-light); color: #92400e; }
+  .badge-confirmed { background: var(--success-light); color: #14532d; }
+  .badge-cancelled { background: var(--danger-light); color: #7f1d1d; }
+  .badge-available { background: var(--success-light); color: #14532d; }
+  .badge-unavailable { background: var(--danger-light); color: #7f1d1d; }
+
+  /* ── BUTTONS ── */
+  .btn {
+    display: inline-flex; align-items: center; gap: 7px;
+    padding: 9px 16px; border-radius: 8px; font-size: 13px;
+    font-weight: 600; cursor: pointer; border: none;
+    transition: all 0.2s; font-family: inherit;
+  }
+  .btn-primary { background: var(--primary); color: #fff; }
+  .btn-primary:hover { background: var(--primary-dark); }
+  .btn-danger { background: var(--danger); color: #fff; }
+  .btn-danger:hover { background: #dc2626; }
+  .btn-success { background: var(--success); color: #fff; }
+  .btn-success:hover { background: #16a34a; }
+  .btn-warning { background: var(--warning); color: #fff; }
+  .btn-warning:hover { background: #d97706; }
+  .btn-outline { background: transparent; border: 1px solid var(--border); color: var(--text-muted); }
+  .btn-outline:hover { border-color: var(--primary); color: var(--primary); }
+  .btn-preview { background: var(--purple-light); color: var(--purple); border: none; }
+  .btn-preview:hover { background: var(--purple); color: #fff; }
+  .btn-sm { padding: 6px 12px; font-size: 12px; }
+  .btn-icon { padding: 7px; border-radius: 7px; }
+
+  /* ── FORMS ── */
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-group.full { grid-column: 1 / -1; }
+  label { font-size: 13px; font-weight: 600; color: var(--text); }
+  input, select, textarea {
+    padding: 10px 14px; border: 1.5px solid var(--border);
+    border-radius: 8px; font-size: 14px; font-family: inherit;
+    color: var(--text); background: #fff;
+    transition: border-color 0.2s; outline: none;
+  }
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(14,165,233,0.1);
+  }
+  textarea { resize: vertical; min-height: 90px; }
+
+  /* ── MODAL ── */
+  .modal-overlay {
+    display: none; position: fixed; inset: 0;
+    background: rgba(15,23,42,0.5); z-index: 200;
+    align-items: center; justify-content: center; padding: 20px;
+  }
+  .modal-overlay.active { display: flex; }
+  .modal {
+    background: var(--card); border-radius: 16px; width: 100%;
+    max-width: 560px; max-height: 90vh; overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    animation: modalIn 0.25s ease;
+  }
+  .modal.modal-wide { max-width: 760px; }
+  @keyframes modalIn {
+    from { opacity: 0; transform: scale(0.95) translateY(10px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+  }
+  .modal-header {
+    padding: 20px 24px; border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .modal-header h3 { font-size: 17px; font-weight: 700; }
+  .modal-close {
+    width: 32px; height: 32px; background: var(--bg);
+    border: none; border-radius: 8px; cursor: pointer;
+    font-size: 16px; color: var(--text-muted);
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s;
+  }
+  .modal-close:hover { background: var(--danger-light); color: var(--danger); }
+  .modal-body { padding: 24px; }
+  .modal-footer {
+    padding: 16px 24px; border-top: 1px solid var(--border);
+    display: flex; gap: 10px; justify-content: flex-end;
+  }
+
+  /* ── PREVIEW CARD ── */
+  .preview-card {
+    background: var(--bg); border-radius: 12px;
+    padding: 24px; border: 1px solid var(--border);
+  }
+  .preview-card h2 { font-size: 20px; font-weight: 700; margin-bottom: 4px; }
+  .preview-card .preview-meta { font-size: 12px; color: var(--text-muted); margin-bottom: 16px; }
+  .preview-card .preview-img {
+    width: 100%; max-height: 220px; object-fit: cover;
+    border-radius: 10px; margin-bottom: 16px;
+  }
+  .preview-card p { font-size: 14px; line-height: 1.7; color: #334155; }
+  .preview-section { margin-top: 14px; }
+  .preview-section strong { display: block; font-size: 11px; text-transform: uppercase;
+    letter-spacing: 0.5px; color: var(--text-muted); margin-bottom: 4px; }
+  .preview-section span { font-size: 14px; color: var(--text); }
+  .preview-doctor-header { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
+  .preview-doctor-avatar {
+    width: 72px; height: 72px; border-radius: 50%; object-fit: cover;
+    background: var(--primary-light); display: flex; align-items: center;
+    justify-content: center; font-size: 28px; font-weight: 700; color: var(--primary);
+    flex-shrink: 0;
+  }
+  .preview-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+  .preview-tag {
+    background: var(--primary-light); color: var(--primary);
+    padding: 4px 12px; border-radius: 99px; font-size: 12px; font-weight: 600;
+  }
+  .preview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
+  .preview-appt-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--border); }
+  .preview-appt-row:last-child { border-bottom: none; }
+
+  /* ── TOAST ── */
+  #toast {
+    position: fixed; bottom: 28px; right: 28px;
+    background: #1e293b; color: #fff;
+    padding: 14px 20px; border-radius: 10px;
+    font-size: 14px; font-weight: 500; z-index: 9999;
+    display: flex; align-items: center; gap: 10px;
+    transform: translateY(80px); opacity: 0;
+    transition: all 0.3s ease; min-width: 240px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  }
+  #toast.show { transform: translateY(0); opacity: 1; }
+  #toast.success i { color: var(--success); }
+  #toast.error i { color: var(--danger); }
+
+  /* ── EMPTY / LOADING ── */
+  .empty-state { text-align: center; padding: 60px 20px; color: var(--text-muted); }
+  .empty-state i { font-size: 48px; opacity: 0.3; margin-bottom: 16px; display: block; }
+  .empty-state p { font-size: 15px; }
+  .loader { display: flex; align-items: center; justify-content: center; padding: 40px; }
+  .spinner {
+    width: 36px; height: 36px; border: 3px solid var(--border);
+    border-top-color: var(--primary); border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* ── UTILS ── */
+  .flex { display: flex; }
+  .gap-2 { gap: 8px; }
+  .items-center { align-items: center; }
+  .justify-between { justify-content: space-between; }
+  .mb-4 { margin-bottom: 16px; }
+
+  @media (max-width: 900px) {
+    .sidebar { transform: translateX(-260px); }
+    .sidebar.open { transform: translateX(0); }
+    .main { margin-left: 0; }
+    .grid-2 { grid-template-columns: 1fr; }
+    .form-grid { grid-template-columns: 1fr; }
+    .preview-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════ SIDEBAR ══════════════ -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-logo">
+    <h2>Sehat <span>Baksh</span></h2>
+    <p>Admin Control Panel</p>
+  </div>
+  <nav class="sidebar-nav">
+    <div class="nav-section-label">Overview</div>
+    <button class="nav-item active" onclick="showPage('dashboard', this)">
+      <i class="fas fa-th-large"></i> Dashboard
+    </button>
+    <div class="nav-section-label">Manage</div>
+    <button class="nav-item" onclick="showPage('appointments', this)">
+      <i class="fas fa-calendar-check"></i> Appointments
+      <span class="nav-badge" id="pendingBadge">0</span>
+    </button>
+    <button class="nav-item" onclick="showPage('doctors', this)">
+      <i class="fas fa-user-md"></i> Doctors
+    </button>
+    <button class="nav-item" onclick="showPage('users', this)">
+      <i class="fas fa-users"></i> Users
+    </button>
+    <button class="nav-item" onclick="showPage('departments', this)">
+      <i class="fas fa-hospital"></i> Departments
+    </button>
+    <button class="nav-item" onclick="showPage('articles', this)">
+      <i class="fas fa-newspaper"></i> Articles / Blog
+    </button>
+    <button class="nav-item" onclick="showPage('diseases', this)">
+      <i class="fas fa-virus"></i> Diseases
+    </button>
+  </nav>
+  <div class="sidebar-footer">
+    <div class="admin-info">
+      <div class="admin-avatar">A</div>
+      <div class="admin-info-text">
+        <p>Admin</p>
+        <span>sehatbaksh.com</span>
+      </div>
+    </div>
+  </div>
+</aside>
+
+
+<!-- ══════════════ MAIN ══════════════ -->
+<div class="main">
+  <header class="topbar">
+    <div class="topbar-left">
+      <h1 id="pageTitle">Dashboard</h1>
+      <p id="pageSubtitle">Welcome back — here's what's happening</p>
+    </div>
+    <div class="topbar-right">
+      <button class="topbar-btn" onclick="refreshPage()" title="Refresh">
+        <i class="fas fa-sync-alt"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- DASHBOARD -->
+  <div class="page active" id="page-dashboard">
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon blue"><i class="fas fa-calendar-check"></i></div>
+        <div class="stat-info"><p>Total Appointments</p><h3 id="statAppts">—</h3></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon yellow"><i class="fas fa-clock"></i></div>
+        <div class="stat-info"><p>Pending</p><h3 id="statPending">—</h3></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon green"><i class="fas fa-check-circle"></i></div>
+        <div class="stat-info"><p>Confirmed</p><h3 id="statConfirmed">—</h3></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon blue"><i class="fas fa-user-md"></i></div>
+        <div class="stat-info"><p>Doctors</p><h3 id="statDoctors">—</h3></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon purple"><i class="fas fa-users"></i></div>
+        <div class="stat-info"><p>Registered Users</p><h3 id="statUsers">—</h3></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon green"><i class="fas fa-hospital"></i></div>
+        <div class="stat-info"><p>Departments</p><h3 id="statDepts">—</h3></div>
+      </div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-header">
+          <h3>Recent Appointments</h3>
+          <button class="btn btn-outline btn-sm" onclick="showPage('appointments', null)">View All</button>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Patient</th><th>Doctor Type</th><th>Date</th><th>Status</th></tr></thead>
+            <tbody id="recentApptBody">
+              <tr><td colspan="4"><div class="loader"><div class="spinner"></div></div></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header"><h3>Quick Actions</h3></div>
+        <div class="card-body" style="display:flex;flex-direction:column;gap:12px;">
+          <button class="btn btn-primary" onclick="showPage('doctors',null);setTimeout(()=>openDoctorModal(),300)">
+            <i class="fas fa-plus"></i> Add New Doctor
+          </button>
+          <button class="btn btn-outline" onclick="showPage('appointments',null)">
+            <i class="fas fa-calendar-check"></i> Manage Appointments
+          </button>
+          <button class="btn btn-outline" onclick="showPage('departments',null);setTimeout(()=>openDeptModal(),300)">
+            <i class="fas fa-hospital"></i> Add Department
+          </button>
+          <button class="btn btn-outline" onclick="showPage('articles',null);setTimeout(()=>openArticleModal(),300)">
+            <i class="fas fa-pen"></i> Write New Article
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- APPOINTMENTS -->
+  <div class="page" id="page-appointments">
+    <div class="flex justify-between items-center mb-4">
+      <select id="apptStatusFilter" onchange="loadAppointments()" style="padding:8px 12px;border-radius:8px;border:1px solid var(--border);font-size:13px;font-family:inherit;">
+        <option value="">All Status</option>
+        <option value="pending">Pending</option>
+        <option value="confirmed">Confirmed</option>
+        <option value="cancelled">Cancelled</option>
+      </select>
+    </div>
+    <div class="card">
+      <div class="card-header"><h3>All Appointments</h3></div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Patient</th><th>Doctor Type</th><th>Date</th><th>Message</th><th>Status</th><th>Actions</th></tr></thead>
+          <tbody id="apptBody">
+            <tr><td colspan="6"><div class="loader"><div class="spinner"></div></div></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- DOCTORS -->
+   
+  <div class="page" id="page-doctors">
+    <div class="flex justify-between items-center mb-4">
+      <button class="btn btn-primary" onclick="openDoctorModal()">
+        <i class="fas fa-plus"></i> Add Doctor
+      </button>
+    </div>
+    <div class="card">
+      <div class="card-header"><h3>All Doctors</h3></div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Name</th><th>Speciality</th><th>Department</th><th>Experience</th><th>Status</th><th>Actions</th></tr></thead>
+          <tbody id="doctorBody">
+            <tr><td colspan="6"><div class="loader"><div class="spinner"></div></div></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- USERS -->
+  <div class="page" id="page-users">
+    <div class="card">
+      <div class="card-header"><h3>Registered Users</h3></div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Name</th><th>Email</th><th>Phone</th><th>Joined</th><th>Actions</th></tr></thead>
+          <tbody id="userBody">
+            <tr><td colspan="5"><div class="loader"><div class="spinner"></div></div></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- DEPARTMENTS -->
+  <div class="page" id="page-departments">
+    <div class="flex justify-between items-center mb-4">
+      <button class="btn btn-primary" onclick="openDeptModal()">
+        <i class="fas fa-plus"></i> Add Department
+      </button>
+    </div>
+    <div class="card">
+      <div class="card-header"><h3>All Departments</h3></div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Name</th><th>Description</th><th>Actions</th></tr></thead>
+          <tbody id="deptBody">
+            <tr><td colspan="3"><div class="loader"><div class="spinner"></div></div></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ARTICLES -->
+  <div class="page" id="page-articles">
+    <div class="flex justify-between items-center mb-4">
+      <button class="btn btn-primary" onclick="openArticleModal()">
+        <i class="fas fa-plus"></i> Add Article
+      </button>
+    </div>
+    <div class="card">
+      <div class="card-header"><h3>All Articles</h3></div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Title</th><th>Image</th><th>Date</th><th>Actions</th></tr></thead>
+          <tbody id="articleBody">
+            <tr><td colspan="4"><div class="loader"><div class="spinner"></div></div></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- DISEASES -->
+  <div class="page" id="page-diseases">
+    <div class="flex justify-between items-center mb-4">
+      <button class="btn btn-primary" onclick="openDiseaseModal()">
+        <i class="fas fa-plus"></i> Add Disease
+      </button>
+    </div>
+    <div class="card">
+      <div class="card-header"><h3>Disease Database</h3></div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Name</th><th>Category</th><th>Symptoms</th><th>Actions</th></tr></thead>
+          <tbody id="diseaseBody">
+            <tr><td colspan="4"><div class="loader"><div class="spinner"></div></div></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ MODALS ══════════════ -->
+
+<!-- Doctor Modal -->
+<div class="modal-overlay" id="doctorModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 id="doctorModalTitle">Add New Doctor</h3>
+      <button class="modal-close" onclick="closeModal('doctorModal')"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div class="form-group"><label>Full Name *</label><input type="text" id="drName" placeholder="Dr. Ahmed Ali"></div>
+        <div class="form-group"><label>Speciality *</label><input type="text" id="drSpeciality" placeholder="Cardiologist"></div>
+        <div class="form-group"><label>Email</label><input type="email" id="drEmail" placeholder="doctor@email.com"></div>
+        <div class="form-group"><label>Phone</label><input type="text" id="drPhone" placeholder="+92 300 0000000"></div>
+        <div class="form-group"><label>Experience (Years)</label><input type="number" id="drExp" placeholder="5"></div>
+        <div class="form-group"><label>Qualification</label><input type="text" id="drQual" placeholder="MBBS, FCPS"></div>
+        <div class="form-group"><label>Department</label>
+          <select id="drDeptId"><option value="">— Select Department —</option></select>
+        </div>
+        <div class="form-group"><label>Status</label>
+          <select id="drAvailable"><option value="true">Available</option><option value="false">Unavailable</option></select>
+        </div>
+        <div class="form-group full"><label>Image URL</label><input type="text" id="drImage" placeholder="https://..."></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('doctorModal')">Cancel</button>
+      <button class="btn btn-primary" onclick="saveDoctor()"><i class="fas fa-save"></i> Save Doctor</button>
+    </div>
+  </div>
+</div>
+
+<!-- Department Modal -->
+<div class="modal-overlay" id="deptModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 id="deptModalTitle">Add Department</h3>
+      <button class="modal-close" onclick="closeModal('deptModal')"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div class="form-group full"><label>Department Name *</label><input type="text" id="deptName" placeholder="Cardiology"></div>
+        <div class="form-group full"><label>Description *</label><textarea id="deptDesc" placeholder="Brief description of this department..."></textarea></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('deptModal')">Cancel</button>
+      <button class="btn btn-primary" onclick="saveDept()"><i class="fas fa-save"></i> Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- Article Modal -->
+<div class="modal-overlay" id="articleModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 id="articleModalTitle">Add Article</h3>
+      <button class="modal-close" onclick="closeModal('articleModal')"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div class="form-group full"><label>Title *</label><input type="text" id="artTitle" placeholder="Article title..."></div>
+        <div class="form-group full"><label>Image File</label><input type="file" id="artImageFile" accept="image/*"></div>
+        <div class="form-group full"><label>Content *</label><textarea id="artContent" style="min-height:140px" placeholder="Article content..."></textarea></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('articleModal')">Cancel</button>
+      <button class="btn btn-primary" onclick="saveArticle()"><i class="fas fa-save"></i> Publish</button>
+    </div>
+  </div>
+</div>
+
+<!-- Disease Modal -->
+<div class="modal-overlay" id="diseaseModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 id="diseaseModalTitle">Add Disease</h3>
+      <button class="modal-close" onclick="closeModal('diseaseModal')"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div class="form-group"><label>Disease Name *</label><input type="text" id="disName" placeholder="Diabetes"></div>
+        <div class="form-group"><label>Category</label><input type="text" id="disCategory" placeholder="Chronic"></div>
+        <div class="form-group full"><label>Description *</label><textarea id="disDesc" placeholder="Overview..."></textarea></div>
+        <div class="form-group full"><label>Symptoms</label><textarea id="disSymptoms" placeholder="List symptoms..."></textarea></div>
+        <div class="form-group full"><label>Causes</label><textarea id="disCauses" placeholder="List causes..."></textarea></div>
+        <div class="form-group full"><label>Treatment</label><textarea id="disTreatment" placeholder="Treatment options..."></textarea></div>
+        <div class="form-group full"><label>Prevention</label><textarea id="disPrevention" placeholder="Prevention tips..."></textarea></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('diseaseModal')">Cancel</button>
+      <button class="btn btn-primary" onclick="saveDisease()"><i class="fas fa-save"></i> Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PREVIEW MODAL (shared for all) ══ -->
+<div class="modal-overlay" id="previewModal">
+  <div class="modal modal-wide">
+    <div class="modal-header">
+      <h3 id="previewModalTitle"><i class="fas fa-eye" style="color:var(--purple);margin-right:8px"></i>Preview</h3>
+      <button class="modal-close" onclick="closeModal('previewModal')"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-body" id="previewModalBody"></div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('previewModal')">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div id="toast"><i class="fas fa-check-circle"></i><span id="toastMsg"></span></div>
+
+<script>
+  // ── CONFIG ──────────────────────────────────────────────────────────────
+  const API = 'http://localhost:5000/api'
+  let TOKEN = localStorage.getItem("token") || ""
+
+if (!TOKEN) {
+  alert("Login first")
+  window.location.href = "login.html"
+}
+  let editId = null
+
+  const jsonHeaders = () => ({ 'Content-Type': 'application/json', 'Authorization': `Bearer ${TOKEN}` })
+
+  // Auto-load dashboard on page open
+  window.onload = () => loadDashboard()
+
+  // ── NAVIGATION ──────────────────────────────────────────────────────────
+  const pageMeta = {
+    dashboard:    { title: 'Dashboard',        sub: "Welcome back — here's what's happening" },
+    appointments: { title: 'Appointments',     sub: 'Manage all patient appointments' },
+    doctors:      { title: 'Doctors',          sub: 'Manage your medical staff' },
+    users:        { title: 'Users',            sub: 'Registered patients & users' },
+    departments:  { title: 'Departments',      sub: 'Hospital departments' },
+    articles:     { title: 'Articles / Blog',  sub: 'Content management' },
+    diseases:     { title: 'Disease Database', sub: 'Medical conditions' },
+  }
+
+  function showPage(name, btn) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'))
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'))
+    document.getElementById('page-' + name).classList.add('active')
+    if (btn) btn.classList.add('active')
+    const meta = pageMeta[name]
+    document.getElementById('pageTitle').textContent    = meta.title
+    document.getElementById('pageSubtitle').textContent = meta.sub
+    loadPageData(name)
+  }
+
+  function loadPageData(name) {
+    if (name === 'dashboard')         loadDashboard()
+    else if (name === 'appointments') loadAppointments()
+    else if (name === 'doctors')      loadDoctors()
+    else if (name === 'users')        loadUsers()
+    else if (name === 'departments')  loadDepartments()
+    else if (name === 'articles')     loadArticles()
+    else if (name === 'diseases')     loadDiseases()
+  }
+
+  function refreshPage() {
+    const active = document.querySelector('.page.active')
+    if (active) loadPageData(active.id.replace('page-', ''))
+  }
+
+  // ── DASHBOARD ────────────────────────────────────────────────────────────
+  async function loadDashboard() {
+    try {
+      const res  = await fetch(`${API}/admin/dashboard`, { headers: jsonHeaders() })
+      const data = await res.json()
+      if (!res.ok) return
+      const s = data.stats
+      document.getElementById('statAppts').textContent     = s.appointments     ?? '—'
+      document.getElementById('statPending').textContent   = s.pendingAppointments ?? '—'
+      document.getElementById('statConfirmed').textContent = s.confirmedAppointments ?? '—'
+      document.getElementById('statDoctors').textContent   = s.doctors          ?? '—'
+      document.getElementById('statUsers').textContent     = s.users            ?? '—'
+      document.getElementById('statDepts').textContent     = s.departments      ?? '—'
+      document.getElementById('pendingBadge').textContent  = s.pendingAppointments ?? '0'
+
+      const tbody = document.getElementById('recentApptBody')
+      if (!data.recentAppointments?.length) {
+        tbody.innerHTML = `<tr><td colspan="4"><div class="empty-state"><i class="fas fa-calendar-times"></i><p>No appointments yet</p></div></td></tr>`
+        return
+      }
+      tbody.innerHTML = data.recentAppointments.map(a => {
+        const name  = a.name || a.user?.name || 'Unknown'
+        const email = a.email || a.user?.email || ''
+        return `<tr>
+          <td><div class="avatar-cell">
+            <div class="avatar">${name[0].toUpperCase()}</div>
+            <div><div class="avatar-name">${name}</div><div class="avatar-sub">${email}</div></div>
+          </div></td>
+          <td>${a.doctorType || '—'}</td>
+          <td>${a.date ? new Date(a.date).toLocaleDateString() : '—'}</td>
+          <td><span class="badge badge-${a.status || 'pending'}">${a.status || 'pending'}</span></td>
+        </tr>`
+      }).join('')
+    } catch (err) { console.error('Dashboard error:', err) }
+  }
+
+  // ── APPOINTMENTS ─────────────────────────────────────────────────────────
+  async function loadAppointments() {
+    const filter = document.getElementById('apptStatusFilter')?.value || ''
+    const tbody  = document.getElementById('apptBody')
+    tbody.innerHTML = `<tr><td colspan="6"><div class="loader"><div class="spinner"></div></div></td></tr>`
+    try {
+      const res  = await fetch(`${API}/admin/appointments`, { headers: jsonHeaders() })
+      let data   = await res.json()
+      if (!res.ok) throw new Error()
+      if (filter) data = data.filter(a => a.status === filter)
+      if (!data.length) {
+        tbody.innerHTML = `<tr><td colspan="6"><div class="empty-state"><i class="fas fa-calendar-times"></i><p>No appointments found</p></div></td></tr>`
+        return
+      }
+      tbody.innerHTML = data.map(a => {
+        const name  = a.name || a.user?.name || 'Unknown'
+        const email = a.email || a.user?.email || ''
+        return `<tr>
+          <td><div class="avatar-cell">
+            <div class="avatar">${name[0].toUpperCase()}</div>
+            <div><div class="avatar-name">${name}</div><div class="avatar-sub">${email}</div></div>
+          </div></td>
+          <td>${a.doctorType || '—'}</td>
+          <td>${a.date ? new Date(a.date).toLocaleDateString() : '—'}</td>
+          <td style="max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${a.message || '—'}</td>
+          <td><span class="badge badge-${a.status}">${a.status}</span></td>
+          <td><div class="flex gap-2">
+            <button class="btn btn-preview btn-sm btn-icon" onclick='previewAppointment(${JSON.stringify(a).replace(/'/g,"&#39;")})' title="Preview"><i class="fas fa-eye"></i></button>
+            <button class="btn btn-success btn-sm btn-icon" onclick="changeApptStatus(${a.id},'confirmed')" title="Confirm"><i class="fas fa-check"></i></button>
+            <button class="btn btn-warning btn-sm btn-icon" onclick="changeApptStatus(${a.id},'pending')" title="Pending"><i class="fas fa-clock"></i></button>
+            <button class="btn btn-danger btn-sm btn-icon" onclick="changeApptStatus(${a.id},'cancelled')" title="Cancel"><i class="fas fa-times"></i></button>
+          </div></td>
+        </tr>`
+      }).join('')
+    } catch (err) { console.error('Appointments error:', err) }
+  }
+
+  async function changeApptStatus(id, status) {
+    try {
+      const res = await fetch(`${API}/admin/appointments/${id}/status`, {
+        method: 'PATCH', headers: jsonHeaders(), body: JSON.stringify({ status })
+      })
+      if (!res.ok) throw new Error()
+      showToast(`Appointment marked as ${status}`, 'success')
+      loadAppointments(); loadDashboard()
+    } catch { showToast('Error updating appointment', 'error') }
+  }
+
+  // Preview: Appointment
+  function previewAppointment(a) {
+    const name  = a.name || a.user?.name || 'Unknown'
+    const email = a.email || a.user?.email || '—'
+    const phone = a.phone || a.user?.phone || '—'
+    document.getElementById('previewModalTitle').innerHTML = '<i class="fas fa-calendar-check" style="color:var(--primary);margin-right:8px"></i>Appointment Preview'
+    document.getElementById('previewModalBody').innerHTML = `
+      <div class="preview-card">
+        <div class="preview-appt-row"><strong>Patient Name</strong><span>${name}</span></div>
+        <div class="preview-appt-row"><strong>Email</strong><span>${email}</span></div>
+        <div class="preview-appt-row"><strong>Phone</strong><span>${phone}</span></div>
+        <div class="preview-appt-row"><strong>Doctor Type</strong><span>${a.doctorType || '—'}</span></div>
+        <div class="preview-appt-row"><strong>Date</strong><span>${a.date ? new Date(a.date).toLocaleDateString('en-PK',{weekday:'long',year:'numeric',month:'long',day:'numeric'}) : '—'}</span></div>
+        <div class="preview-appt-row"><strong>Status</strong><span class="badge badge-${a.status}">${a.status}</span></div>
+        <div class="preview-appt-row"><strong>Message</strong><span style="max-width:400px">${a.message || '—'}</span></div>
+      </div>`
+    document.getElementById('previewModal').classList.add('active')
+  }
+
+  // ── DOCTORS ──────────────────────────────────────────────────────────────
+  
+  async function loadDoctors() {
+    const tbody = document.getElementById('doctorBody')
+    tbody.innerHTML = `<tr><td colspan="6"><div class="loader"><div class="spinner"></div></div></td></tr>`
+    try {
+const res = await fetch(`${API}/doctors`, {
+  headers: jsonHeaders()
+})
+      const data = await res.json()
+      if (!data.length) {
+        tbody.innerHTML = `<tr><td colspan="6"><div class="empty-state"><i class="fas fa-user-md"></i><p>No doctors added yet</p></div></td></tr>`
+        return
+      }
+      tbody.innerHTML = data.map(d => `<tr>
+        <td><div class="avatar-cell">
+          ${d.image ? `<img src="${d.image}" style="width:36px;height:36px;border-radius:50%;object-fit:cover" onerror="this.style.display='none'">` : `<div class="avatar">${d.name[0].toUpperCase()}</div>`}
+          <div><div class="avatar-name">${d.name}</div><div class="avatar-sub">${d.qualification || ''}</div></div>
+        </div></td>
+        <td>${d.speciality}</td>
+        <td>${d.department?.name || '—'}</td>
+        <td>${d.experience ? d.experience + ' yrs' : '—'}</td>
+        <td><span class="badge badge-${d.available ? 'available' : 'unavailable'}">${d.available ? 'Available' : 'Unavailable'}</span></td>
+        <td><div class="flex gap-2">
+          <button class="btn btn-preview btn-sm btn-icon" onclick='previewDoctor(${JSON.stringify(d).replace(/'/g,"&#39;")})' title="Preview"><i class="fas fa-eye"></i></button>
+          <button class="btn btn-outline btn-sm btn-icon" onclick='editDoctor(${JSON.stringify(d).replace(/'/g,"&#39;")})' title="Edit"><i class="fas fa-edit"></i></button>
+          <button class="btn btn-danger btn-sm btn-icon" onclick="deleteDoctor(${d.id})" title="Delete"><i class="fas fa-trash"></i></button>
+        </div></td>
+      </tr>`).join('')
+    } catch (err) { console.error('Doctors error:', err) }
+  }
+
+  // Preview: Doctor
+  function previewDoctor(d) {
+    document.getElementById('previewModalTitle').innerHTML = '<i class="fas fa-user-md" style="color:var(--primary);margin-right:8px"></i>Doctor Profile'
+    document.getElementById('previewModalBody').innerHTML = `
+      <div class="preview-card">
+        <div class="preview-doctor-header">
+          ${d.image
+            ? `<img src="${d.image}" class="preview-doctor-avatar" onerror="this.outerHTML='<div class=preview-doctor-avatar>${d.name[0]}</div>'">`
+            : `<div class="preview-doctor-avatar">${d.name[0].toUpperCase()}</div>`}
+          <div>
+            <h2>${d.name}</h2>
+            <div class="preview-meta">${d.speciality} ${d.department?.name ? '• ' + d.department.name : ''}</div>
+            <span class="badge badge-${d.available ? 'available' : 'unavailable'}">${d.available ? 'Available' : 'Unavailable'}</span>
+          </div>
+        </div>
+        <div class="preview-grid">
+          <div class="preview-section"><strong>Qualification</strong><span>${d.qualification || '—'}</span></div>
+          <div class="preview-section"><strong>Experience</strong><span>${d.experience ? d.experience + ' Years' : '—'}</span></div>
+          <div class="preview-section"><strong>Email</strong><span>${d.email || '—'}</span></div>
+          <div class="preview-section"><strong>Phone</strong><span>${d.phone || '—'}</span></div>
+        </div>
+      </div>`
+    document.getElementById('previewModal').classList.add('active')
+  }
+
+  async function loadDeptOptions() {
+    try {
+      const res  = await fetch(`${API}/departments`)
+      const data = await res.json()
+      const sel  = document.getElementById('drDeptId')
+      sel.innerHTML = '<option value="">— Select Department —</option>'
+      data.forEach(d => {
+        const opt = document.createElement('option')
+        opt.value = d.id; opt.textContent = d.name; sel.appendChild(opt)
+      })
+    } catch {}
+  }
+
+  function openDoctorModal(clear = true) {
+    if (clear) {
+      editId = null
+      document.getElementById('doctorModalTitle').textContent = 'Add New Doctor'
+      ;['drName','drSpeciality','drEmail','drPhone','drExp','drQual','drImage'].forEach(id => document.getElementById(id).value = '')
+      document.getElementById('drAvailable').value = 'true'
+      document.getElementById('drDeptId').value = ''
+    }
+    loadDeptOptions()
+    document.getElementById('doctorModal').classList.add('active')
+  }
+
+  function editDoctor(d) {
+    editId = d.id
+    document.getElementById('doctorModalTitle').textContent = 'Edit Doctor'
+    document.getElementById('drName').value       = d.name || ''
+    document.getElementById('drSpeciality').value = d.speciality || ''
+    document.getElementById('drEmail').value      = d.email || ''
+    document.getElementById('drPhone').value      = d.phone || ''
+    document.getElementById('drExp').value        = d.experience || ''
+    document.getElementById('drQual').value       = d.qualification || ''
+    document.getElementById('drImage').value      = d.image || ''
+    document.getElementById('drAvailable').value  = String(d.available)
+    openDoctorModal(false)
+    setTimeout(() => { if (d.departmentId) document.getElementById('drDeptId').value = d.departmentId }, 400)
+  }
+
+  async function saveDoctor() {
+    const body = {
+      name: document.getElementById('drName').value.trim(),
+      speciality: document.getElementById('drSpeciality').value.trim(),
+      email: document.getElementById('drEmail').value.trim(),
+      phone: document.getElementById('drPhone').value.trim(),
+      experience: document.getElementById('drExp').value,
+      qualification: document.getElementById('drQual').value.trim(),
+      image: document.getElementById('drImage').value.trim(),
+      available: document.getElementById('drAvailable').value === 'true',
+      departmentId: document.getElementById('drDeptId').value || null
+    }
+    if (!body.name || !body.speciality) return showToast('Name and Speciality required', 'error')
+    try {
+      const url = editId ? `${API}/doctors/${editId}` : `${API}/doctors`
+      const res = await fetch(url, { method: editId ? 'PUT' : 'POST', headers: jsonHeaders(), body: JSON.stringify(body) })
+      if (!res.ok) { const e = await res.json(); throw new Error(e.error || 'Error') }
+      showToast(editId ? 'Doctor updated!' : 'Doctor added!', 'success')
+      closeModal('doctorModal'); loadDoctors()
+    } catch (e) { showToast(e.message || 'Error saving doctor', 'error') }
+  }
+
+  async function deleteDoctor(id) {
+    if (!confirm('Delete this doctor?')) return
+    const res = await fetch(`${API}/doctors/${id}`, { method: 'DELETE', headers: jsonHeaders() })
+    if (res.ok) { showToast('Doctor deleted', 'success'); loadDoctors() }
+    else showToast('Error deleting', 'error')
+  }
+
+  // ── USERS ────────────────────────────────────────────────────────────────
+  async function loadUsers() {
+    const tbody = document.getElementById('userBody')
+    tbody.innerHTML = `<tr><td colspan="5"><div class="loader"><div class="spinner"></div></div></td></tr>`
+    try {
+      const res  = await fetch(`${API}/admin/users`, { headers: jsonHeaders() })
+      const data = await res.json()
+      if (!data.length) {
+        tbody.innerHTML = `<tr><td colspan="5"><div class="empty-state"><i class="fas fa-users"></i><p>No users yet</p></div></td></tr>`
+        return
+      }
+      tbody.innerHTML = data.map(u => `<tr>
+        <td><div class="avatar-cell">
+          <div class="avatar" style="background:var(--purple-light);color:var(--purple)">${u.name[0].toUpperCase()}</div>
+          <div class="avatar-name">${u.name}</div>
+        </div></td>
+        <td>${u.email}</td>
+        <td>${u.phone || '—'}</td>
+        <td>${u.createdAt ? new Date(u.createdAt).toLocaleDateString() : '—'}</td>
+        <td><div class="flex gap-2">
+          <button class="btn btn-preview btn-sm btn-icon" onclick='previewUser(${JSON.stringify(u).replace(/'/g,"&#39;")})' title="Preview"><i class="fas fa-eye"></i></button>
+          <button class="btn btn-danger btn-sm btn-icon" onclick="deleteUser(${u.id})" title="Delete"><i class="fas fa-trash"></i></button>
+        </div></td>
+      </tr>`).join('')
+    } catch (err) { console.error('Users error:', err) }
+  }
+
+  // Preview: User
+  function previewUser(u) {
+    document.getElementById('previewModalTitle').innerHTML = '<i class="fas fa-user" style="color:var(--purple);margin-right:8px"></i>User Profile'
+    document.getElementById('previewModalBody').innerHTML = `
+      <div class="preview-card">
+        <div class="preview-doctor-header">
+          <div class="preview-doctor-avatar" style="background:var(--purple-light);color:var(--purple)">${u.name[0].toUpperCase()}</div>
+          <div>
+            <h2>${u.name}</h2>
+            <div class="preview-meta">Registered User</div>
+          </div>
+        </div>
+        <div class="preview-grid">
+          <div class="preview-section"><strong>Email</strong><span>${u.email}</span></div>
+          <div class="preview-section"><strong>Phone</strong><span>${u.phone || '—'}</span></div>
+          <div class="preview-section"><strong>Joined</strong><span>${u.createdAt ? new Date(u.createdAt).toLocaleDateString('en-PK',{year:'numeric',month:'long',day:'numeric'}) : '—'}</span></div>
+        </div>
+      </div>`
+    document.getElementById('previewModal').classList.add('active')
+  }
+
+  async function deleteUser(id) {
+    if (!confirm('Delete this user? All their appointments will also be removed.')) return
+    const res = await fetch(`${API}/admin/users/${id}`, { method: 'DELETE', headers: jsonHeaders() })
+    if (res.ok) { showToast('User deleted', 'success'); loadUsers() }
+    else showToast('Error deleting user', 'error')
+  }
+
+  // ── DEPARTMENTS ──────────────────────────────────────────────────────────
+  async function loadDepartments() {
+    const tbody = document.getElementById('deptBody')
+    tbody.innerHTML = `<tr><td colspan="3"><div class="loader"><div class="spinner"></div></div></td></tr>`
+    try {
+      const res  = await fetch(`${API}/departments`)
+      const data = await res.json()
+      if (!data.length) {
+        tbody.innerHTML = `<tr><td colspan="3"><div class="empty-state"><i class="fas fa-hospital"></i><p>No departments yet</p></div></td></tr>`
+        return
+      }
+      tbody.innerHTML = data.map(d => `<tr>
+        <td><div class="avatar-name">${d.name}</div></td>
+        <td style="max-width:360px">${d.description || '—'}</td>
+        <td><div class="flex gap-2">
+          <button class="btn btn-preview btn-sm btn-icon" onclick='previewDept(${JSON.stringify(d).replace(/'/g,"&#39;")})' title="Preview"><i class="fas fa-eye"></i></button>
+          <button class="btn btn-outline btn-sm btn-icon" onclick="editDept(${JSON.stringify(d).replace(/'/g,"&#39;")})" title="Edit"><i class="fas fa-edit"></i></button>
+          <button class="btn btn-danger btn-sm btn-icon" onclick="deleteDept(${d.id})" title="Delete"><i class="fas fa-trash"></i></button>
+        </div></td>
+      </tr>`).join('')
+    } catch (err) { console.error('Departments error:', err) }
+  }
+
+  
+  // Preview: Department
+  function previewDept(d) {
+    document.getElementById('previewModalTitle').innerHTML = '<i class="fas fa-hospital" style="color:var(--success);margin-right:8px"></i>Department Preview'
+    document.getElementById('previewModalBody').innerHTML = `
+      <div class="preview-card">
+        <h2>${d.name}</h2>
+        <div class="preview-meta">Hospital Department</div>
+        <p>${d.description || 'No description provided.'}</p>
+      </div>`
+    document.getElementById('previewModal').classList.add('active')
+  }
+
+  function openDeptModal(clear = true) {
+    if (clear) {
+      editId = null
+      document.getElementById('deptModalTitle').textContent = 'Add Department'
+      document.getElementById('deptName').value = ''
+      document.getElementById('deptDesc').value = ''
+    }
+    document.getElementById('deptModal').classList.add('active')
+  }
+
+  function editDept(d) {
+    editId = d.id
+    document.getElementById('deptModalTitle').textContent = 'Edit Department'
+    document.getElementById('deptName').value = d.name || ''
+    document.getElementById('deptDesc').value = d.description || ''
+    openDeptModal(false)
+  }
+
+  async function saveDept() {
+    const body = { name: document.getElementById('deptName').value.trim(), description: document.getElementById('deptDesc').value.trim() }
+    if (!body.name || !body.description) return showToast('Name and Description required', 'error')
+    try {
+      const url = editId ? `${API}/departments/${editId}` : `${API}/departments`
+      const res = await fetch(url, { method: editId ? 'PUT' : 'POST', headers: jsonHeaders(), body: JSON.stringify(body) })
+      if (!res.ok) throw new Error()
+      showToast(editId ? 'Department updated!' : 'Department added!', 'success')
+      closeModal('deptModal'); loadDepartments()
+    } catch { showToast('Error saving department', 'error') }
+  }
+
+  async function deleteDept(id) {
+    if (!confirm('Delete this department?')) return
+    const res = await fetch(`${API}/departments/${id}`, { method: 'DELETE', headers: jsonHeaders() })
+    if (res.ok) { showToast('Department deleted', 'success'); loadDepartments() }
+    else showToast('Error deleting', 'error')
+  }
+
+  // ── ARTICLES ─────────────────────────────────────────────────────────────
+  async function loadArticles() {
+    const tbody = document.getElementById('articleBody')
+    tbody.innerHTML = `<tr><td colspan="4"><div class="loader"><div class="spinner"></div></div></td></tr>`
+    try {
+      const res  = await fetch(`${API}/articles`)
+      const data = await res.json()
+      if (!data.length) {
+        tbody.innerHTML = `<tr><td colspan="4"><div class="empty-state"><i class="fas fa-newspaper"></i><p>No articles yet</p></div></td></tr>`
+        return
+      }
+      tbody.innerHTML = data.map(a => `<tr>
+        <td style="max-width:280px"><div class="avatar-name">${a.title}</div></td>
+        <td>${a.image ? `<img src="http://localhost:5000${a.image}" style="height:40px;border-radius:6px;object-fit:cover" onerror="this.style.display='none'">` : '—'}</td>
+        <td>${a.createdAt ? new Date(a.createdAt).toLocaleDateString() : '—'}</td>
+        <td><div class="flex gap-2">
+          <button class="btn btn-preview btn-sm btn-icon" onclick='previewArticle(${JSON.stringify(a).replace(/'/g,"&#39;")})' title="Preview"><i class="fas fa-eye"></i></button>
+          <button class="btn btn-danger btn-sm btn-icon" onclick="deleteArticle(${a.id})" title="Delete"><i class="fas fa-trash"></i></button>
+        </div></td>
+      </tr>`).join('')
+    } catch (err) { console.error('Articles error:', err) }
+  }
+
+  // Preview: Article
+  function previewArticle(a) {
+    document.getElementById('previewModalTitle').innerHTML = '<i class="fas fa-newspaper" style="color:var(--primary);margin-right:8px"></i>Article Preview'
+    document.getElementById('previewModalBody').innerHTML = `
+      <div class="preview-card">
+        ${a.image ? `<img src="http://localhost:5000${a.image}" class="preview-img" onerror="this.style.display='none'">` : ''}
+        <h2>${a.title}</h2>
+        <div class="preview-meta">${a.createdAt ? new Date(a.createdAt).toLocaleDateString('en-PK',{year:'numeric',month:'long',day:'numeric'}) : ''}</div>
+        <p style="white-space:pre-wrap">${a.content || ''}</p>
+      </div>`
+    document.getElementById('previewModal').classList.add('active')
+  }
+
+  function openArticleModal() {
+    editId = null
+    document.getElementById('artTitle').value = ''
+    document.getElementById('artContent').value = ''
+    document.getElementById('artImageFile').value = ''
+    document.getElementById('articleModal').classList.add('active')
+  }
+
+  async function saveArticle() {
+    const title   = document.getElementById('artTitle').value.trim()
+    const content = document.getElementById('artContent').value.trim()
+    const file    = document.getElementById('artImageFile').files[0]
+    if (!title || !content) return showToast('Title and Content required', 'error')
+    const formData = new FormData()
+    formData.append('title', title)
+    formData.append('content', content)
+    if (file) formData.append('image', file)
+    try {
+      const res = await fetch(`${API}/articles`, {
+        method: 'POST', headers: { 'Authorization': `Bearer ${TOKEN}` }, body: formData
+      })
+      if (!res.ok) throw new Error()
+      showToast('Article published!', 'success')
+      closeModal('articleModal'); loadArticles()
+    } catch { showToast('Error saving article', 'error') }
+  }
+
+  async function deleteArticle(id) {
+    if (!confirm('Delete this article?')) return
+    const res = await fetch(`${API}/articles/${id}`, { method: 'DELETE', headers: jsonHeaders() })
+    if (res.ok) { showToast('Article deleted', 'success'); loadArticles() }
+    else showToast('Error deleting', 'error')
+  }
+
+  // ── DISEASES ─────────────────────────────────────────────────────────────
+  async function loadDiseases() {
+    const tbody = document.getElementById('diseaseBody')
+    tbody.innerHTML = `<tr><td colspan="4"><div class="loader"><div class="spinner"></div></div></td></tr>`
+    try {
+      const res  = await fetch(`${API}/diseases`)
+      const data = await res.json()
+      if (!data.length) {
+        tbody.innerHTML = `<tr><td colspan="4"><div class="empty-state"><i class="fas fa-virus"></i><p>No diseases yet</p></div></td></tr>`
+        return
+      }
+      tbody.innerHTML = data.map(d => `<tr>
+        <td><div class="avatar-name">${d.name}</div></td>
+        <td>${d.category || '—'}</td>
+        <td style="max-width:260px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${d.symptoms || '—'}</td>
+        <td><div class="flex gap-2">
+          <button class="btn btn-preview btn-sm btn-icon" onclick='previewDisease(${JSON.stringify(d).replace(/'/g,"&#39;")})' title="Preview"><i class="fas fa-eye"></i></button>
+          <button class="btn btn-outline btn-sm btn-icon" onclick='editDisease(${JSON.stringify(d).replace(/'/g,"&#39;")})' title="Edit"><i class="fas fa-edit"></i></button>
+          <button class="btn btn-danger btn-sm btn-icon" onclick="deleteDisease(${d.id})" title="Delete"><i class="fas fa-trash"></i></button>
+        </div></td>
+      </tr>`).join('')
+    } catch (err) { console.error('Diseases error:', err) }
+  }
+
+  // Preview: Disease
+  function previewDisease(d) {
+    const section = (label, val) => val ? `<div class="preview-section"><strong>${label}</strong><span>${val}</span></div>` : ''
+    document.getElementById('previewModalTitle').innerHTML = '<i class="fas fa-virus" style="color:var(--danger);margin-right:8px"></i>Disease Info'
+    document.getElementById('previewModalBody').innerHTML = `
+      <div class="preview-card">
+        <h2>${d.name}</h2>
+        ${d.category ? `<div class="preview-tags"><span class="preview-tag">${d.category}</span></div>` : ''}
+        <div style="margin-top:16px">${section('Description', d.description)}${section('Symptoms', d.symptoms)}${section('Causes', d.causes)}${section('Treatment', d.treatment)}${section('Prevention', d.prevention)}</div>
+      </div>`
+    document.getElementById('previewModal').classList.add('active')
+  }
+
+  function openDiseaseModal(clear = true) {
+    if (clear) {
+      editId = null
+      document.getElementById('diseaseModalTitle').textContent = 'Add Disease'
+      ;['disName','disCategory','disDesc','disSymptoms','disCauses','disTreatment','disPrevention'].forEach(id => document.getElementById(id).value = '')
+    }
+    document.getElementById('diseaseModal').classList.add('active')
+  }
+
+  function editDisease(d) {
+    editId = d.id
+    document.getElementById('diseaseModalTitle').textContent = 'Edit Disease'
+    document.getElementById('disName').value       = d.name || ''
+    document.getElementById('disCategory').value   = d.category || ''
+    document.getElementById('disDesc').value       = d.description || ''
+    document.getElementById('disSymptoms').value   = d.symptoms || ''
+    document.getElementById('disCauses').value     = d.causes || ''
+    document.getElementById('disTreatment').value  = d.treatment || ''
+    document.getElementById('disPrevention').value = d.prevention || ''
+    openDiseaseModal(false)
+  }
+
+  async function saveDisease() {
+    const body = {
+      name: document.getElementById('disName').value.trim(),
+      category: document.getElementById('disCategory').value.trim(),
+      description: document.getElementById('disDesc').value.trim(),
+      symptoms: document.getElementById('disSymptoms').value.trim(),
+      causes: document.getElementById('disCauses').value.trim(),
+      treatment: document.getElementById('disTreatment').value.trim(),
+      prevention: document.getElementById('disPrevention').value.trim()
+    }
+    if (!body.name || !body.description) return showToast('Name and Description required', 'error')
+    try {
+      const url = editId ? `${API}/diseases/${editId}` : `${API}/diseases`
+      const res = await fetch(url, { method: editId ? 'PUT' : 'POST', headers: jsonHeaders(), body: JSON.stringify(body) })
+      if (!res.ok) throw new Error()
+      showToast(editId ? 'Disease updated!' : 'Disease added!', 'success')
+      closeModal('diseaseModal'); loadDiseases()
+    } catch { showToast('Error saving disease', 'error') }
+  }
+
+  async function deleteDisease(id) {
+    if (!confirm('Delete this disease?')) return
+    const res = await fetch(`${API}/diseases/${id}`, { method: 'DELETE', headers: jsonHeaders() })
+    if (res.ok) { showToast('Disease deleted', 'success'); loadDiseases() }
+    else showToast('Error deleting', 'error')
+  }
+
+  // ── UTILS ─────────────────────────────────────────────────────────────────
+  function closeModal(id) {
+    document.getElementById(id).classList.remove('active')
+    editId = null
+  }
+
+  function showToast(msg, type = 'success') {
+    const t = document.getElementById('toast')
+    t.className = type
+    t.querySelector('i').className = type === 'success' ? 'fas fa-check-circle' : 'fas fa-exclamation-circle'
+    document.getElementById('toastMsg').textContent = msg
+    t.classList.add('show')
+    setTimeout(() => t.classList.remove('show'), 3000)
+  }
+
+  document.querySelectorAll('.modal-overlay').forEach(overlay => {
+    overlay.addEventListener('click', e => { if (e.target === overlay) overlay.classList.remove('active') })
+  })
+  
+</script>
+
+</body>
+</html>

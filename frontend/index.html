@@ -219,6 +219,7 @@
             </div>
         </nav>
     </header>
+    
 
 <!-- Mobile Menu (Add this after the header) -->
 <div class="mobile-menu" id="mobileMenu">
@@ -441,6 +442,10 @@
         </div>
         <p class="copyright">&copy; 2025 Sehat Bakhsh. All rights reserved.</p>
     </footer>
+    <input type="text" id="name" placeholder="Name">
+<input type="email" id="email" placeholder="Email">
+<input type="password" id="password" placeholder="Password">
+
 
     <script src="scripts/main.js"></script>
     
@@ -490,5 +495,32 @@
     </script>
     <!-- Add language-aware logo script -->
     <script src="scripts/language-aware-logo.js"></script>
+    <script>
+async function registerAdmin() {
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  try {
+    const res = await fetch("http://localhost:5000/api/admin/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ name, email, password })
+    });
+
+    const data = await res.json();
+    console.log(data);
+
+    alert("Admin Registered Successfully");
+  } catch (err) {
+    console.log(err);
+    alert("Error connecting to backend");
+  }
+}
+</script>
+
 </body>
+
 </html>
